@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#14222e">
+<meta name="description" content="Les Cahiers de Thierry Gibert : feuilletez gratuitement NAZA, une enquête documentaire en 12 pages.">
+<title>Les Cahiers · NAZA — Thierry Gibert</title>
+<style>
+:root{--ink:#182d38;--paper:#f7f4eb;--gold:#ac8747}*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+a{color:inherit}header{background:#14222e;color:#fff;padding:15px clamp(16px,4vw,60px);display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.brand{font-size:12px;font-weight:800;letter-spacing:.16em;color:#e9d3ab}header a{font-size:13px;text-decoration:none}
+main{max-width:1280px;margin:auto;padding:clamp(17px,3vw,40px)}.eyebrow{color:#84662c;font-weight:750;text-transform:uppercase;font-size:12px;letter-spacing:.14em}
+h1{font:600 clamp(28px,4vw,46px)/1.1 Georgia,serif;margin:6px 0 10px}
+.subtitle{margin:0;font-size:16px;color:#516773;max-width:800px}.meta{font-size:13px;color:#697b84}
+.toolbar{display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap;margin:18px 0 12px}
+button,.button{border:1px solid #b5c1c9;background:#fff;color:#162b37;padding:11px 13px;min-height:43px;font:650 14px Arial,sans-serif;border-radius:8px;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center}
+.primary{background:#193542;color:white;border-color:#193542}button:disabled{opacity:.42;cursor:not-allowed}
+button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+#counter{font-weight:750;font-variant-numeric:tabular-nums;min-width:116px;text-align:center;font-size:14px}
+#stage{background:radial-gradient(ellipse at top,#506673,#1d3440 60%,#12222d);min-height:610px;padding:20px 8px;border-radius:12px;box-shadow:0 17px 35px #10253038}
+#shell{height:min(74vh,810px);min-height:470px;display:flex;align-items:center;justify-content:center;max-width:1100px;margin:auto}
+#book{margin:auto}
+#fallback{display:none;text-align:center;margin:auto;width:min(450px,90%)}#fallback img{max-width:100%;max-height:min(67vh,740px);box-shadow:0 7px 25px #0008}
+#fallback p,#hint{color:#e6ecf0;font-size:13px;text-align:center}
+#hint{margin:12px auto 0;max-width:760px}.info{max-width:850px;margin:30px auto 44px;color:#435863;font-size:15px;line-height:1.7}
+h2{font:600 25px Georgia,serif;color:#18303e}
+footer{border-top:1px solid #d4d9db;padding:20px;text-align:center;font-size:13px;color:#60747b}
+#stage:fullscreen{border-radius:0;min-height:100vh;display:flex;flex-direction:column;justify-content:center}#stage:fullscreen #shell{flex:1}
+@media(max-width:700px){main{padding:18px 8px}.intro{padding:0 8px}.toolbar{gap:6px}button,.button{font-size:13px;padding:10px}#counter{min-width:80px;font-size:13px}#stage{min-height:500px;padding:14px 5px}#shell{height:min(69vh,690px);min-height:400px}}
+</style>
+</head>
+<body>
+<header><div class="brand">THIERRY GIBERT · LES CAHIERS</div><a href="https://thierrygibert15.wordpress.com/publications/les-cahiers/">← Retour au site WordPress</a></header>
+<main>
+<section class="intro"><p class="eyebrow">Collection documentaire · Cahier n° 01</p><h1>NAZA : vérifier avant de conclure</h1><p class="subtitle">Ce que le documentaire démontre, ce qu’il suggère et ce qu’il ne prouve pas.</p><p class="meta">Édition consolidée du 13 novembre 2026 · 12 pages · Enquête et compléments contradictoires</p></section>
+<nav class="toolbar" aria-label="Navigation dans le cahier">
+<button id="prev" type="button" aria-label="Page précédente">← Précédente</button><span id="counter" aria-live="polite">Couverture</span><button class="primary" id="next" type="button" aria-label="Page suivante">Suivante →</button>
+<button id="fullscreen" type="button">⛶ Plein écran</button>
+<a class="button" href="https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/les-cahiers-01-naza-edition-consolidee-13-11-2026.pdf" target="_blank" rel="noopener">↓ PDF intégral</a>
+</nav>
+<section id="stage" aria-label="Feuilletage interactif de NAZA">
+<div id="shell"><div id="book" aria-label="Livre NAZA"></div>
+<div id="fallback"><img id="fallback-image" src="https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/naza-cahier-01-page-01.jpg" alt="Couverture de NAZA"><p id="fallback-message">Chargement du lecteur…</p></div></div>
+<p id="hint">Touchez le coin d’une page, balayez l’écran ou utilisez les flèches. Sur téléphone, le PDF permet de zoomer sur le texte.</p>
+</section>
+<section class="info"><h2>Lire les faits, confronter les sources</h2><p>Ce cahier distingue les informations établies, les éléments corroborés et les affirmations qui demeurent contestées. Il conserve le texte de référence du 4 octobre 2026 et présente séparément les compléments du 13 novembre.</p><p><a href="https://thierrygibert15.wordpress.com/2026/10/04/naza-verifier-avant-de-conclure/">Lire l’article et ses mises à jour</a> · <a href="https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/les-cahiers-01-naza-edition-consolidee-13-11-2026.pdf">Télécharger les 12 pages en PDF</a></p></section>
+</main>
+<footer>Les Cahiers · Thierry Gibert · Lecteur libre : <a href="https://github.com/Nodlik/StPageFlip">StPageFlip (MIT)</a></footer>
+<noscript><p>JavaScript est nécessaire pour tourner les pages. <a href="https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/les-cahiers-01-naza-edition-consolidee-13-11-2026.pdf">Lire le PDF.</a></p></noscript>
+<script defer src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+<script defer>
+(function(){
+"use strict";
+var base="https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/naza-cahier-01-page-";
+var urls=Array.from({length:12},function(_,i){return base+String(i+1).padStart(2,"0")+".jpg";});
+var count=document.getElementById("counter"),prev=document.getElementById("prev"),next=document.getElementById("next");
+var stage=document.getElementById("stage"),fallback=document.getElementById("fallback");
+var fbImg=document.getElementById("fallback-image"),fbMsg=document.getElementById("fallback-message");
+var page=0,flip=null;
+function sync(){count.textContent=page===0?"Couverture · 1/12":"Page "+(page+1)+" / 12";prev.disabled=page===0;next.disabled=page===11;if(!flip)fbImg.src=urls[page];}
+function fallbackMode(){flip=null;fallback.style.display="block";fbMsg.textContent="Lecture simplifiée : utilisez les flèches pour parcourir les pages.";sync();}
+function init(){
+if(!window.St||!window.St.PageFlip){fallbackMode();return;}
+try{
+flip=new window.St.PageFlip(document.getElementById("book"),{
+width:430,height:608,size:"stretch",minWidth:210,maxWidth:530,minHeight:297,maxHeight:750,
+showCover:true,usePortrait:true,mobileScrollSupport:false,drawShadow:true,maxShadowOpacity:0.35,
+flippingTime:window.matchMedia("(prefers-reduced-motion: reduce)").matches?100:750
+});
+flip.on("flip",function(e){page=e.data;sync();});
+flip.on("init",function(e){page=e.data.page;sync();});
+flip.loadFromImages(urls);sync();
+}catch(e){fallbackMode();}
+}
+prev.addEventListener("click",function(){if(flip){flip.flipPrev("bottom");}else{page=Math.max(0,page-1);}sync();});
+next.addEventListener("click",function(){if(flip){flip.flipNext("bottom");}else{page=Math.min(11,page+1);}sync();});
+document.getElementById("fullscreen").addEventListener("click",function(){
+if(document.fullscreenElement){document.exitFullscreen&&document.exitFullscreen();}
+else if(stage.requestFullscreen){stage.requestFullscreen().catch(function(){});}
+else {window.open("https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/les-cahiers-01-naza-edition-consolidee-13-11-2026.pdf","_blank");}
+});
+document.addEventListener("keydown",function(e){if(e.target&&e.target.matches("input,textarea,select"))return;if(e.key==="ArrowRight")next.click();if(e.key==="ArrowLeft")prev.click();});
+sync();window.addEventListener("load",init,{once:true});
+})();
+</script>
+</body></html>
