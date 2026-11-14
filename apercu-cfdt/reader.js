@@ -14,7 +14,8 @@ let readingMode=false,readerScale=100;
 const prev=document.getElementById("prev"),next=document.getElementById("next"),count=document.getElementById("count");
 const progress=document.getElementById("progress-bar"),progressRoot=document.querySelector(".reading-progress");
 const toc=document.getElementById("toc-panel"),tocToggle=document.getElementById("toc-toggle"),tocClose=document.getElementById("toc-close"),tocList=document.getElementById("toc-list");
-let index=0,flip=null;
+let index=0,flip=null,measuredPageSize=null;
+let resizeFrame=0;
 const special={0:"cover",2:"timeline-page",4:"portrait",8:"dual-page",9:"vote-page",12:"dual-page",14:"dual-page",15:"final-page",16:"sources-page",17:"sources-page"};
 function safe(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
 function portrait(){
@@ -70,15 +71,21 @@ function displayParts(parts){
  });
 }
 function measureSize(){
- const stage=document.getElementById("stage");
- const available=stage?.clientWidth||window.innerWidth;
- // Mesurer au plus à la largeur du feuillet A5 ; sur mobile, anticiper
- // les retours à la ligne du mode portrait et les folios.
- const width=Math.max(215,Math.min(430,Math.floor(
-   window.innerWidth<=720?available-45:
-   window.innerWidth<=1000?Math.min(available-45,355):430
- )));
- return {width,height:Math.round(width*608/430)};
+ if(measuredPageSize)return measuredPageSize;
+ const shell=document.getElementById("shell");
+ const widthAvailable=shell?.clientWidth||window.innerWidth;
+ const heightAvailable=shell?.clientHeight||Math.min(window.innerHeight*.75,782);
+ const ratio=608/430;
+ // La maquette est d’abord estimée à partir du cadre réel, et NON d’un
+ // ancien feuillet de 430px. Après initialisation, getBoundsRect()
+ // permet de recalculer au pixel près la taille native de StPageFlip.
+ const portrait=window.innerWidth<=720||widthAvailable<680;
+ const sides=portrait?1:2;
+ const width=Math.max(215,Math.min(
+  530,Math.floor((widthAvailable-(portrait?14:26))/sides),
+  Math.floor((heightAvailable-12)/ratio)
+ ));
+ return {width,height:Math.round(width*ratio)};
 }
 function fits(parts,base,dim){
  if(!parts.length)return true;
@@ -185,14 +192,45 @@ function renderLinear(){
   (i===7?portrait():"")+p[2]+source+'</article>';
  }).join("");
 }
-function assemble(){
+function composePages(){
  pageSpecs=paginate();
  pages=pageSpecs.map(x=>displayParts(x.parts));
  pageBases=pageSpecs.map(x=>x.base);
- book.innerHTML=pages.map((p,i)=>render(p,i)).join("");
+ progressRoot.setAttribute("aria-valuemax",String(pages.length));
+ return pages.map((p,i)=>render(p,i)).join("");
+}
+function assemble(){
+ book.innerHTML=composePages();
  renderLinear();
  printbook.innerHTML="";
- progressRoot.setAttribute("aria-valuemax",String(pages.length));
+}
+function reconcileFlipDimensions(){
+ if(!flip||!flip.getBoundsRect||!flip.updateFromHtml)return;
+ const bounds=flip.getBoundsRect();
+ if(!bounds||!Number.isFinite(bounds.pageWidth)||!Number.isFinite(bounds.height))return;
+ const actual={width:Math.floor(bounds.pageWidth),height:Math.floor(bounds.height)};
+ const prev=measureSize();
+ if(actual.width<=0||actual.height<=0)return;
+ if(Math.abs(actual.width-prev.width)<8&&Math.abs(actual.height-prev.height)<8)return;
+ const oldSection=pageSpecs[index]?.parts[0]?.idx??0;
+ const oldSize=measuredPageSize;
+ measuredPageSize=actual;
+ try{
+  const nextMarkup=composePages();
+  const template=document.createElement("template");
+  template.innerHTML=nextMarkup;
+  const elements=Array.from(template.content.children);
+  if(!elements.length)throw Error("Aucun feuillet à recomposer");
+  flip.updateFromHtml(elements);
+  let target=pageSpecs.findIndex(p=>p.parts.some(part=>part.idx===oldSection));
+  index=target<0?0:target;
+  flip.turnToPage(index);
+  buildToc();sync();
+  requestAnimationFrame(fitPages);
+ }catch(error){
+  measuredPageSize=oldSize;
+  console.warn("Recomposition différée : conservation de la version précédente",error);
+ }
 }
 function sync(){
  count.textContent=String(index+1).padStart(2,"0")+" / "+String(pages.length).padStart(2,"0");
@@ -320,7 +358,10 @@ function init(){
   });
   flip.on("flip",e=>{index=e.data;sync();updateHash();requestAnimationFrame(fitPages)});
   flip.loadFromHTML(book.querySelectorAll(".page"));
-  requestAnimationFrame(()=>requestAnimationFrame(fitPages));
+  requestAnimationFrame(()=>{
+   reconcileFlipDimensions();
+   requestAnimationFrame(fitPages);
+  });
   if(index>0)flip.turnToPage(index);
  }catch(e){fallback();linear=true}
  setMode(linear,false);sync();
@@ -352,7 +393,21 @@ document.addEventListener("keydown",e=>{
   (e.key==="ArrowRight"?next:prev).click();
  }
 });
-window.addEventListener("resize",()=>{if(flip&&!readingMode)requestAnimationFrame(fitPages)});
+window.addEventListener("resize",()=>{
+ if(!flip||readingMode)return;
+ cancelAnimationFrame(resizeFrame);
+ resizeFrame=requestAnimationFrame(()=>{
+  const before=measuredPageSize;
+  measuredPageSize=null;
+  // PageFlip recalcule ses dimensions lorsqu’il reçoit resize.
+  // Ne recomposer que si l'écart dépasse 8 pixels.
+  requestAnimationFrame(()=>{
+   reconcileFlipDimensions();
+   if(!measuredPageSize)measuredPageSize=before;
+   fitPages();
+  });
+ });
+});
 window.addEventListener("hashchange",()=>{
  if(readingMode)return;
  const m=/^#page-(\d+)$/.exec(location.hash);
