@@ -544,11 +544,11 @@ function portrait(){
 function section(p,partIndex,groupIndex){
  const first=partIndex===0,hasTwo=pages[groupIndex].length===2;
  const sectionClass=first?"paper-section primary-section":"paper-section secondary-section";
- const title=groupIndex===0?'<h2>CFDT :<br><em>la séparation</em></h2>':first?'<h2>'+p[1]+'</h2>':'<h3>'+p[1]+'</h3>';
+ const title=p[4]?.origIndex===0?'<h2>CFDT :<br><em>la séparation</em></h2>':first?'<h2>'+p[1]+'</h2>':'<h3>'+p[1]+'</h3>';
  const source=p[3]?'<a target="_blank" rel="noopener noreferrer" href="'+p[3]+'">'+safe(new URL(p[3]).hostname)+' ↗</a>':"";
  let body=p[2];
- if(groupIndex===4 && p[4]?.origIndex===7 && !p[4]?.continued)body=portrait()+body;
- if(groupIndex===13 && p[4]?.origIndex===21)body='<div class="closing">'+body+'</div>';
+ if(p[4]?.origIndex===7 && !p[4]?.continued)body=portrait()+body;
+ if(p[4]?.origIndex===21)body='<div class="closing">'+body+'</div>';
  return '<div class="'+sectionClass+'"><div class="section">'+safe(p[0])+'</div>'+title+body+'</div>'+
  (source?'<div class="module-source">'+source+'</div>':"");
 }
@@ -625,35 +625,51 @@ function blocks(html){
  return units.length?units:[html];
 }
 function paginate(){
- const dim=measureSize(),result=[];
- for(let base=0;base<groups.length;base++){
-  let current=[];
-  for(const idx of groups[base]){
-   const full={idx,html:original[idx][2],continued:false};
-   if(base===0 || fits([...current,full],base,dim)){
-    current.push(full);continue;
-   }
-   if(current.length){result.push({base,parts:current});current=[]}
-   if(fits([full],base,dim)){current.push(full);continue}
-   const units=blocks(full.html);
-   let piece="",continued=false;
-   for(const unit of units){
-    if(fits([{idx,html:piece+unit,continued}],base,dim)){
-     piece+=unit;continue;
-    }
-    if(piece){
-     result.push({base,parts:[{idx,html:piece,continued}]});
-     piece="";continued=true;
-    }
-    // Éventuel bloc atomique trop grand : l'accès au texte sera
-    // garanti par le défilement de secours, jamais par une coupe.
-    if(fits([{idx,html:unit,continued}],base,dim))piece=unit;
-    else result.push({base,parts:[{idx,html:unit,continued,oversize:true}]});
-   }
-   if(piece)current=[{idx,html:piece,continued}];
-  }
+ // Composition continue : les sections se succèdent indépendamment des
+ // anciens groupes figés. Le blanc d'une page est offert à la section
+ // suivante plutôt que de la faire commencer systématiquement sur un feuillet.
+ const dim=measureSize(),result=[],order=groups.flat();
+ const baseOf=new Map();
+ groups.forEach((ids,base)=>ids.forEach(idx=>baseOf.set(idx,base)));
+ const forcedStart=new Set([0,3,16,25,26]); // couverture, chronologie, vote, conclusion, sources
+ const forcedEnd=new Set([0,3,17,25]);
+ let current=[],base=0;
+ function flush(){
   if(current.length)result.push({base,parts:current});
+  current=[];
  }
+ function splitSection(idx,home){
+  // Ne fragmenter une même section que si elle ne tient PAS seule.
+  const units=blocks(original[idx][2]);
+  let piece="",continued=false;
+  for(const unit of units){
+   const trial={idx,html:piece+unit,continued};
+   if(fits([trial],home,dim)){piece+=unit;continue}
+   if(piece){
+    result.push({base:home,parts:[{idx,html:piece,continued}]});
+    piece="";continued=true;
+   }
+   if(fits([{idx,html:unit,continued}],home,dim))piece=unit;
+   else result.push({base:home,parts:[{idx,html:unit,continued,oversize:true}]});
+  }
+  if(piece)current=[{idx,html:piece,continued}];
+  base=home;
+ }
+ for(const idx of order){
+  const home=baseOf.get(idx);
+  const full={idx,html:original[idx][2],continued:false};
+  if(forcedStart.has(idx))flush();
+  if(current.length && fits([...current,full],base,dim)){
+   current.push(full);
+  }else{
+   flush();
+   base=home;
+   if(fits([full],home,dim))current=[full];
+   else splitSection(idx,home);
+  }
+  if(forcedEnd.has(idx))flush();
+ }
+ flush();
  return result;
 }
 function assemble(){
