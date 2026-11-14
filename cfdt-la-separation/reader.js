@@ -28,7 +28,7 @@ function render(p,i){
  const types=["page"];if(chapterPages.has(i))types.push("chapter");if(specialClasses.has(i))types.push(specialClasses.get(i));
  const source=p[3]?'<div class="source">ARCHIVE OU ÉTUDE · <a href="'+p[3]+'" target="_blank" rel="noopener noreferrer">'+safe(new URL(p[3]).hostname)+' ↗</a></div>':"";
  const picture=i===7?portrait():"";
- const headline= i===0?'<h2>CFDT :<br><em>la séparation</em></h2>':"<h2>"+p[1]+"</h2>";
+ const headline= i===0?'<h2>CFDT :<br><em>la séparation</em></h2>':"<h2 data-epoch='"+(chapterPages.get(i)||"")+"'>"+p[1]+"</h2>";
  return '<section class="'+types.join(" ")+'"'+(chapterPages.has(i)?' data-epoch="'+chapterPages.get(i)+'"':'')+' data-density="'+(i===0?"hard":"soft")+'">'+
  '<div class="paper"><div class="section">'+safe(p[0])+'</div>'+headline+picture+p[2]+source+'</div>'+
  '<div class="folio"><span>LES CAHIERS · CFDT : LA SÉPARATION</span><span>'+String(i+1).padStart(2,"0")+' / '+pages.length+'</span></div></section>';
