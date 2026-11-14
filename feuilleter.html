@@ -160,6 +160,30 @@ footer{border-top:1px solid #d4d9db;padding:20px;text-align:center;font-size:13p
   #mobile-reader .leaf-turn-sheet.turn-back{animation:none!important}
 }
 
+
+/* Pagination réelle par hauteur d'écran : aucune feuille ne requiert un scroll intérieur. */
+@media(max-width:700px){
+  #mobile-reader .leaf-stage>.mobile-leaf{
+    height:clamp(310px,calc(100svh - 265px),610px);
+    max-height:none; min-height:0; overflow:hidden;
+    padding:19px 20px 20px;
+    touch-action:pan-y;
+  }
+  #mobile-reader .mobile-leaf h2{font-size:clamp(1.23rem,5.2vw,1.55rem);line-height:1.2;margin:0 0 13px}
+  #mobile-reader .mobile-leaf .leaf-kicker{font-size:10px;margin-bottom:10px}
+  #mobile-reader .mobile-leaf p{font-size:clamp(16.5px,4.5vw,18.5px);line-height:1.64;margin-bottom:.9em}
+  #mobile-reader .mobile-leaf p.leaf-kicker{font:800 10px/1.4 Arial,sans-serif}
+  #mobile-reader .reading-intro{padding:14px 16px;margin:8px 3px 10px}
+  #mobile-reader .reading-intro h2{font-size:clamp(1.34rem,5.7vw,1.7rem)}
+  #mobile-reader .reading-intro p{font-size:14px;line-height:1.45}
+  #mobile-reader .reading-controls{padding:5px 2px;gap:6px}
+  #mobile-reader .reading-controls button{min-height:41px;padding:9px 8px}
+  #mobile-reader #mobile-jump{min-height:42px}
+  #mobile-reader .mobile-leaf .leaf-kicker{font:800 10px/1.4 Arial,sans-serif}
+  #mobile-reader .leaf-stage>.mobile-leaf.measure-leaf{position:absolute;inset:0;visibility:hidden;pointer-events:none;z-index:-1;width:100%;overflow:hidden}
+  #mobile-reader .leaf-stage>.mobile-leaf.leaf-turn-sheet{overflow:hidden}
+}
+
 </style>
 </head>
 <body>
@@ -201,7 +225,7 @@ footer{border-top:1px solid #d4d9db;padding:20px;text-align:center;font-size:13p
    <button id="mobile-next-bottom" class="primary" type="button">Page suivante →</button>
   </div>
  </nav>
- <p class="reading-help">Balayez horizontalement ou touchez « Suivante » pour tourner la feuille. Faites défiler verticalement le texte à l’intérieur de chaque page.</p>
+ <p class="reading-help">Chaque feuille tient entièrement sur l’écran. Balayez horizontalement ou utilisez les flèches pour la tourner ; le texte n’est plus coupé.</p>
  <p class="reading-help"><a href="./">Consulter l’édition web continue</a> · <a target="_blank" rel="noopener" href="https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/les-cahiers-01-naza-edition-consolidee-13-11-2026.pdf">PDF intégral</a></p>
 </section>
 <nav class="toolbar" aria-label="Navigation dans le cahier">
@@ -280,6 +304,7 @@ window.addEventListener("load",function(){
  const prev=[document.getElementById("mobile-prev"),document.getElementById("mobile-prev-bottom")];
  const next=[document.getElementById("mobile-next"),document.getElementById("mobile-next-bottom")];
  const pages=[],anchors=[];
+ let sourcePages=[];
  const leafStage=document.getElementById("leaf-stage");
  let at=0,ready=false,turning=false;
  const safeHtml=(node)=>{
@@ -352,10 +377,105 @@ window.addEventListener("load",function(){
     append(title,kind,parts,id);
   });
  }
+
+ // Ajuste chaque feuille à la largeur ET à la hauteur réelle du téléphone.
+ // Une phrase peut se poursuivre sur la feuille suivante ; les liens et notes sont conservés.
+ function pageHeader(data){
+  return '<p class="leaf-kicker">'+data.section+' · Page '+data.part+'</p>'+
+    (data.part===1?'<h2>'+data.title+'</h2>':'');
+ }
+ function sliceNode(original,start,end){
+  const textNodes=[],walk=document.createTreeWalker(original,NodeFilter.SHOW_TEXT);
+  let item;while((item=walk.nextNode()))textNodes.push(item);
+  let full=0;const entries=textNodes.map(n=>{const x={node:n,from:full,to:full+n.length};full+=n.length;return x;});
+  function point(offset){
+   if(offset<=0)return {node:original,offset:0};
+   if(offset>=full)return {node:original,offset:original.childNodes.length};
+   for(const e of entries)if(offset<=e.to)return {node:e.node,offset:offset-e.from};
+   return {node:original,offset:original.childNodes.length};
+  }
+  const r=document.createRange(),a=point(start),b=point(end);
+  r.setStart(a.node,a.offset);r.setEnd(b.node,b.offset);
+  const out=original.cloneNode(false);
+  out.appendChild(r.cloneContents());
+  return out;
+ }
+ function splitAtFit(node,htmlPrefix,fits){
+  const plain=node.textContent||"",total=plain.length;
+  if(total<2)return null;
+  const cuts=[];
+  for(const match of plain.matchAll(/\s+/g)){
+   const cut=match.index+match[0].length;
+   if(cut>0&&cut<total)cuts.push(cut);
+  }
+  if(!cuts.length)for(let x=1;x<total;x+=Math.max(1,Math.floor(total/80)))cuts.push(x);
+  let lo=0,hi=cuts.length-1,best=-1;
+  while(lo<=hi){
+   const mid=(lo+hi)>>1,part=sliceNode(node,0,cuts[mid]);
+   if(fits(htmlPrefix+part.outerHTML)){best=mid;lo=mid+1;}
+   else hi=mid-1;
+  }
+  if(best<0)return null;
+  const cut=cuts[best];
+  const first=sliceNode(node,0,cut);
+  const rest=sliceNode(node,cut,total);
+  return [first,rest];
+ }
+ function fitPages(){
+  const drafts=sourcePages,groups=[];
+  for(const data of drafts){
+   let group=groups[groups.length-1];
+   if(!group||group.anchor!==data.anchor){
+    group={anchor:data.anchor,title:data.title,section:data.section,blocks:[]};
+    groups.push(group);
+   }
+   const bucket=document.createElement("div");
+   bucket.innerHTML=data.html;
+   group.blocks.push(...Array.from(bucket.children));
+  }
+  pages.length=0;
+  const meter=leaf.cloneNode(false);
+  meter.removeAttribute("id");
+  meter.removeAttribute("tabindex");
+  meter.classList.add("measure-leaf");
+  meter.setAttribute("aria-hidden","true");
+  leafStage.appendChild(meter);
+  try{
+   for(const group of groups){
+    let content="",part=1;
+    const make=()=>({title:group.title,section:group.section,anchor:group.anchor,part,html:content});
+    const header=()=>pageHeader({title:group.title,section:group.section,part});
+    const fits=html=>{
+     meter.innerHTML=header()+html;
+     return meter.scrollHeight<=meter.clientHeight-3;
+    };
+    const flush=()=>{if(content){pages.push(make());content="";part++;}};
+    for(const original of group.blocks){
+     let item=original,guard=0;
+     while(item&&guard++<100){
+      if(fits(content+item.outerHTML)){content+=item.outerHTML;item=null;break;}
+      if(content){flush();continue;}
+      const split=splitAtFit(item,"",fits);
+      if(split){
+       content=split[0].outerHTML;flush();
+       item=split[1];
+       if(!(item.textContent||"").trim())item=null;
+      }else{
+       // Single unsplittable item: keep it intact and reserve a whole leaf.
+       content=item.outerHTML;flush();item=null;
+      }
+     }
+   }
+   flush();
+  }
+  }finally{meter.remove();}
+  if(!pages.length)throw new Error("Pagination vide");
+ }
+
  function render(scroll){
   if(!pages.length)return;
   const data=pages[at];
-  leaf.innerHTML='<p class="leaf-kicker">'+data.section+' · Partie '+data.part+'</p><h2>'+data.title+'</h2>'+data.html;
+  leaf.innerHTML=pageHeader(data)+data.html;
   pageCount.textContent=(at+1)+" / "+pages.length;
   prev.forEach(b=>b.disabled=at===0);
   next.forEach(b=>b.disabled=at===pages.length-1);
@@ -416,6 +536,8 @@ window.addEventListener("load",function(){
   const doc=new DOMParser().parseFromString(html,"text/html");
   sectionData(doc);
   if(!pages.length)throw new Error("Texte non trouvé");
+  sourcePages=pages.slice();
+  fitPages();
   const options=new Map();
   pages.forEach((p,i)=>{if(!options.has(p.anchor))options.set(p.anchor,p.title)});
   jump.innerHTML="";
@@ -423,6 +545,14 @@ window.addEventListener("load",function(){
   const initial=location.hash.match(/^#lecture-(\d+)$/);
   if(initial)at=Math.min(pages.length-1,Math.max(0,Number(initial[1])-1));
   ready=true;render(false);
+  let lastWidth=window.innerWidth;
+  window.addEventListener("resize",()=>{
+   if(Math.abs(window.innerWidth-lastWidth)<20)return;
+   lastWidth=window.innerWidth;
+   const keep=pages[at]?.anchor,part=pages[at]?.part;
+   if(!turning){fitPages();const found=pages.findIndex(p=>p.anchor===keep&&p.part===part);
+     at=Math.max(0,found>=0?found:pages.findIndex(p=>p.anchor===keep));render(false);}
+  },{passive:true});
  }).catch(()=>{
   leaf.innerHTML='<div id="reader-error"><strong>Le texte ne s’est pas chargé.</strong><p>Vous pouvez lire directement notre <a href="./">édition web intégrale, adaptée au téléphone</a>.</p></div>';
   pageCount.textContent="Lecture alternative";
