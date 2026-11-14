@@ -33,14 +33,14 @@ p.push([
 "XI · Les fédérations",
 "1974 : Interco, sept héritages professionnels",
 "<p>La transformation de la CFTC ne clôt pas l’histoire de la CFDT. Du <strong>22 au 24 mai 1974</strong>, à Saint-Malo, un congrès constitutif réunit dans la Fédération Interco sept organisations : les communaux, les personnels des préfectures et départements, les services techniques du ministère de l’Intérieur, le syndicat de la préfecture de Paris, la police nationale, les personnels des offices publics d’HLM et ceux de la distribution des eaux.</p>"+
-"<p>Ce rassemblement fédère des traditions professionnelles différentes. Les services publics d’État et territoriaux y côtoient des activités régies par le droit privé. Tonia Scavennec devient la première secrétaire générale. René Bellanger lui succède en 1975.</p>"+
+"<p>Le rapprochement ne s’opère pas d’un seul coup. En <strong>juin 1976</strong>, un <a href=\"https://interco.cfdt.fr/biographie-de-alain-viaud-militant-dinterco-cfdt/\" target=\"_blank\" rel=\"noopener\">premier syndicat départemental Interco</a> est constitué en Loire-Atlantique. Tonia Scavennec devient la première secrétaire générale de la fédération en 1974. René Bellanger lui succède en 1975.</p>"+
 "<div class=\"note\">La naissance d’Interco ne correspond pas à une nouvelle déconfessionnalisation. Elle poursuit la construction d’une organisation collective pluraliste. Les résolutions de 1974 restent à étudier pour savoir comment la laïcité y était abordée.</div>",
 "https://arbre-bleu-editions.com/assets/005_histoire-de-la-federation-interco-cfdt_introduction.pdf"
 ]);
 p.push([
 "XII · Services publics",
 "1977–2000 : élargir la fédération",
-"<p>Après des débuts organisationnels difficiles, le congrès d’Autrans d’avril 1977 donne un nouvel élan à Interco. Jacques Nodin devient secrétaire général. Sous sa direction, la fédération intervient dans les négociations de la décentralisation et de la fonction publique territoriale, notamment autour de la loi du 26 janvier 1984.</p>"+
+"<p>Du <strong>19 au 23 avril 1977</strong>, le congrès d’Autrans marque le passage d’une coordination de branches à une véritable fédération de syndicats. Jacques Nodin devient secrétaire général. Interco s’engage ensuite dans les négociations de décentralisation et de statut territorial, notamment celles qui conduisent à la loi du 26 janvier 1984.</p>"+
 "<p>La fédération élargit ensuite son périmètre. En <strong>novembre 2000</strong>, la Fédération Justice, constituée en 1982, fusionne avec Interco. Les archives précisent que cette possibilité avait déjà été envisagée en 1974.</p>"+
 "<p>Aujourd’hui, Interco représente des agents de l’État et des collectivités ainsi que des salariés de droit privé. La liberté de conscience appartient à tous. L’obligation de neutralité dans l’exercice des fonctions concerne spécifiquement les agents publics, conformément à l’article L.121-2 du Code général de la fonction publique.</p>",
 "https://archives.memoires.cfdt.fr/pages/dl?f=customer_3%2Fblog%2Fcfdt_justice_inventaire_archives_1982_2000.pdf"
