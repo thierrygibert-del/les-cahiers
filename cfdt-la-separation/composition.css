@@ -1,0 +1,95 @@
+
+/* Édition recomposée : garder la densité sans sacrifier la lisibilité */
+.composed-page .paper{padding:24px 28px 49px;display:block;height:100%}
+.paper-section{position:relative}
+.composed-page .section{font-size:9px;letter-spacing:.14em;margin-bottom:7px}
+.composed-page h2{font-size:26px;line-height:1.08;margin:0 0 11px}
+.composed-page h3{font:normal 19px/1.12 var(--serif);letter-spacing:-.014em;color:#24505a;margin:0 0 9px}
+.composed-page p{font-size:13.3px;line-height:1.49;margin:0 0 9px}
+.composed-page .primary-section>p:first-of-type::first-letter{font-size:1em;font-weight:inherit;color:inherit;padding:0}
+.composed-page .secondary-section{margin-top:11px;padding-top:10px;border-top:1px solid #c9b9a1}
+.composed-page .secondary-section .section{margin-bottom:5px}
+.composed-page .note{font-size:10.6px;line-height:1.38;padding:8px 10px;margin:7px 0 9px}
+.composed-page .module-source{font:9px/1.3 var(--sans);color:#7a7d72;display:flex;justify-content:flex-end;margin:2px 0 1px}
+.composed-page .module-source a{color:#456b72;text-decoration:none;border-bottom:1px solid #a4a7a0}
+.composed-page .folio{bottom:10px}
+.composed-page .split{gap:8px;margin:7px 0}
+.composed-page .split>div{padding:9px}
+.composed-page .split h3{font-size:16px;margin:0 0 6px}
+.composed-page .split p{font-size:10.7px;line-height:1.35;margin:0 0 6px}
+.composed-page .portrait-figure{float:right;width:37%;margin:0 0 7px 13px;padding:5px}
+.composed-page .portrait-figure img{height:110px;object-fit:cover;object-position:center 29%}
+.composed-page .portrait-figure figcaption{font-size:8px;line-height:1.35}
+.composed-page .secondary-section:after{content:"";clear:both;display:table}
+.composed-page .stat{font-size:57px;line-height:1.0;margin:5px 0}
+.composed-page .stat small{font-size:27px}
+.composed-page .bar{height:9px;margin:3px 0 10px}
+.composed-page.vote-page .module-source a,.composed-page.final-page .module-source a{color:#dfc08d;border-color:#b89c72}
+.composed-page.vote-page .secondary-section,.composed-page.final-page .secondary-section{border-color:#7b948d}
+.composed-page.vote-page h3,.composed-page.final-page h3{color:#ebd7b4}
+.composed-page .closing{padding-top:2px}
+.composed-page .closing blockquote{font-size:21px;line-height:1.16;margin:11px 0;padding:10px 0}
+.composed-page .closing p{font-size:12.8px}
+.composed-page.final-page .note{background:#2f5159;color:#eee1cc;border-left-color:#d7b37a}
+.composed-page .paper-section .source{font-size:10px}
+/* La couverture reste un manifeste graphique et non une page de texte. */
+.page.cover .paper{display:flex;flex-direction:column}
+.page.cover .paper-section{display:flex;flex-direction:column;flex:1;min-height:0}
+.page.cover .paper-section .years{margin-top:auto}
+.page.cover .module-source{display:none}
+/* Seules les pages historiquement graphiques conservent une respiration volontaire. */
+.page.timeline-page .timeline{margin-top:13px}
+.page.timeline-page .timeline div{margin-bottom:17px}
+.page.timeline-page .timeline strong{font-size:26px}
+.page.sources-page .paper{display:block}
+.page.sources-page .paper-section{display:block}
+.page.sources-page .sources li{margin-bottom:13px}
+.page.sources-page .module-source{display:none}
+/* Ajustement progressif en cas de texte long sur une page */
+.page.tight.composed-page .paper{padding-top:19px;padding-bottom:42px}
+.page.tight.composed-page h2{font-size:23px;margin-bottom:8px}
+.page.tight.composed-page h3{font-size:17px;margin-bottom:7px}
+.page.tight.composed-page p{font-size:12.3px;line-height:1.40;margin-bottom:7px}
+.page.tight.composed-page .secondary-section{margin-top:8px;padding-top:8px}
+.page.tight.composed-page .note{font-size:10px;line-height:1.30;padding:6px 9px}
+.page.very-tight.composed-page p{font-size:11.7px;line-height:1.32;margin-bottom:5px}
+.page.very-tight.composed-page .section{font-size:8.5px;margin-bottom:4px}
+.page.very-tight.composed-page .split p{font-size:10.0px}
+.page.very-tight.composed-page .portrait-figure img{height:85px}
+/* Mode déroulé : typographie de livre numérique, non pas de diapositive */
+#readall .composed-page .paper{padding:48px 54px 70px;display:block}
+#readall .composed-page .primary-section h2{font-size:40px;margin-bottom:20px}
+#readall .composed-page .secondary-section{margin-top:30px;padding-top:25px}
+#readall .composed-page .secondary-section h3{font-size:30px;margin-bottom:20px}
+#readall .composed-page p{font-size:17px;line-height:1.72;margin-bottom:17px}
+#readall .composed-page .note{font-size:14px;line-height:1.6}
+#readall .composed-page .portrait-figure{max-width:220px}
+#readall .composed-page .portrait-figure img{height:220px}
+#readall .composed-page .module-source{font-size:12px}
+#readall .composed-page .split p{font-size:15px}
+#readall .composed-page .stat{font-size:85px}
+@media(max-width:720px){
+ .composed-page .paper{padding:19px 19px 40px}
+ .composed-page h2{font-size:24px;margin-bottom:9px}
+ .composed-page h3{font-size:17px}
+ .composed-page p{font-size:12.4px;line-height:1.43;margin-bottom:7px}
+ .composed-page .secondary-section{margin-top:9px;padding-top:8px}
+ .composed-page .note{font-size:10px;padding:6px 8px;margin:6px 0}
+ .composed-page .module-source{font-size:8px}
+ .composed-page .portrait-figure img{height:95px}
+ .composed-page .stat{font-size:52px}
+ .composed-page .split p{font-size:10px}
+ #readall .composed-page .paper{padding:35px 24px 59px}
+ #readall .composed-page .primary-section h2{font-size:29px}
+ #readall .composed-page .secondary-section h3{font-size:24px}
+ #readall .composed-page p{font-size:15px;line-height:1.6}
+}
+@media print{
+ #printbook .composed-page .paper{padding:12mm 10mm 14mm!important}
+ #printbook .composed-page h2{font-size:25px!important}
+ #printbook .composed-page h3{font-size:18px!important}
+ #printbook .composed-page p{font-size:11.8px!important;line-height:1.4!important}
+ #printbook .composed-page .note{font-size:10px}
+ #printbook .composed-page .portrait-figure img{height:100px}
+ #printbook .composed-page .module-source{font-size:8px}
+}
