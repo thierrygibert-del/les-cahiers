@@ -93,3 +93,28 @@
  #printbook .composed-page .portrait-figure img{height:100px}
  #printbook .composed-page .module-source{font-size:8px}
 }
+
+
+/* Recherches Interco : visualiser le vote statutaire de 1965 */
+.ballot-card{
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:5px;margin:9px 0 11px;padding:10px 8px 7px;
+ background:#e9ddc8;border-top:2px solid #af844f;border-bottom:1px solid #c7ad83
+}
+.ballot-card div{text-align:center;padding:0 4px;border-right:1px solid #c6b092}
+.ballot-card div:last-child{border-right:0}
+.ballot-card strong{display:block;color:#23515d;font:normal 34px/1 var(--serif)}
+.ballot-card span{display:block;color:#666257;font:700 9px/1.25 var(--sans);margin-top:5px}
+.composed-page .ballot-card{margin:7px 0 8px;padding:7px 6px}
+.composed-page .ballot-card strong{font-size:29px}
+.composed-page .ballot-card span{font-size:8.5px}
+.timeline-page .timeline div{margin-bottom:11px;line-height:1.19}
+.timeline-page .timeline strong{font-size:20px}
+#readall .ballot-card strong{font-size:49px}
+@media(max-width:720px){
+ .composed-page .ballot-card strong{font-size:27px}
+ .composed-page .ballot-card span{font-size:8px}
+ .page.timeline-page .timeline div{margin-bottom:8px;font-size:11px}
+ .page.timeline-page .timeline strong{font-size:18px}
+}
+@media print{#printbook .ballot-card strong{font-size:28px}}
