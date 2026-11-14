@@ -221,6 +221,9 @@ function reconcileFlipDimensions(){
   template.innerHTML=nextMarkup;
   const elements=Array.from(template.content.children);
   if(!elements.length)throw Error("Aucun feuillet à recomposer");
+  // La bibliothèque conserve l'ancien index pendant updateFromHtml :
+  // le ramener à zéro si la nouvelle pagination est plus courte.
+  if(index>=elements.length)flip.turnToPage(0);
   flip.updateFromHtml(elements);
   let target=pageSpecs.findIndex(p=>p.parts.some(part=>part.idx===oldSection));
   index=target<0?0:target;
@@ -273,6 +276,12 @@ function setMode(on,focus){
  document.body.classList.toggle("reading",readingMode);
  stage.hidden=readingMode;stage.inert=readingMode;
  readall.hidden=!readingMode;readall.inert=!readingMode;
+ if(!readingMode&&flip){
+  // Après lecture linéaire ou changement d'orientation, relire la vraie
+  // surface d'affichage du feuillet et recomposer en cas de différence.
+  measuredPageSize=null;
+  requestAnimationFrame(()=>{reconcileFlipDimensions();fitPages()});
+ }
  pageNavigation.hidden=readingMode;progressRoot.hidden=readingMode; fontControls.hidden=!readingMode;
  modeButton.setAttribute("aria-pressed",String(readingMode));
  modeButton.textContent=readingMode?"Mode feuilletage":"Lecture continue";
