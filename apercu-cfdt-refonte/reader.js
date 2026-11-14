@@ -213,7 +213,11 @@ function fitStageToBook(){
  const rect=book.getBoundingClientRect();
  const pageHeight=(Number.isFinite(b?.height)&&b.height>0)?b.height:rect.height;
  if(!Number.isFinite(pageHeight)||pageHeight<200)return;
- const required=Math.ceil(pageHeight)+48;
+ const shellRect=shell.getBoundingClientRect();
+ // Le feuillet peut être décalé dans son cadre par un transform StPageFlip ;
+ // tenir compte de son vrai bord inférieur, et pas seulement de sa hauteur.
+ const drawnBottom=rect.bottom-shellRect.top;
+ const required=Math.ceil(Math.max(pageHeight+48,drawnBottom+24));
  const current=Number.parseFloat(shell.style.getPropertyValue("--cahier-stage-height"))||0;
  if(Math.abs(required-current)>3)shell.style.setProperty("--cahier-stage-height",required+"px");
 }
