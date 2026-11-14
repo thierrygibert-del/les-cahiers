@@ -481,7 +481,7 @@ window.addEventListener("load",function(){
   next.forEach(b=>b.disabled=at===pages.length-1);
   jump.value=data.anchor;
   try{history.replaceState(null,"","#lecture-"+(at+1));}catch(e){}
-  if(scroll)document.getElementById("mobile-reader").scrollIntoView({behavior:"instant",block:"start"});
+  if(scroll)document.getElementById("mobile-jump").scrollIntoView({behavior:"instant",block:"start"});
  }
  function move(n){
   if(!ready||turning)return;
@@ -501,7 +501,7 @@ window.addEventListener("load",function(){
   render(false);
   leaf.scrollTop=0;
   leafStage.appendChild(sheet);
-  document.getElementById("mobile-reader").scrollIntoView({behavior:"instant",block:"start"});
+  document.getElementById("mobile-jump").scrollIntoView({behavior:"instant",block:"start"});
   let done=false;
   const finish=()=>{
    if(done)return;
