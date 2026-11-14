@@ -717,7 +717,7 @@ tocClose.addEventListener("click",()=>toggleToc(false));
 function fitPages(){
  for(const p of book.querySelectorAll(".page")){
   const paper=p.querySelector(".paper"),folio=p.querySelector(".folio");
-  if(!paper||!folio)continue;
+  if(!paper||!folio||!paper.clientHeight||!p.getClientRects().length)continue;
   // Ne jamais masquer une dernière ligne derrière la pagination.
   const end=paper.lastElementChild?.getBoundingClientRect().bottom||0;
   const top=folio.getBoundingClientRect().top;
@@ -745,7 +745,7 @@ function init(){
   showCover:true,usePortrait:true,mobileScrollSupport:false,drawShadow:true,maxShadowOpacity:.3,
   flippingTime:window.matchMedia("(prefers-reduced-motion: reduce)").matches?100:670
  });
- flip.on("flip",e=>{index=e.data;sync();updateHash()});
+ flip.on("flip",e=>{index=e.data;sync();updateHash();requestAnimationFrame(fitPages)});
  flip.loadFromHTML(book.querySelectorAll(".page"));
  requestAnimationFrame(()=>requestAnimationFrame(fitPages));
  if(index>0)flip.turnToPage(index);
@@ -768,6 +768,7 @@ document.addEventListener("keydown",e=>{
  if(e.target&&e.target.matches("input,textarea,select,button,a"))return;
  if(e.key==="ArrowRight")next.click();else if(e.key==="ArrowLeft")prev.click();
 });
+window.addEventListener("resize",()=>{if(flip)requestAnimationFrame(fitPages)});
 window.addEventListener("hashchange",()=>{const m=/^#page-(\d+)$/.exec(location.hash);if(m)turnTo(Number(m[1])-1)});
 window.addEventListener("load",init,{once:true});
 })();
