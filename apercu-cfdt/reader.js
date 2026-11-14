@@ -25,7 +25,7 @@ function section(p,partIndex,groupIndex){
  const first=partIndex===0,hasTwo=pages[groupIndex].length===2;
  const sectionClass=first?"paper-section primary-section":"paper-section secondary-section";
  const title=p[4]?.origIndex===0?'<h2>CFDT :<br><em>la séparation</em></h2>':first?'<h2>'+p[1]+'</h2>':'<h3>'+p[1]+'</h3>';
- const source=p[3]?'<a target="_blank" rel="noopener noreferrer" href="'+p[3]+'">'+safe(new URL(p[3]).hostname)+' ↗</a>':"";
+ const source=p[3]?'<a target="_blank" rel="noopener noreferrer" aria-label="Source historique liée à : '+safe(p[1])+' (nouvel onglet)" href="'+safe(p[3])+'">'+safe(new URL(p[3]).hostname)+' ↗</a>':"";
  let body=p[2];
  if(p[4]?.origIndex===7 && !p[4]?.continued)body=portrait()+body;
  if(p[4]?.origIndex===21)body='<div class="closing">'+body+'</div>';
@@ -179,7 +179,7 @@ function paginate(){
 function renderLinear(){
  const intro='<div class="linear-heading"><p class="linear-kicker">LES CAHIERS · LECTURE INTÉGRALE</p><h2 id="linear-title" tabindex="-1">Lire « CFDT : la séparation »</h2><p>Version linéaire adaptée aux lecteurs d’écran et aux mobiles.</p></div>';
  readall.innerHTML=intro+original.map((p,i)=>{
-  const source=p[3]?'<p class="linear-source"><a href="'+safe(p[3])+'" target="_blank" rel="noopener noreferrer">Consulter la source de cette section (nouvel onglet)</a></p>':"";
+  const source=p[3]?'<p class="linear-source"><a href="'+safe(p[3])+'" target="_blank" rel="noopener noreferrer">Consulter la source de « '+safe(p[1])+' » (nouvel onglet)</a></p>':"";
   return '<article class="linear-article" id="section-'+i+'" aria-labelledby="section-title-'+i+'">'+
   '<p class="linear-kicker">'+safe(p[0])+'</p><h3 id="section-title-'+i+'" tabindex="-1">'+safe(p[1])+'</h3>'+
   (i===7?portrait():"")+p[2]+source+'</article>';
