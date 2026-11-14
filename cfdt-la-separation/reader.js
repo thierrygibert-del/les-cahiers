@@ -93,9 +93,9 @@ function fitPages(){
   const inner=p.querySelector(".paper");
   if(!inner)continue;
   // Progressive typographic fitting if a combined chapter exceeds the printed page.
-  const limit=560;
-  if(inner.scrollHeight>limit)p.classList.add("tight");
-  if(inner.scrollHeight>limit)p.classList.add("very-tight");
+  const overflows=()=>inner.scrollHeight>inner.clientHeight+4;
+  if(overflows())p.classList.add("tight");
+  if(overflows())p.classList.add("very-tight");
  }
 }
 function init(){
@@ -110,7 +110,7 @@ function init(){
  });
  flip.on("flip",e=>{index=e.data;sync();updateHash()});
  flip.loadFromHTML(book.querySelectorAll(".page"));
- requestAnimationFrame(fitPages);
+ requestAnimationFrame(()=>requestAnimationFrame(fitPages));
  if(index>0)flip.turnToPage(index);
  sync();
  }catch(e){fallback()}
