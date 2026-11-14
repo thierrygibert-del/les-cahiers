@@ -157,6 +157,10 @@ body{background:#F1EDE5;color:var(--ink);font-family:var(--font-body)}
 #readall .timeline div{font-size:calc(.95rem * var(--reader-scale));line-height:1.55}
 #readall .folio{display:none}
 
+.composed-page .note{font-size:10.6px;line-height:1.44}
+.page.tight.composed-page .note{font-size:10px;line-height:1.35}
+.page.very-tight.composed-page .note{font-size:9.8px;line-height:1.32}
+
 /* Commandes d'accessibilité à activation explicite */
 .text-tools{display:flex;align-items:center;gap:6px;flex-wrap:nowrap;
  border-left:1px solid var(--line);padding-left:12px}
@@ -205,6 +209,7 @@ body{background:#F1EDE5;color:var(--ink);font-family:var(--font-body)}
   padding:0 0 16px!important;margin:0!important
  }
  #readall .linear-article h3{break-after:avoid;page-break-after:avoid}
+ #readall .linear-article h3{font-size:17pt!important;line-height:1.35!important}
  #readall .linear-article p,#readall .linear-article li{font-size:11pt!important;line-height:1.5!important}
  #readall a{color:black!important;text-decoration:underline!important}
 }
