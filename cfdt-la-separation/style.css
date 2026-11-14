@@ -23,3 +23,21 @@ body.reading #stage{display:none}body.reading #readall{display:block}
 footer{text-align:center;padding:25px 12px;color:#617179;font-size:12px}
 @media(max-width:700px){main{padding:15px 5px}.toolbar button{padding:10px 8px;font-size:12px}#shell{height:min(71vh,670px);min-height:420px}#stage{padding:14px 4px}.paper{padding:23px 21px 40px}.page h2{font-size:25px}.page p{font-size:13px}.page li{font-size:12px}.cover h2{font-size:43px}#readall .paper{padding:30px 24px 54px}#readall .page p{font-size:15px}}
 @media print{@page{size:A5;margin:0}header,main,footer{display:none!important}body{background:#fff}#printbook{display:block!important}#printbook .page{width:148mm!important;height:210mm!important;break-after:page;page-break-after:always;border:none;box-shadow:none}#printbook .paper{padding:12mm 11mm 16mm}#printbook .page p{font-size:12px;line-height:1.47}}
+
+/* v8 — filets de sécurité de l'édition feuilletable.
+   Les pages sont d'abord composées et réparties par le script selon leur hauteur.
+   En cas de police agrandie ou de taille de fenêtre atypique, aucun contenu n'est coupé :
+   le feuillet concerné peut défiler avant son folio fixe. */
+#book .page.overflow-safe .paper{
+ height:calc(100% - 42px);
+ max-height:calc(100% - 42px);
+ padding-bottom:10px!important;
+ overflow-y:auto;
+ overflow-x:hidden;
+ overscroll-behavior:contain;
+ scrollbar-width:thin;
+ scrollbar-color:#9c8b74 transparent;
+}
+#book .page.overflow-safe .folio{z-index:5}
+#book .page.overflow-safe .paper::-webkit-scrollbar{width:5px}
+#book .page.overflow-safe .paper::-webkit-scrollbar-thumb{background:#bba98c;border-radius:5px}
