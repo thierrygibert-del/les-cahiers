@@ -268,3 +268,19 @@ body{background:#F1EDE5;color:var(--ink);font-family:var(--font-body)}
 #stage .stf__wrapper::after{content:none!important;display:none!important}
 /* Les légendes de scène n'empiètent plus sur le feuillet sur les écrans bas. */
 #stage .stage-footer{display:none!important}
+
+/* V14 — Aucun feuillet ne doit être rogné par le fond de scène.
+   Dans Safari, #shell était limité à 76vh et #stage coupait le débordement
+   alors que StPageFlip pouvait dessiner une page de 750px de haut. */
+#stage{overflow:visible!important;isolation:isolate}
+#shell{
+ height:auto!important;
+ min-height:var(--cahier-stage-height,790px)!important;
+ overflow:visible!important;
+ padding-block:12px 18px;
+ box-sizing:border-box
+}
+#book{flex:none;max-width:100%}
+@media(max-width:720px){
+ #shell{min-height:var(--cahier-stage-height,640px)!important;padding-block:10px 18px}
+}
