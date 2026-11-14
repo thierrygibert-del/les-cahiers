@@ -29,12 +29,39 @@ h2{font:600 25px Georgia,serif;color:#18303e}
 footer{border-top:1px solid #d4d9db;padding:20px;text-align:center;font-size:13px;color:#60747b}
 #stage:fullscreen{border-radius:0;min-height:100vh;display:flex;flex-direction:column;justify-content:center}#stage:fullscreen #shell{flex:1}
 @media(max-width:700px){main{padding:18px 8px}.intro{padding:0 8px}.toolbar{gap:6px}button,.button{font-size:13px;padding:10px}#counter{min-width:80px;font-size:13px}#stage{min-height:500px;padding:14px 5px}#shell{height:min(69vh,690px);min-height:400px}}
+
+/* Lecture mobile : le texte HTML est prioritaire sur la miniature des pages A4. */
+.mobile-choice{display:none}
+.page-enlarge{font-size:13px;color:#e9e9e9;text-align:center;margin:10px 0 0}
+.page-enlarge a{color:#fff;text-underline-offset:3px}
+@media(max-width:700px){
+ .mobile-choice{display:block;background:#fffefa;border:1px solid #d9d3c8;border-top:4px solid var(--gold);padding:23px 18px;margin:22px 0 18px;border-radius:9px;box-shadow:0 4px 16px #172b3510}
+ .mobile-choice h2{font:600 1.65rem/1.18 Georgia,serif;margin:0 0 10px}
+ .mobile-choice p{font-size:15px;line-height:1.65;color:#465960;margin:0 0 15px}
+ .mobile-choice .choice-primary{display:block;text-decoration:none;text-align:center;background:#193542;color:#fff;padding:14px 12px;font-weight:750;border-radius:7px;margin:0 0 10px;font-size:16px}
+ .mobile-choice button{display:block;width:100%;text-align:center;justify-content:center;background:transparent;border-color:#a6b5bf;font-weight:700;min-height:45px}
+ .mobile-choice .fineprint{font-size:13px;color:#69777d;margin:13px 0 0}
+ .toolbar,#stage{display:none}
+ body.mobile-preview-open .toolbar{display:flex}
+ body.mobile-preview-open #stage{display:block}
+ #stage{scroll-margin-top:12px}
+ #shell{height:min(67vh,640px);min-height:365px}
+ .page-enlarge{padding:0 8px}
+}
 </style>
 </head>
 <body>
 <header><div class="brand">THIERRY GIBERT · LES CAHIERS</div><a href="https://thierrygibert15.wordpress.com/publications/les-cahiers/">← Retour au site WordPress</a></header>
 <main>
 <section class="intro"><p class="eyebrow">Collection documentaire · Cahier n° 01</p><h1>NAZA : vérifier avant de conclure</h1><p class="subtitle">Ce que le documentaire démontre, ce qu’il suggère et ce qu’il ne prouve pas.</p><p class="meta">Édition consolidée du 13 novembre 2026 · 12 pages · Enquête et compléments contradictoires</p></section>
+
+<section class="mobile-choice" aria-labelledby="mobile-reading-title">
+ <h2 id="mobile-reading-title">Lire le cahier sur téléphone</h2>
+ <p>Le cahier papier est au format A4 : ses pages deviennent trop petites pour être lues confortablement sur un iPhone. La version éditoriale reprend <strong>le texte intégral</strong> avec une taille de caractères adaptée.</p>
+ <a class="choice-primary" href="./">Lire confortablement l’enquête →</a>
+ <button type="button" id="mobile-preview-toggle" aria-controls="stage" aria-expanded="false">Voir quand même les pages à tourner</button>
+ <p class="fineprint">Le feuilletage est conservé comme aperçu visuel. Vous pourrez agrandir chaque page séparément.</p>
+</section>
 <nav class="toolbar" aria-label="Navigation dans le cahier">
 <button id="prev" type="button" aria-label="Page précédente">← Précédente</button><span id="counter" aria-live="polite">Couverture</span><button class="primary" id="next" type="button" aria-label="Page suivante">Suivante →</button>
 <button id="fullscreen" type="button">⛶ Plein écran</button>
@@ -43,7 +70,8 @@ footer{border-top:1px solid #d4d9db;padding:20px;text-align:center;font-size:13p
 <section id="stage" aria-label="Feuilletage interactif de NAZA">
 <div id="shell"><div id="book" aria-label="Livre NAZA"></div>
 <div id="fallback"><img id="fallback-image" src="https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/naza-cahier-01-page-01.jpg" alt="Couverture de NAZA"><p id="fallback-message">Chargement du lecteur…</p></div></div>
-<p id="hint">Touchez le coin d’une page, balayez l’écran ou utilisez les flèches. Sur téléphone, le PDF permet de zoomer sur le texte.</p>
+<p id="hint">Tournez les pages avec les flèches ou un geste tactile. Les pages A4 sont volontairement conservées à leur format d’origine.</p>
+<p class="page-enlarge"><a id="page-enlarge" target="_blank" rel="noopener" href="https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/naza-cahier-01-page-01.jpg">Agrandir cette page ↗</a></p>
 </section>
 <section class="info"><h2>Lire les faits, confronter les sources</h2><p>Ce cahier distingue les informations établies, les éléments corroborés et les affirmations qui demeurent contestées. Il conserve le texte de référence du 4 octobre 2026 et présente séparément les compléments du 13 novembre.</p><p><a href="https://thierrygibert15.wordpress.com/2026/10/04/naza-verifier-avant-de-conclure/">Lire l’article et ses mises à jour</a> · <a href="https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/les-cahiers-01-naza-edition-consolidee-13-11-2026.pdf">Télécharger les 12 pages en PDF</a></p></section>
 </main>
@@ -58,10 +86,12 @@ var urls=Array.from({length:12},function(_,i){return base+String(i+1).padStart(2
 var count=document.getElementById("counter"),prev=document.getElementById("prev"),next=document.getElementById("next");
 var stage=document.getElementById("stage"),fallback=document.getElementById("fallback");
 var fbImg=document.getElementById("fallback-image"),fbMsg=document.getElementById("fallback-message");
-var page=0,flip=null;
-function sync(){count.textContent=page===0?"Couverture · 1/12":"Page "+(page+1)+" / 12";prev.disabled=page===0;next.disabled=page===11;if(!flip)fbImg.src=urls[page];}
+var page=0,flip=null,started=false;
+var enlarge=document.getElementById("page-enlarge"),mobileToggle=document.getElementById("mobile-preview-toggle");
+function sync(){count.textContent=page===0?"Couverture · 1/12":"Page "+(page+1)+" / 12";prev.disabled=page===0;next.disabled=page===11;if(!flip)fbImg.src=urls[page];enlarge.href=urls[page];enlarge.setAttribute("aria-label","Agrandir la page "+(page+1)+" du cahier");}
 function fallbackMode(){flip=null;fallback.style.display="block";fbMsg.textContent="Lecture simplifiée : utilisez les flèches pour parcourir les pages.";sync();}
 function init(){
+if(started)return;started=true;
 if(!window.St||!window.St.PageFlip){fallbackMode();return;}
 try{
 flip=new window.St.PageFlip(document.getElementById("book"),{
@@ -82,7 +112,20 @@ else if(stage.requestFullscreen){stage.requestFullscreen().catch(function(){});}
 else {window.open("https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/les-cahiers-01-naza-edition-consolidee-13-11-2026.pdf","_blank");}
 });
 document.addEventListener("keydown",function(e){if(e.target&&e.target.matches("input,textarea,select"))return;if(e.key==="ArrowRight")next.click();if(e.key==="ArrowLeft")prev.click();});
-sync();window.addEventListener("load",init,{once:true});
+sync();
+mobileToggle.addEventListener("click",function(){
+ var opened=!document.body.classList.contains("mobile-preview-open");
+ document.body.classList.toggle("mobile-preview-open",opened);
+ mobileToggle.setAttribute("aria-expanded",String(opened));
+ mobileToggle.textContent=opened?"Masquer le feuilletage":"Voir quand même les pages à tourner";
+ if(opened){
+  if(document.readyState==="complete")init();
+  stage.scrollIntoView({behavior:"smooth",block:"start"});
+ }
+});
+window.addEventListener("load",function(){
+ if(!window.matchMedia("(max-width:700px)").matches||document.body.classList.contains("mobile-preview-open"))init();
+},{once:true});
 })();
 </script>
 </body></html>
