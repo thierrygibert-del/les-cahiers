@@ -116,8 +116,8 @@ ready=true;sync();
 }
 prev.addEventListener("click",()=>moveTo(index-1));
 next.addEventListener("click",()=>moveTo(index+1));
-document.getElementById("first").addEventListener("click",()=>moveTo(0));
-document.getElementById("sources").addEventListener("click",()=>moveTo(pages.length-2));
+document.getElementById("first").addEventListener("click",()=>{moveTo(0);if(!document.body.classList.contains("reading"))document.getElementById("stage").scrollIntoView({behavior:"smooth",block:"start"})});
+document.getElementById("sources").addEventListener("click",()=>{moveTo(pages.length-2);if(!document.body.classList.contains("reading"))document.getElementById("stage").scrollIntoView({behavior:"smooth",block:"start"})});
 document.getElementById("continuous").addEventListener("click",()=>{
  const on=document.body.classList.toggle("reading");
  const btn=document.getElementById("continuous");
