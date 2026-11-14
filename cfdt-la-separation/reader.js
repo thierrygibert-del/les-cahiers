@@ -1,15 +1,15 @@
-/* Les Cahiers — édition recomposée : 16 pages de lecture dense */
+/* Les Cahiers — édition recomposée : 17 pages de lecture dense */
 (function(){
 "use strict";
 const original=window.CAHIER_PAGES || [];
-const groups=[[0],[1,2],[3],[4,5],[6,7],[8,9],[10,11],[12,13],[14,15],[16,17],[18,19],[20,21],[22,23],[24,25],[26],[27]];
+const groups=[[0],[1,2],[3],[4,5],[6,7],[8,9],[10,11],[12,13],[14,15],[16,17],[18,19],[20,28],[29,21],[22,23],[24,25],[26],[27]];
 const pages=groups.map(indices=>indices.map(i=>original[i]));
 const book=document.getElementById("book"),readall=document.getElementById("readall"),printbook=document.getElementById("printbook");
 const prev=document.getElementById("prev"),next=document.getElementById("next"),count=document.getElementById("count");
 const progress=document.getElementById("progress-bar"),progressRoot=document.querySelector(".reading-progress");
 const toc=document.getElementById("toc-panel"),tocToggle=document.getElementById("toc-toggle"),tocClose=document.getElementById("toc-close"),tocList=document.getElementById("toc-list");
 let index=0,flip=null;
-const special={0:"cover",2:"timeline-page",4:"portrait",8:"dual-page",9:"vote-page",12:"dual-page",13:"final-page",14:"sources-page",15:"sources-page"};
+const special={0:"cover",2:"timeline-page",4:"portrait",8:"dual-page",9:"vote-page",13:"dual-page",14:"final-page",15:"sources-page",16:"sources-page"};
 function safe(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
 function portrait(){
  return '<figure class="portrait-figure"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Paul_Vignaux.jpg?width=400" alt="Paul Vignaux photographié en 1975" width="145" height="165">'+
@@ -35,7 +35,7 @@ function render(items,i){
  return '<section class="'+classes.join(' ')+'" data-density="'+(i===0?"hard":"soft")+'"><div class="paper">'+main+'</div>'+
  '<div class="folio"><span>LES CAHIERS · CFDT : LA SÉPARATION</span><span>'+String(i+1).padStart(2,"0")+' / '+pages.length+'</span></div></section>';
 }
-if(original.length!==28){
+if(original.length!==30){
  document.getElementById("status").textContent="Le contenu du cahier est incomplet. Veuillez actualiser la page.";return
 }
 const markup=pages.map(render);
@@ -76,7 +76,7 @@ const titles=[
  "1940–1946 · Résistance et Reconstruction","1947–1957 · Des statuts à la liberté de conscience",
  "1960–1963 · Eugène Descamps","Les arguments des deux courants",
  "Novembre 1964 · Congrès et vote","1964 · Nouveaux statuts et continuités",
- "1971–2014 · Deux confédérations","2026 · Laïcité et séparation de 1905",
+ "1971–1974 · De la séparation à Interco","1977–2014 · FPT et déconfessionnalisation","2025–2026 · Laïcité et séparation de 1905",
  "L'Église et la conclusion","Sources primaires","Études et bibliographie"
 ];
 titles.forEach((title,i)=>{
