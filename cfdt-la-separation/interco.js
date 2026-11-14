@@ -54,4 +54,19 @@ p.push([
 "<div class=\"note\">À approfondir : les textes complets des résolutions Estavil et Glotin, puis le compte rendu des débats fédéraux.</div>",
 "https://interco.cfdt.fr/biographie-de-lucien-estavil-militant-dinterco-cfdt/"
 ]);
+
+/* Jalons documentés par les publications publiques d’Interco et de la CFDT */
+p[22][2]=p[22][2].replace(
+  '<div class="note">',
+  '<p>En <strong>2017</strong>, une journée d’Interco Essonne consacrée à la laïcité réunit des agents et Nicolas Cadène, rapporteur général de l’Observatoire de la laïcité. En <strong>2021</strong>, Interco 12 inscrit expressément la laïcité parmi les valeurs fédérales.</p>'+
+  '<p>Au congrès confédéral de <strong>juin 2022</strong>, Sophie Le Port affirme au nom du conseil fédéral que le statut des fonctionnaires protège la laïcité et la neutralité du service public. Le <strong>Guide de l’agent public 2026</strong> en précise les conséquences professionnelles.</p><div class="note">'
+);
+p.push([
+"XIII · Droits et libertés",
+"1997 : le service public garant des libertés",
+"<p>En mai 1997, au congrès fédéral de Guidel, René Rousseau-Joguet défend pour Interco 44 un amendement relatif à la responsabilité de la fonction publique et de ses agents dans la défense des droits et libertés individuelles. La notice publiée par Interco indique un vote de <strong>97,3 % des suffrages exprimés</strong>.</p>"+
+"<p>Ce résultat atteste l’importance accordée aux libertés publiques dans la réflexion fédérale. Il ne suffit pas à affirmer que l’amendement mentionnait précisément la laïcité : le texte complet de la résolution doit encore être retrouvé.</p>",
+"https://interco.cfdt.fr/biographie-de-rene-rousseau-joguet-militant-dinterco-cfdt/"
+]);
+
 })();
