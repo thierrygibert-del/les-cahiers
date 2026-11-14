@@ -284,3 +284,19 @@ body{background:#F1EDE5;color:var(--ink);font-family:var(--font-body)}
 @media(max-width:720px){
  #shell{min-height:var(--cahier-stage-height,640px)!important;padding-block:10px 18px}
 }
+
+/* V14.2 — Conclusion : citation sur fond sépia, contraste élevé.
+   Correction ciblée de la page de droite (19/21), sans modifier les autres
+   paragraphes de conclusion ni les pages avoisinantes. */
+#book .page.final-page blockquote{
+  background:#EEE5D6;
+  color:#563C24 !important;
+  border-left:4px solid #947044;
+}
+#book .page.final-page blockquote,
+#book .page.final-page blockquote p,
+#book .page.final-page blockquote em,
+#book .page.final-page blockquote strong,
+#book .page.final-page blockquote span{
+  color:#563C24 !important;
+}
