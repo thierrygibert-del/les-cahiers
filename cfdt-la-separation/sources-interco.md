@@ -69,3 +69,20 @@ Règle rédactionnelle : aucune virgule immédiatement avant « mais ».
 ### Documentation à demander en priorité
 
 Les résolutions originales d'Autrans 1977 et de Guidel 1997, le compte rendu du vote de 1965 chez les communaux, les statuts des premières structures Interco de 1974–1977 et l'annexe 3 de l'ouvrage Vila. Les instruments de recherche identifient leur lieu de conservation mais pas leur contenu intégral.
+
+## Audit des liens externes — 14 novembre 2026
+
+Une vérification dans Safari a constaté une erreur 404 sur la page du cahier « 1977–2000 : élargir la fédération ». Le lien qui y figurait visait un inventaire PDF du fonds Justice CFDT et non une page consacrée spécifiquement à l'histoire d'Interco. Ce PDF peut être encore indexé dans les moteurs mais il est inaccessible au lecteur sur le site actuel.
+
+**Lien remplacé sur les feuillets et dans la bibliographie** : [Romain Vila, *Histoire de la Fédération Interco CFDT* — notice de l'éditeur (2014)](https://arbre-bleu-editions.com/histoire-de-la-federation-interco-cfdt.html). Cette notice présente la période fédérale, la pluralité des métiers et l'intégration du secteur Justice. Pour approfondir les négociations de 1977–1992, consulter aussi [la biographie de Jacques Nodin](https://interco.cfdt.fr/biographie-de-jacques-nodin-militant-dinterco-cfdt/).
+
+Lien d'inventaire désactivé, conservé ici comme trace et non comme lien recommandé : `https://archives.memoires.cfdt.fr/pages/dl?f=customer_3%2Fblog%2Fcfdt_justice_inventaire_archives_1982_2000.pdf`. Son extrait indexé mentionne la fusion de la Fédération Justice CFDT avec Interco en novembre 2000 ; **le document numérisé lui-même n'a pas été retrouvé à une adresse directement accessible au public dans cette opération**.
+
+Deux autres accès directs vers des PDF des Archives CFDT ont été jugés non fiables (ouverture impossible / 403 côté outil, 404 signalée par l'utilisateur sur le même domaine). Ils ont été remplacés pour les lecteurs par des **notices d'inventaire**, sans prétendre donner accès aux fac-similés :
+
+- `https://archives.memoires.cfdt.fr/media/eb32404c-9e5e-4318-83b9-815ba6b8dcfa.pdf` : *Syndicalisme*, numéro spécial du 14 novembre 1964, toujours référencé par les moteurs. Substitution : [inventaire du Bureau confédéral CFTC puis CFDT (1932–1970), FranceArchives](https://francearchives.gouv.fr/fr/findingaid/24a3d79b16cc6cfd5fd9dd4aa425ac9b040d247a).
+- `https://archives.memoires.cfdt.fr/media/f26c0111-6628-47ca-9943-52ed98a131ca.pdf` : reproduction de documents du SGEN (*École et Éducation*, janvier 1961). Substitution : [notice du fonds SGEN-CFDT de l'enseignement supérieur du Rhône, FranceArchives](https://francearchives.gouv.fr/findingaid/7847e2486fdc7ee1e235e74bf03907bced581ea7). Cette notice ne reproduit pas la résolution du 15 juin 1957 : la lecture du fac-similé original reste à effectuer.
+
+L'absence d'accès direct au PDF ne constitue pas une preuve de disparition des archives originales. Les Archives CFDT ont été sollicitées le 14 novembre 2026 pour l'accès à plusieurs documents de congrès ; une demande de copie des numéros cités pourra compléter cet échange.
+
+**Contrôle non exhaustif des autres sources** : les six liens de recherche Persée, les biographies Interco testées, la page de l'éditeur de Romain Vila et l'article du *Monde* du 10 novembre 1964 disposent de pages identifiables. Certains sites institutionnels CFDT refusent les robots de consultation (HTTP 403 côté outil) tout en étant indexés ; ne pas les classer 404 sans vérification utilisateur.
