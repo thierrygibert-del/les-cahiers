@@ -410,7 +410,22 @@ body.reading #stage{display:none}body.reading #readall{display:block}body.readin
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./editorial.css">
+<link rel="stylesheet" href="./editorial.css?revision=20261114-1709">
+
+<!-- Styles critiques de couverture : secours autonome même si le cache CSS est périmé. -->
+<style id="cover-correction-v13">
+#stage .page.cover,
+#stage .page.vote-page,
+#stage .page.final-page{background:linear-gradient(150deg,#122B36 0%,#21434B 55%,#142D38 100%)!important;color:#FCF4E6!important;border:1px solid #9D835C!important}
+#stage .page.cover h2,#stage .page.cover h2 em,#stage .page.cover p,
+#stage .page.cover .section,#stage .page.cover .years,#stage .page.cover .years span,
+#stage .page.cover .folio,#stage .page.cover .folio span,
+#stage .page.vote-page h2,#stage .page.vote-page p,#stage .page.vote-page .folio,
+#stage .page.final-page h2,#stage .page.final-page p,#stage .page.final-page .folio{color:#FFF4DC!important}
+#stage .page.cover .paper,#stage .page.cover .paper-section{background:transparent!important}
+#stage .stf__wrapper::after{content:none!important;display:none!important}
+#stage .stage-footer{display:none!important}
+</style>
 </head>
 <body>
 <a class="skip" href="#lecture">Aller directement au lecteur</a>
@@ -560,6 +575,6 @@ p.push([
 
 })();
 </script>
-<script src="./reader.js" defer></script>
+<script src="./reader.js?revision=20261114-1709" defer></script>
 </body>
 </html>
