@@ -1,6 +1,8 @@
-# Les Cahiers — Thierry Gibert
+# THIERRY GIBERT — Histoire • Sources • Analyse
 
-## N° 01 — NAZA : registre officiel de publication
+**Dossiers & contre-enquêtes.** Collection historique : *Les Cahiers*.
+
+## Dossier N° 01 — NAZA : registre officiel de publication
 
 **Statut : publié — 14 novembre 2026.**
 
@@ -11,7 +13,7 @@ Ce dépôt est la **source canonique des éditions HTML** du cahier NAZA. Les fi
 | Cahier illustré public : 10 cartes | [feuilleter.html](https://thierrygibert-del.github.io/les-cahiers/feuilleter.html) | 14/11/2026 |
 | Contre-enquête intégrale en lecture web | [index.html](https://thierrygibert-del.github.io/les-cahiers/) | Texte et addendum au 13/11/2026 |
 | PDF consolidé de référence : 12 pages | [WordPress – PDF](https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/les-cahiers-01-naza-edition-consolidee-13-11-2026.pdf) | 13/11/2026 |
-| Page de collection | [WordPress – Les Cahiers](https://thierrygibert15.wordpress.com/publications/les-cahiers/) | Publiée |
+| Page de collection | [WordPress – Dossiers Thierry Gibert](https://thierrygibert15.wordpress.com/publications/les-cahiers/) | Publiée |
 | Article initial et mises à jour | [WordPress – NAZA : vérifier avant de conclure](https://thierrygibert15.wordpress.com/2026/10/04/naza-verifier-avant-de-conclure/) | Depuis le 04/10/2026 |
 | Document maître de l'audit | [Google Docs – Audit et conclusions](https://docs.google.com/document/d/10s0nH2nXqqeR7Am3kfM7ia8gz_zi5EcCEqlGoEz9Tqw/edit) | Addendum du 13/11/2026 |
 | Tableau de suivi, corpus et contrôle des sources | [Google Sheets – Palestine–Israël](https://docs.google.com/spreadsheets/d/1p0vygHu5dPSw0zrW4XBIjqzkufBqsclay186BGX9W8I/edit) | Suivi continu |
@@ -25,7 +27,7 @@ Ce dépôt est la **source canonique des éditions HTML** du cahier NAZA. Les fi
 - `avant-premiere.html` : **redirection** vers `feuilleter.html` pour ne pas rompre les liens déjà diffusés.
 - `archives/` : anciennes maquettes et lecteurs, conservés pour la traçabilité ; ne pas réutiliser comme édition publique.
 - Le PDF consolidé sur WordPress correspond au texte documentaire arrêté au **13 novembre**, et non aux dix cartes graphiques du 14 novembre.
-- La copie HTML Drive de l'étude intégrale du 13 novembre est **identique octet pour octet** au fichier GitHub `index.html` (contrôle des contenus réalisé le 14 novembre) : [copie de production](https://drive.google.com/file/d/16ZmSuktXcBYQ1Q_zkbwKcqdmd3Sd8lYu/view). L'édition illustrée actuelle `feuilleter.html` n'a pas de copie HTML brute certifiée dans Drive ; ne pas utiliser l'ancienne maquette intitulée ARCHIVE.
+- La copie HTML Drive de l’étude intégrale du 13 novembre a été **vérifiée identique avant l’ajout du monogramme et du nouveau bandeau TG du 14 novembre** : [copie historique de production](https://drive.google.com/file/d/16ZmSuktXcBYQ1Q_zkbwKcqdmd3Sd8lYu/view). Depuis la refonte graphique, **GitHub `index.html` est la version web la plus récente** ; la copie Drive ne lui est plus identique octet pour octet. `feuilleter.html` reste la version illustrée officielle ; les anciennes maquettes Drive sont archivées.
 - Le PDF du **4 octobre** reste accessible dans l'article initial comme document historique.
 
 ## Identité de marque et signature d'auteur
@@ -35,8 +37,8 @@ Les éditions de ce dépôt relèvent de la **marque personnelle Thierry Gibert*
 - Signature de référence sur les couvertures, interfaces et présentations : **THIERRY GIBERT — Histoire • Sources • Analyse**.
 - Palette principale : `#000000` (noir), `#333333` (anthracite), `#1A1A2E` (bleu signature), `#D9D9D9` (gris clair), `#FFFFFF` (blanc).
 - Couleurs éditoriales complémentaires validées dans le TDB de la charte : `#EDE6D8`, `#F2E5C9`, `#D4B779`, `#9D8A62`, `#110E0C`, `#5E4B37`, `#5B2027`. Elles ne remplacent pas la lisibilité et les contrastes de la palette principale.
-- Les deux pages publiques HTML utilisent désormais la signature complète. Les éléments graphiques ne constituent ni une source ni une preuve.
-- Le paraphe et le monogramme ne doivent être insérés **qu'après identification de l'actif Canva/Drive original** ; ne pas les redessiner, ni utiliser un faux logo.
+- Les deux pages publiques HTML utilisent le monogramme TG, la signature complète et le repère « NAZA — Dossier N° 01 ». L'intitulé *Les Cahiers* reste uniquement une mention secondaire de collection. Les éléments graphiques ne constituent ni une source ni une preuve.
+- **Monogramme TG officiel :** visuel PNG transparent fourni directement par l’auteur le 14 novembre 2026, publié dans la médiathèque WordPress (média ID 2882) à l’adresse [monogramme TG doré](https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/tg-thierry-gibert-monogramme-dore.png). Il est utilisé en tête des deux éditions GitHub et dans les présentations WordPress NAZA. **Ne pas le redessiner**. Sa correspondance avec l’actif Canva historique `MAHYnSu9qxM` reste à documenter. Le paraphe classique est distinct et non ajouté.
 - Le PDF consolidé du 13/11/2026 est conservé dans son état documentaire d'origine : il identifie déjà l'auteur mais ne reprend pas encore la signature complète, qui sera introduite dans une édition ultérieure explicitement datée.
 - Les contenus de marque CFDT, SGCD, UFAL et En Avant Aurillac suivent leurs propres kits et chartes.
 
