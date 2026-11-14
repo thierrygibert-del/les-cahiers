@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#14222e">
+<meta name="description" content="Les Cahiers de Thierry Gibert : feuilletez gratuitement NAZA, une enquête documentaire en 12 pages.">
+<title>Les Cahiers · NAZA — Thierry Gibert</title>
+<style>
+:root{--ink:#182d38;--paper:#f7f4eb;--gold:#ac8747}*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+a{color:inherit}header{background:#14222e;color:#fff;padding:15px clamp(16px,4vw,60px);display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.brand{font-size:12px;font-weight:800;letter-spacing:.16em;color:#e9d3ab}header a{font-size:13px;text-decoration:none}
+main{max-width:1280px;margin:auto;padding:clamp(17px,3vw,40px)}.eyebrow{color:#84662c;font-weight:750;text-transform:uppercase;font-size:12px;letter-spacing:.14em}
+h1{font:600 clamp(28px,4vw,46px)/1.1 Georgia,serif;margin:6px 0 10px}
+.subtitle{margin:0;font-size:16px;color:#516773;max-width:800px}.meta{font-size:13px;color:#697b84}
+.toolbar{display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap;margin:18px 0 12px}
+button,.button{border:1px solid #b5c1c9;background:#fff;color:#162b37;padding:11px 13px;min-height:43px;font:650 14px Arial,sans-serif;border-radius:8px;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center}
+.primary{background:#193542;color:white;border-color:#193542}button:disabled{opacity:.42;cursor:not-allowed}
+button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+#counter{font-weight:750;font-variant-numeric:tabular-nums;min-width:116px;text-align:center;font-size:14px}
+#stage{background:radial-gradient(ellipse at top,#506673,#1d3440 60%,#12222d);min-height:610px;padding:20px 8px;border-radius:12px;box-shadow:0 17px 35px #10253038}
+#shell{height:min(74vh,810px);min-height:470px;display:flex;align-items:center;justify-content:center;max-width:1100px;margin:auto}
+#book{margin:auto}
+#fallback{display:none;text-align:center;margin:auto;width:min(450px,90%)}#fallback img{max-width:100%;max-height:min(67vh,740px);box-shadow:0 7px 25px #0008}
+#fallback p,#hint{color:#e6ecf0;font-size:13px;text-align:center}
+#hint{margin:12px auto 0;max-width:760px}.info{max-width:850px;margin:30px auto 44px;color:#435863;font-size:15px;line-height:1.7}
+h2{font:600 25px Georgia,serif;color:#18303e}
+footer{border-top:1px solid #d4d9db;padding:20px;text-align:center;font-size:13px;color:#60747b}
+#stage:fullscreen{border-radius:0;min-height:100vh;display:flex;flex-direction:column;justify-content:center}#stage:fullscreen #shell{flex:1}
+@media(max-width:700px){main{padding:18px 8px}.intro{padding:0 8px}.toolbar{gap:6px}button,.button{font-size:13px;padding:10px}#counter{min-width:80px;font-size:13px}#stage{min-height:500px;padding:14px 5px}#shell{height:min(69vh,690px);min-height:400px}}
+
+/* Lecture mobile : le texte HTML est prioritaire sur la miniature des pages A4. */
+.mobile-choice{display:none}
+.page-enlarge{font-size:13px;color:#e9e9e9;text-align:center;margin:10px 0 0}
+.page-enlarge a{color:#fff;text-underline-offset:3px}
+@media(max-width:700px){
+ .mobile-choice{display:block;background:#fffefa;border:1px solid #d9d3c8;border-top:4px solid var(--gold);padding:23px 18px;margin:22px 0 18px;border-radius:9px;box-shadow:0 4px 16px #172b3510}
+ .mobile-choice h2{font:600 1.65rem/1.18 Georgia,serif;margin:0 0 10px}
+ .mobile-choice p{font-size:15px;line-height:1.65;color:#465960;margin:0 0 15px}
+ .mobile-choice .choice-primary{display:block;text-decoration:none;text-align:center;background:#193542;color:#fff;padding:14px 12px;font-weight:750;border-radius:7px;margin:0 0 10px;font-size:16px}
+ .mobile-choice button{display:block;width:100%;text-align:center;justify-content:center;background:transparent;border-color:#a6b5bf;font-weight:700;min-height:45px}
+ .mobile-choice .fineprint{font-size:13px;color:#69777d;margin:13px 0 0}
+ .toolbar,#stage{display:none}
+ body.mobile-preview-open .toolbar{display:flex}
+ body.mobile-preview-open #stage{display:block}
+ #stage{scroll-margin-top:12px}
+ #shell{height:min(67vh,640px);min-height:365px}
+ .page-enlarge{padding:0 8px}
+}
+
+/* Feuilletage adapté : le téléphone affiche du vrai texte, non des A4 miniaturisés. */
+#mobile-reader{display:none}
+@media(max-width:700px){
+  .mobile-choice, .toolbar, #stage, body.mobile-preview-open .toolbar, body.mobile-preview-open #stage{display:none!important}
+  #mobile-reader{display:block;margin:18px auto 30px;max-width:720px}
+  .reading-intro{background:#f1ede4;border:1px solid #d9d0c3;padding:20px 18px;border-radius:10px;margin:12px 3px 16px}
+  .reading-intro .overline{font-size:11px;letter-spacing:.15em;font-weight:800;color:#80602e;text-transform:uppercase}
+  .reading-intro h2{font:500 27px/1.2 Georgia,serif;margin:9px 0 10px}
+  .reading-intro p{font:15px/1.65 Arial,sans-serif;margin:0;color:#50616a}
+  .reading-controls{display:flex;align-items:center;gap:8px;justify-content:space-between;flex-wrap:wrap;padding:9px 2px}
+  .reading-controls .btn-group{display:flex;gap:7px;align-items:center;width:100%}
+  .reading-controls button{flex:1;justify-content:center;padding:12px 10px;font-size:14px;border-radius:7px}
+  .reading-controls button.primary{background:#193542;color:#fff}
+  .reading-controls button:disabled{opacity:.4}
+  .reading-controls .leaf-count{font-size:13px;font-weight:700;color:#53616b}
+  #mobile-jump{width:100%;min-height:46px;border:1px solid #bbb7b0;border-radius:7px;background:#fff;font:14px Arial,sans-serif;padding:10px;color:#1b303a}
+  .mobile-leaf{padding:24px 20px;background:#fffefa;border:1px solid #e0d9cc;border-radius:10px;box-shadow:0 6px 25px #172b3510;min-height:55vh;overflow-wrap:anywhere}
+  .mobile-leaf .leaf-kicker{font:800 11px Arial,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#93724d;margin:0 0 13px}
+  .mobile-leaf h2{font:500 26px/1.22 Georgia,serif;color:#182f3d;margin:0 0 25px;letter-spacing:-.025em}
+  .mobile-leaf h3{font:600 22px/1.3 Georgia,serif;margin:26px 0 15px}
+  .mobile-leaf p, .mobile-leaf .prose{font:18px/1.78 Georgia,"Times New Roman",serif;color:#263239;letter-spacing:0;margin:0 0 1.25em}
+  .mobile-leaf a{color:#6f4531;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+  .mobile-leaf sup{font:700 11px Arial,sans-serif}
+  .mobile-leaf ol,.mobile-leaf ul{padding-left:22px;font:16px/1.65 Arial,sans-serif}
+  .mobile-leaf li{margin:9px 0}
+  .mobile-leaf li p{font-size:17px;line-height:1.65}
+  .mobile-leaf .method-box{border-left:4px solid #9b795b;background:#eee9df;padding:15px;margin:10px -4px}
+  .mobile-leaf .method-header p{font:14px/1.6 Arial,sans-serif}
+  .mobile-leaf .method-box .mini-label{font:800 11px Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+  .mobile-leaf .evidence-levels{list-style:none;padding-left:0}
+  .mobile-leaf .evidence-levels li{display:flex;gap:12px;border-top:1px solid #d4c7b6;padding-top:8px;font:14px/1.5 Arial,sans-serif}
+  .mobile-leaf .evidence-number{font-weight:750;color:#6e5135}
+  .mobile-leaf .evidence-levels li div{display:flex;flex-direction:column}
+  .mobile-leaf .evidence-levels span{font-size:13px}
+  .mobile-leaf blockquote{font:italic 24px/1.4 Georgia,serif;border-left:3px solid #a17b58;padding:15px 15px;margin:22px 0;background:#f4efe6}
+  .mobile-leaf blockquote p{font:inherit;margin:0}
+  .mobile-leaf .contrast-panel{padding:14px;border:1px solid #d4cdc3;margin:15px 0}
+  .mobile-leaf .contrast-grid{display:block}
+  .mobile-leaf .contrast-grid>div{border:0!important;padding:8px 0!important}
+  .mobile-leaf .contrast-number{font-size:28px}
+  .mobile-leaf .contrast-panel p{font-size:15px}
+  .mobile-leaf .note-back{font:12px Arial,sans-serif}
+  .mobile-leaf .checkcard{padding:16px;border:1px solid #ded9d0;background:#f6f4ee;margin:0 0 14px}
+  .mobile-leaf .checkcard h3{font:600 18px/1.35 Arial,sans-serif;margin:0 0 12px}
+  .mobile-leaf .checkcard p{font:15px/1.55 Arial,sans-serif;margin:0 0 9px}
+  .mobile-leaf .checkcard strong{color:#6c4935}
+  .mobile-leaf .ref-domain{font:12px Arial,sans-serif;display:block;color:#686d6f}
+  .reading-bottom{padding:14px 2px 25px}
+  .reading-help{font:13px/1.6 Arial,sans-serif;color:#5a6a71;margin:9px 4px 0;text-align:center}
+  #reader-error{background:#fff2e6;color:#6b3427;padding:16px;font-size:15px;border-radius:7px}
+  .mobile-leaf .chapter-back,.mobile-leaf .section-rule,.mobile-leaf .section-top{display:none}
+  .mobile-leaf .last-word{font:italic 22px/1.5 Georgia,serif;padding:12px;background:#f2efe9}
+}
+
+
+/* Sur iPhone, pages HTML lisibles avec animation 3D de feuille tournée. */
+@media(max-width:700px){
+  #mobile-reader .reading-intro h2{font-size:clamp(1.45rem,6.1vw,1.85rem)}
+  #mobile-reader .leaf-stage{
+    position:relative; perspective:1400px; -webkit-perspective:1400px;
+    isolation:isolate; border-radius:9px; background:#ede8df;
+    box-shadow:0 15px 35px rgba(30,35,32,.15);
+    overflow:hidden; margin:5px 1px 0;
+  }
+  #mobile-reader .leaf-stage>.mobile-leaf{
+    margin:0; border-radius:8px; box-shadow:none;
+    height:clamp(440px,69svh,700px); min-height:0;
+    padding:24px 22px 25px; overflow-y:auto; overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch; scrollbar-width:thin;
+    background:linear-gradient(90deg,rgba(108,89,66,.065),transparent 4%,transparent 97%,rgba(108,89,66,.035)),#fffefa;
+  }
+  #mobile-reader .mobile-leaf h2{font-size:clamp(1.35rem,5.4vw,1.65rem);margin:0 0 20px}
+  #mobile-reader .mobile-leaf p{font-size:clamp(17px,4.4vw,19px);line-height:1.73}
+  #mobile-reader .mobile-leaf .leaf-kicker{font:800 11px/1.4 Arial,sans-serif;margin-bottom:13px}
+  #mobile-reader .leaf-stage>.mobile-leaf.leaf-turn-sheet{
+    position:absolute; inset:0; z-index:5; width:100%;
+    pointer-events:none; overflow:hidden;
+    transform-style:preserve-3d; -webkit-transform-style:preserve-3d;
+    backface-visibility:hidden; -webkit-backface-visibility:hidden;
+    will-change:transform,filter,opacity;
+    border-radius:8px;
+    box-shadow:5px 3px 16px rgba(20,25,28,.2);
+  }
+  #mobile-reader .leaf-turn-sheet.turn-forward{
+    transform-origin:left center; -webkit-transform-origin:left center;
+    animation:leaf-turn-forward 650ms cubic-bezier(.3,.07,.17,1) forwards;
+  }
+  #mobile-reader .leaf-turn-sheet.turn-back{
+    transform-origin:right center; -webkit-transform-origin:right center;
+    animation:leaf-turn-back 650ms cubic-bezier(.3,.07,.17,1) forwards;
+  }
+  #mobile-reader .page-turn-caption{
+    font:12px/1.6 Arial,sans-serif;color:#667177;text-align:center;
+    margin:8px 0 14px;
+  }
+}
+@keyframes leaf-turn-forward{
+  0%{transform:rotateY(0deg);filter:brightness(1);opacity:1}
+  47%{filter:brightness(.8);opacity:1}
+  100%{transform:rotateY(-178deg);filter:brightness(.93);opacity:0}
+}
+@keyframes leaf-turn-back{
+  0%{transform:rotateY(0deg);filter:brightness(1);opacity:1}
+  47%{filter:brightness(.82);opacity:1}
+  100%{transform:rotateY(178deg);filter:brightness(.93);opacity:0}
+}
+@media(prefers-reduced-motion:reduce){
+  #mobile-reader .leaf-turn-sheet.turn-forward,
+  #mobile-reader .leaf-turn-sheet.turn-back{animation:none!important}
+}
+
+
+/* Pagination réelle par hauteur d'écran : aucune feuille ne requiert un scroll intérieur. */
+@media(max-width:700px){
+  #mobile-reader .leaf-stage>.mobile-leaf{
+    height:clamp(310px,calc(100svh - 265px),610px);
+    max-height:none; min-height:0; overflow:hidden;
+    padding:19px 20px 20px;
+    touch-action:pan-y;
+  }
+  #mobile-reader .mobile-leaf h2{font-size:clamp(1.23rem,5.2vw,1.55rem);line-height:1.2;margin:0 0 13px}
+  #mobile-reader .mobile-leaf .leaf-kicker{font-size:10px;margin-bottom:10px}
+  #mobile-reader .mobile-leaf p{font-size:clamp(16.5px,4.5vw,18.5px);line-height:1.64;margin-bottom:.9em}
+  #mobile-reader .mobile-leaf p.leaf-kicker{font:800 10px/1.4 Arial,sans-serif}
+  #mobile-reader .reading-intro{padding:14px 16px;margin:8px 3px 10px}
+  #mobile-reader .reading-intro h2{font-size:clamp(1.34rem,5.7vw,1.7rem)}
+  #mobile-reader .reading-intro p{font-size:14px;line-height:1.45}
+  #mobile-reader .reading-controls{padding:5px 2px;gap:6px}
+  #mobile-reader .reading-controls button{min-height:41px;padding:9px 8px}
+  #mobile-reader #mobile-jump{min-height:42px}
+  #mobile-reader .mobile-leaf .leaf-kicker{font:800 10px/1.4 Arial,sans-serif}
+  #mobile-reader .leaf-stage>.mobile-leaf.measure-leaf{position:absolute;inset:0;visibility:hidden;pointer-events:none;z-index:-1;width:100%;overflow:hidden}
+  #mobile-reader .leaf-stage>.mobile-leaf.leaf-turn-sheet{overflow:hidden}
+}
+
+</style>
+</head>
+<body>
+<header><div class="brand">THIERRY GIBERT · LES CAHIERS</div><a href="https://thierrygibert15.wordpress.com/publications/les-cahiers/">← Retour au site WordPress</a></header>
+<main>
+<section class="intro"><p class="eyebrow">Collection documentaire · Cahier n° 01</p><h1>NAZA : vérifier avant de conclure</h1><p class="subtitle">Ce que le documentaire démontre, ce qu’il suggère et ce qu’il ne prouve pas.</p><p class="meta">Édition consolidée du 13 novembre 2026 · 12 pages · Enquête et compléments contradictoires</p></section>
+
+<section class="mobile-choice" aria-labelledby="mobile-reading-title">
+ <h2 id="mobile-reading-title">Lire le cahier sur téléphone</h2>
+ <p>Le cahier papier est au format A4 : ses pages deviennent trop petites pour être lues confortablement sur un iPhone. La version éditoriale reprend <strong>le texte intégral</strong> avec une taille de caractères adaptée.</p>
+ <a class="choice-primary" href="./">Lire confortablement l’enquête →</a>
+ <button type="button" id="mobile-preview-toggle" aria-controls="stage" aria-expanded="false">Voir quand même les pages à tourner</button>
+ <p class="fineprint">Le feuilletage est conservé comme aperçu visuel. Vous pourrez agrandir chaque page séparément.</p>
+</section>
+
+<section id="mobile-reader" aria-labelledby="mobile-reader-title">
+ <div class="reading-intro">
+  <div class="overline">Les Cahiers N° 01 · Édition mobile</div>
+  <h2 id="mobile-reader-title">Une enquête à lire, pas à déchiffrer.</h2>
+  <p>Le texte original se lit en grands caractères sur de vraies pages animées. Faites glisser le doigt ou utilisez les flèches pour les tourner. Sur ordinateur, le cahier conserve son feuilletage illustré.</p>
+ </div>
+ <div class="reading-controls" aria-label="Navigation de lecture">
+  <label for="mobile-jump" style="font:700 12px Arial,sans-serif;color:#4d626b">Accès direct au chapitre</label>
+  <select id="mobile-jump" aria-label="Choisir un chapitre"><option>Chargement du sommaire…</option></select>
+  <div class="btn-group">
+   <button id="mobile-prev" type="button" aria-label="Page précédente">← Précédente</button>
+   <span class="leaf-count" id="mobile-count" aria-live="polite">–/–</span>
+   <button id="mobile-next" class="primary" type="button" aria-label="Page suivante">Suivante →</button>
+  </div>
+ </div>
+ <div class="leaf-stage" id="leaf-stage" aria-label="Pages à feuilleter">
+  <article id="mobile-leaf" class="mobile-leaf" tabindex="-1" aria-label="Page courante du cahier">
+   <p>Chargement du texte de l’enquête…</p>
+  </article>
+ </div>
+ <nav class="reading-controls reading-bottom" aria-label="Passage à la page suivante">
+  <div class="btn-group">
+   <button id="mobile-prev-bottom" type="button">← Page précédente</button>
+   <button id="mobile-next-bottom" class="primary" type="button">Page suivante →</button>
+  </div>
+ </nav>
+ <p class="reading-help">Chaque feuille tient entièrement sur l’écran. Balayez horizontalement ou utilisez les flèches pour la tourner ; le texte n’est plus coupé.</p>
+ <p class="reading-help"><a href="./">Consulter l’édition web continue</a> · <a target="_blank" rel="noopener" href="https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/les-cahiers-01-naza-edition-consolidee-13-11-2026.pdf">PDF intégral</a></p>
+</section>
+<nav class="toolbar" aria-label="Navigation dans le cahier">
+<button id="prev" type="button" aria-label="Page précédente">← Précédente</button><span id="counter" aria-live="polite">Couverture</span><button class="primary" id="next" type="button" aria-label="Page suivante">Suivante →</button>
+<button id="fullscreen" type="button">⛶ Plein écran</button>
+<a class="button" href="https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/les-cahiers-01-naza-edition-consolidee-13-11-2026.pdf" target="_blank" rel="noopener">↓ PDF intégral</a>
+</nav>
+<section id="stage" aria-label="Feuilletage interactif de NAZA">
+<div id="shell"><div id="book" aria-label="Livre NAZA"></div>
+<div id="fallback"><img id="fallback-image" src="https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/naza-cahier-01-page-01.jpg" alt="Couverture de NAZA"><p id="fallback-message">Chargement du lecteur…</p></div></div>
+<p id="hint">Tournez les pages avec les flèches ou un geste tactile. Les pages A4 sont volontairement conservées à leur format d’origine.</p>
+<p class="page-enlarge"><a id="page-enlarge" target="_blank" rel="noopener" href="https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/naza-cahier-01-page-01.jpg">Agrandir cette page ↗</a></p>
+</section>
+<section class="info"><h2>Lire les faits, confronter les sources</h2><p>Ce cahier distingue les informations établies, les éléments corroborés et les affirmations qui demeurent contestées. Il conserve le texte de référence du 4 octobre 2026 et présente séparément les compléments du 13 novembre.</p><p><a href="https://thierrygibert15.wordpress.com/2026/10/04/naza-verifier-avant-de-conclure/">Lire l’article et ses mises à jour</a> · <a href="https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/les-cahiers-01-naza-edition-consolidee-13-11-2026.pdf">Télécharger les 12 pages en PDF</a></p></section>
+</main>
+<footer>Les Cahiers · Thierry Gibert · Lecteur libre : <a href="https://github.com/Nodlik/StPageFlip">StPageFlip (MIT)</a></footer>
+<noscript><p>JavaScript est nécessaire pour tourner les pages. <a href="https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/les-cahiers-01-naza-edition-consolidee-13-11-2026.pdf">Lire le PDF.</a></p></noscript>
+<script defer src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+<script defer>
+(function(){
+"use strict";
+var base="https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/naza-cahier-01-page-";
+var urls=Array.from({length:12},function(_,i){return base+String(i+1).padStart(2,"0")+".jpg";});
+var count=document.getElementById("counter"),prev=document.getElementById("prev"),next=document.getElementById("next");
+var stage=document.getElementById("stage"),fallback=document.getElementById("fallback");
+var fbImg=document.getElementById("fallback-image"),fbMsg=document.getElementById("fallback-message");
+var page=0,flip=null,started=false;
+var enlarge=document.getElementById("page-enlarge"),mobileToggle=document.getElementById("mobile-preview-toggle");
+function sync(){count.textContent=page===0?"Couverture · 1/12":"Page "+(page+1)+" / 12";prev.disabled=page===0;next.disabled=page===11;if(!flip)fbImg.src=urls[page];enlarge.href=urls[page];enlarge.setAttribute("aria-label","Agrandir la page "+(page+1)+" du cahier");}
+function fallbackMode(){flip=null;fallback.style.display="block";fbMsg.textContent="Lecture simplifiée : utilisez les flèches pour parcourir les pages.";sync();}
+function init(){
+if(started)return;started=true;
+if(!window.St||!window.St.PageFlip){fallbackMode();return;}
+try{
+flip=new window.St.PageFlip(document.getElementById("book"),{
+width:430,height:608,size:"stretch",minWidth:210,maxWidth:530,minHeight:297,maxHeight:750,
+showCover:true,usePortrait:true,mobileScrollSupport:false,drawShadow:true,maxShadowOpacity:0.35,
+flippingTime:window.matchMedia("(prefers-reduced-motion: reduce)").matches?100:750
+});
+flip.on("flip",function(e){page=e.data;sync();});
+flip.on("init",function(e){page=e.data.page;sync();});
+flip.loadFromImages(urls);sync();
+}catch(e){fallbackMode();}
+}
+prev.addEventListener("click",function(){if(flip){flip.flipPrev("bottom");}else{page=Math.max(0,page-1);}sync();});
+next.addEventListener("click",function(){if(flip){flip.flipNext("bottom");}else{page=Math.min(11,page+1);}sync();});
+document.getElementById("fullscreen").addEventListener("click",function(){
+if(document.fullscreenElement){document.exitFullscreen&&document.exitFullscreen();}
+else if(stage.requestFullscreen){stage.requestFullscreen().catch(function(){});}
+else {window.open("https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/les-cahiers-01-naza-edition-consolidee-13-11-2026.pdf","_blank");}
+});
+document.addEventListener("keydown",function(e){if(window.matchMedia("(max-width:700px)").matches)return;if(e.target&&e.target.matches("input,textarea,select"))return;if(e.key==="ArrowRight")next.click();if(e.key==="ArrowLeft")prev.click();});
+sync();
+mobileToggle.addEventListener("click",function(){
+ var opened=!document.body.classList.contains("mobile-preview-open");
+ document.body.classList.toggle("mobile-preview-open",opened);
+ mobileToggle.setAttribute("aria-expanded",String(opened));
+ mobileToggle.textContent=opened?"Masquer le feuilletage":"Voir quand même les pages à tourner";
+ if(opened){
+  if(document.readyState==="complete")init();
+  stage.scrollIntoView({behavior:"smooth",block:"start"});
+ }
+});
+window.addEventListener("load",function(){
+ if(!window.matchMedia("(max-width:700px)").matches||document.body.classList.contains("mobile-preview-open"))init();
+},{once:true});
+})();
+</script>
+
+<script>
+(function(){
+ "use strict";
+ if(!window.matchMedia("(max-width:700px)").matches)return;
+ const leaf=document.getElementById("mobile-leaf"),jump=document.getElementById("mobile-jump");
+ const pageCount=document.getElementById("mobile-count");
+ const prev=[document.getElementById("mobile-prev"),document.getElementById("mobile-prev-bottom")];
+ const next=[document.getElementById("mobile-next"),document.getElementById("mobile-next-bottom")];
+ const pages=[],anchors=[];
+ let sourcePages=[];
+ const leafStage=document.getElementById("leaf-stage");
+ let at=0,ready=false,turning=false;
+ const safeHtml=(node)=>{
+  const n=node.cloneNode(true);
+  n.querySelectorAll("a[href^='#']").forEach(a=>a.href="./"+a.getAttribute("href"));
+  n.querySelectorAll(".chapter-back,.note-back,.section-rule").forEach(e=>e.remove());
+  n.querySelectorAll("[style]").forEach(e=>e.removeAttribute("style"));
+  return n.outerHTML;
+ };
+ function append(title,kicker,blocks,anchor){
+  if(!blocks.length)return;
+  let chunk=[],length=0,part=0;
+  const flush=()=>{
+   if(!chunk.length)return;
+   pages.push({title,section:kicker,part:++part,html:chunk.join("\n"),anchor});
+   chunk=[];length=0;
+  };
+  blocks.forEach(node=>{
+   const html=safeHtml(node),sz=(node.textContent||"").length;
+   if(chunk.length && (length+sz>1250||chunk.length>=3))flush();
+   chunk.push(html);length+=sz;
+   if(sz>1700)flush();
+  });
+  flush();
+ }
+ function sectionData(src){
+  src.querySelectorAll("section.opening,section.chapter,section.supp-entry,section.verification").forEach(section=>{
+    const kind=section.classList.contains("supp-entry")?"Actualisation · 13 novembre 2026":
+    section.classList.contains("verification")?"Synthèse":
+    section.classList.contains("opening")?"Avant-propos":
+    section.id==="notes"?"Documentation":section.id==="bibliographie"?"Bibliographie":
+    "Contre-enquête";
+    const titleEl=section.querySelector(":scope > h2,:scope > h3")||
+      section.querySelector(":scope > .reading-column > h2");
+    const title=titleEl?.textContent?.trim()||"NAZA : l’enquête";
+    const id=section.id||"enquete";
+    const p=section.querySelector(":scope > .prose");
+    let parts=[];
+    if(p) parts=Array.from(p.children);
+    else if(section.classList.contains("supp-entry"))parts=Array.from(section.children).filter(e=>e.matches("p,blockquote,ul,ol"));
+    else if(section.classList.contains("opening")){
+      const prose=section.querySelector(".prose");
+      if(prose)parts.push(...prose.children);
+      const note=section.querySelector(".note-reader");
+      if(note)parts.push(note);
+    }else if(section.id==="notes"){
+      const list=section.querySelector(".notes-list");
+      if(list)parts=Array.from(list.children).map((li,i)=>{
+        const wrap=src.createElement("ol");wrap.setAttribute("start",String(i+1));wrap.appendChild(li.cloneNode(true));return wrap;
+      });
+    }else if(section.id==="bibliographie"){
+      const intro=section.querySelector(":scope > p.prose");
+      if(intro)parts.push(intro);
+      const list=section.querySelector(".reference-list");
+      if(list)parts.push(...Array.from(list.children).map((li,i)=>{
+       const wrap=src.createElement("ol");wrap.setAttribute("start",String(i+1));wrap.appendChild(li.cloneNode(true));return wrap;
+      }));
+    }else if(section.id==="verifications"){
+      const intro=section.querySelector(".reading-column p.prose");
+      if(intro)parts.push(intro);
+      section.querySelectorAll("table tbody tr").forEach(row=>{
+       const el=src.createElement("div");el.className="checkcard";
+       const cells=row.querySelectorAll("th,td");
+       el.innerHTML="<h3>"+(cells[0]?.innerHTML||"")+"</h3><p><strong>Statut : </strong>"+(cells[1]?.innerHTML||"")+"</p><p>"+(cells[2]?.innerHTML||"")+"</p>";
+       parts.push(el);
+      });
+      const final=section.querySelector(".last-word");
+      if(final)parts.push(final);
+    }
+    append(title,kind,parts,id);
+  });
+ }
+
+ // Ajuste chaque feuille à la largeur ET à la hauteur réelle du téléphone.
+ // Une phrase peut se poursuivre sur la feuille suivante ; les liens et notes sont conservés.
+ function pageHeader(data){
+  return '<p class="leaf-kicker">'+data.section+' · Page '+data.part+'</p>'+
+    (data.part===1?'<h2>'+data.title+'</h2>':'');
+ }
+ function sliceNode(original,start,end){
+  const textNodes=[],walk=document.createTreeWalker(original,NodeFilter.SHOW_TEXT);
+  let item;while((item=walk.nextNode()))textNodes.push(item);
+  let full=0;const entries=textNodes.map(n=>{const x={node:n,from:full,to:full+n.length};full+=n.length;return x;});
+  function point(offset){
+   if(offset<=0)return {node:original,offset:0};
+   if(offset>=full)return {node:original,offset:original.childNodes.length};
+   for(const e of entries)if(offset<=e.to)return {node:e.node,offset:offset-e.from};
+   return {node:original,offset:original.childNodes.length};
+  }
+  const r=document.createRange(),a=point(start),b=point(end);
+  r.setStart(a.node,a.offset);r.setEnd(b.node,b.offset);
+  const out=original.cloneNode(false);
+  out.appendChild(r.cloneContents());
+  return out;
+ }
+ function splitAtFit(node,htmlPrefix,fits){
+  const plain=node.textContent||"",total=plain.length;
+  if(total<2)return null;
+  const cuts=[];
+  for(const match of plain.matchAll(/\s+/g)){
+   const cut=match.index+match[0].length;
+   if(cut>0&&cut<total)cuts.push(cut);
+  }
+  if(!cuts.length)for(let x=1;x<total;x+=Math.max(1,Math.floor(total/80)))cuts.push(x);
+  let lo=0,hi=cuts.length-1,best=-1;
+  while(lo<=hi){
+   const mid=(lo+hi)>>1,part=sliceNode(node,0,cuts[mid]);
+   if(fits(htmlPrefix+part.outerHTML)){best=mid;lo=mid+1;}
+   else hi=mid-1;
+  }
+  if(best<0)return null;
+  const cut=cuts[best];
+  const first=sliceNode(node,0,cut);
+  const rest=sliceNode(node,cut,total);
+  return [first,rest];
+ }
+ function fitPages(){
+  const drafts=sourcePages,groups=[];
+  for(const data of drafts){
+   let group=groups[groups.length-1];
+   if(!group||group.anchor!==data.anchor){
+    group={anchor:data.anchor,title:data.title,section:data.section,blocks:[]};
+    groups.push(group);
+   }
+   const bucket=document.createElement("div");
+   bucket.innerHTML=data.html;
+   group.blocks.push(...Array.from(bucket.children));
+  }
+  pages.length=0;
+  const meter=leaf.cloneNode(false);
+  meter.removeAttribute("id");
+  meter.removeAttribute("tabindex");
+  meter.classList.add("measure-leaf");
+  meter.setAttribute("aria-hidden","true");
+  leafStage.appendChild(meter);
+  try{
+   for(const group of groups){
+    let content="",part=1;
+    const make=()=>({title:group.title,section:group.section,anchor:group.anchor,part,html:content});
+    const header=()=>pageHeader({title:group.title,section:group.section,part});
+    const fits=html=>{
+     meter.innerHTML=header()+html;
+     return meter.scrollHeight<=meter.clientHeight-3;
+    };
+    const flush=()=>{if(content){pages.push(make());content="";part++;}};
+    for(const original of group.blocks){
+     let item=original,guard=0;
+     while(item&&guard++<100){
+      if(fits(content+item.outerHTML)){content+=item.outerHTML;item=null;break;}
+      if(content){flush();continue;}
+      const split=splitAtFit(item,"",fits);
+      if(split){
+       content=split[0].outerHTML;flush();
+       item=split[1];
+       if(!(item.textContent||"").trim())item=null;
+      }else{
+       // Single unsplittable item: keep it intact and reserve a whole leaf.
+       content=item.outerHTML;flush();item=null;
+      }
+     }
+   }
+   flush();
+  }
+  }finally{meter.remove();}
+  if(!pages.length)throw new Error("Pagination vide");
+ }
+
+ function render(scroll){
+  if(!pages.length)return;
+  const data=pages[at];
+  leaf.innerHTML=pageHeader(data)+data.html;
+  pageCount.textContent=(at+1)+" / "+pages.length;
+  prev.forEach(b=>b.disabled=at===0);
+  next.forEach(b=>b.disabled=at===pages.length-1);
+  jump.value=data.anchor;
+  try{history.replaceState(null,"","#lecture-"+(at+1));}catch(e){}
+  if(scroll)document.getElementById("mobile-jump").scrollIntoView({behavior:"instant",block:"start"});
+ }
+ function move(n){
+  if(!ready||turning)return;
+  const nextAt=Math.max(0,Math.min(pages.length-1,at+n));
+  if(nextAt===at)return;
+  const noMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(noMotion){at=nextAt;render(true);leaf.scrollTop=0;return;}
+  turning=true;
+  // The old page turns away; the newly rendered, readable page is underneath.
+  const sheet=leaf.cloneNode(true);
+  sheet.removeAttribute("id");
+  sheet.removeAttribute("tabindex");
+  sheet.setAttribute("aria-hidden","true");
+  sheet.classList.add("leaf-turn-sheet",n>0?"turn-forward":"turn-back");
+  sheet.scrollTop=leaf.scrollTop;
+  at=nextAt;
+  render(false);
+  leaf.scrollTop=0;
+  leafStage.appendChild(sheet);
+  document.getElementById("mobile-jump").scrollIntoView({behavior:"instant",block:"start"});
+  let done=false;
+  const finish=()=>{
+   if(done)return;
+   done=true;
+   sheet.remove();
+   turning=false;
+  };
+  sheet.addEventListener("animationend",finish,{once:true});
+  setTimeout(finish,950);
+ }
+ prev.forEach(b=>b.addEventListener("click",()=>move(-1)));
+ next.forEach(b=>b.addEventListener("click",()=>move(1)));
+ jump.addEventListener("change",()=>{
+  if(turning)return;
+  const i=pages.findIndex(p=>p.anchor===jump.value);
+  if(i>=0){at=i;render(true);leaf.scrollTop=0;}
+ });
+ let startX=0,startY=0;
+ leaf.addEventListener("touchstart",e=>{
+  if(e.touches.length!==1)return;
+  startX=e.touches[0].clientX;startY=e.touches[0].clientY;
+ },{passive:true});
+ leaf.addEventListener("touchend",e=>{
+  if(e.changedTouches.length!==1)return;
+  const dx=e.changedTouches[0].clientX-startX,dy=e.changedTouches[0].clientY-startY;
+  if(Math.abs(dx)>85&&Math.abs(dx)>Math.abs(dy)*1.4)move(dx<0?1:-1);
+ },{passive:true});
+ fetch("./index.html",{cache:"no-store"}).then(response=>{
+  if(!response.ok)throw new Error("HTTP "+response.status);
+  return response.text();
+ }).then(html=>{
+  const doc=new DOMParser().parseFromString(html,"text/html");
+  sectionData(doc);
+  if(!pages.length)throw new Error("Texte non trouvé");
+  sourcePages=pages.slice();
+  fitPages();
+  const options=new Map();
+  pages.forEach((p,i)=>{if(!options.has(p.anchor))options.set(p.anchor,p.title)});
+  jump.innerHTML="";
+  for(const [id,title] of options){const o=document.createElement("option");o.value=id;o.textContent=title;jump.appendChild(o);}
+  const initial=location.hash.match(/^#lecture-(\d+)$/);
+  if(initial)at=Math.min(pages.length-1,Math.max(0,Number(initial[1])-1));
+  ready=true;render(false);
+  let lastWidth=window.innerWidth;
+  window.addEventListener("resize",()=>{
+   if(Math.abs(window.innerWidth-lastWidth)<20)return;
+   lastWidth=window.innerWidth;
+   const keep=pages[at]?.anchor,part=pages[at]?.part;
+   if(!turning){fitPages();const found=pages.findIndex(p=>p.anchor===keep&&p.part===part);
+     at=Math.max(0,found>=0?found:pages.findIndex(p=>p.anchor===keep));render(false);}
+  },{passive:true});
+ }).catch(()=>{
+  leaf.innerHTML='<div id="reader-error"><strong>Le texte ne s’est pas chargé.</strong><p>Vous pouvez lire directement notre <a href="./">édition web intégrale, adaptée au téléphone</a>.</p></div>';
+  pageCount.textContent="Lecture alternative";
+ });
+})();
+</script>
+</body></html>
