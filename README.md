@@ -28,6 +28,18 @@ Ce dépôt est la **source canonique des éditions HTML** du cahier NAZA. Les fi
 - La copie HTML Drive de l'étude intégrale du 13 novembre est **identique octet pour octet** au fichier GitHub `index.html` (contrôle des contenus réalisé le 14 novembre) : [copie de production](https://drive.google.com/file/d/16ZmSuktXcBYQ1Q_zkbwKcqdmd3Sd8lYu/view). L'édition illustrée actuelle `feuilleter.html` n'a pas de copie HTML brute certifiée dans Drive ; ne pas utiliser l'ancienne maquette intitulée ARCHIVE.
 - Le PDF du **4 octobre** reste accessible dans l'article initial comme document historique.
 
+## Identité de marque et signature d'auteur
+
+Les éditions de ce dépôt relèvent de la **marque personnelle Thierry Gibert**, telle que définie dans la charte maître Canva déjà existante. Elle ne doit pas être confondue avec la marque distincte **Les Cahiers d'En Avant Aurillac**.
+
+- Signature de référence sur les couvertures, interfaces et présentations : **THIERRY GIBERT — Histoire • Sources • Analyse**.
+- Palette principale : `#000000` (noir), `#333333` (anthracite), `#1A1A2E` (bleu signature), `#D9D9D9` (gris clair), `#FFFFFF` (blanc).
+- Couleurs éditoriales complémentaires validées dans le TDB de la charte : `#EDE6D8`, `#F2E5C9`, `#D4B779`, `#9D8A62`, `#110E0C`, `#5E4B37`, `#5B2027`. Elles ne remplacent pas la lisibilité et les contrastes de la palette principale.
+- Les deux pages publiques HTML utilisent désormais la signature complète. Les éléments graphiques ne constituent ni une source ni une preuve.
+- Le paraphe et le monogramme ne doivent être insérés **qu'après identification de l'actif Canva/Drive original** ; ne pas les redessiner, ni utiliser un faux logo.
+- Le PDF consolidé du 13/11/2026 est conservé dans son état documentaire d'origine : il identifie déjà l'auteur mais ne reprend pas encore la signature complète, qui sera introduite dans une édition ultérieure explicitement datée.
+- Les contenus de marque CFDT, SGCD, UFAL et En Avant Aurillac suivent leurs propres kits et chartes.
+
 ## Règles de mise à jour
 
 1. Réviser les preuves et les conclusions dans le document maître Drive et tenir à jour la ligne NAZA du tableau de suivi.
