@@ -1,34 +1,57 @@
-/* Complément Interco : dossier historique et sources, novembre 2026 */
+/* Archives de la Fédération Interco : 1936–2025, version documentée */
 (function(){
 "use strict";
 const p=window.CAHIER_PAGES;
 if(!Array.isArray(p)||p.length!==28)return;
-p[3][1]="De 1919 à nos jours : neuf repères";
-p[3][2]=p[3][2].replace(
-'<div><strong>2014</strong>Suppression',
-'<div><strong>1974</strong>Création de la Fédération Interco CFDT à Saint-Malo</div><div><strong>1977–1984</strong>Structuration d’Interco, décentralisation et statut de la FPT</div><div><strong>2014</strong>Suppression'
-);
+p[3][1]="La séparation, puis la construction fédérale";
+p[3][2]=
+'<div class="timeline">'+
+'<div><strong>1919</strong>Naissance de la CFTC</div>'+
+'<div><strong>1936–1937</strong>Communaux CFTC et naissance du SGEN</div>'+
+'<div><strong>1947</strong>Modification de la référence doctrinale</div>'+
+'<div><strong>1964</strong>La CFTC majoritaire devient la CFDT</div>'+
+'<div><strong>1965</strong>Vote de la Fédération des communaux</div>'+
+'<div><strong>1974</strong>Congrès constitutif d’Interco à Saint-Malo</div>'+
+'<div><strong>1977–1984</strong>Autrans, décentralisation et statut de la FPT</div>'+
+'<div><strong>2000</strong>La Fédération Justice rejoint Interco</div>'+
+'<div><strong>2014</strong>Nouvelle rédaction du préambule confédéral</div>'+
+'<div><strong>2025</strong>Communiqué fédéral consacré à la laïcité</div>'+
+'</div>';
+p[3][3]="https://arbre-bleu-editions.com/assets/005_histoire-de-la-federation-interco-cfdt_introduction.pdf";
 p[22][2]=p[22][2].replace(
 '<div class="note">',
-'<p>En décembre 2025, la Fédération Interco a, de son côté, publié un <a href="https://interco.cfdt.fr/la-federation-cfdt-interco-rappelle-le-principe-de-laicite-qui-permet-de-faire-societe/" target="_blank" rel="noopener">communiqué sur la laïcité</a> qu’elle rattache à l’émancipation, à l’universalisme et à la défense des services publics.</p><div class="note">'
+'<p>La Fédération Interco a également publié, le 8 décembre 2025, un <a href="https://interco.cfdt.fr/la-federation-cfdt-interco-rappelle-le-principe-de-laicite-qui-permet-de-faire-societe/" target="_blank" rel="noopener">communiqué consacré à la laïcité</a>, qu’elle relie à l’émancipation, à l’universalisme et aux services publics.</p><div class="note">'
 );
-p[26][2]=p[26][2].replace('</ul>','<li><a href="https://interco.cfdt.fr/la-federation-cfdt-interco-rappelle-le-principe-de-laicite-qui-permet-de-faire-societe/" target="_blank" rel="noopener">Interco CFDT, communiqué sur la laïcité (8 décembre 2025)</a>.</li></ul>');
-p[27][2]=p[27][2].replace('</ul>','<li><a href="https://arbre-bleu-editions.com/histoire-de-la-federation-interco-cfdt.html" target="_blank" rel="noopener">Romain Vila, Histoire de la Fédération Interco CFDT (2014)</a>.</li></ul>');
+p[26][2]=p[26][2].replace('</ul>',
+'<li><a href="https://interco.cfdt.fr/la-federation-cfdt-interco-rappelle-le-principe-de-laicite-qui-permet-de-faire-societe/" target="_blank" rel="noopener">Interco CFDT : communiqué sur la laïcité (8 décembre 2025)</a>.</li>'+
+'<li><a href="https://interco.cfdt.fr/biographie-de-lucien-estavil-militant-dinterco-cfdt/" target="_blank" rel="noopener">Lucien Estavil : notice biographique et résultat du vote de 1965</a>.</li></ul>');
+p[27][2]=p[27][2].replace('</ul>',
+'<li><a href="https://arbre-bleu-editions.com/histoire-de-la-federation-interco-cfdt.html" target="_blank" rel="noopener">Romain Vila : Histoire de la Fédération Interco CFDT (2014)</a>.</li>'+
+'<li><a href="https://arbre-bleu-editions.com/assets/005_histoire-de-la-federation-interco-cfdt_introduction.pdf" target="_blank" rel="noopener">Introduction de l’ouvrage de Romain Vila, pp. 17–24</a>.</li>'+
+'<li><a href="https://archives.memoires.cfdt.fr/pages/dl?f=customer_3%2Fblog%2Fcfdt_justice_inventaire_archives_1982_2000.pdf" target="_blank" rel="noopener">Inventaire du fonds Justice CFDT (1982–2000)</a>.</li></ul>');
 p.push([
 "XI · Les fédérations",
-"1974 : Interco, sept cultures syndicales réunies",
-"<p>La déconfessionnalisation n'achève pas la transformation de la CFDT. Dix ans après le congrès de 1964, une fédération nouvelle voit le jour en mai 1974 à Saint-Malo. Elle rassemble des organisations d'origines professionnelles différentes : communaux, personnels des préfectures et départements, services techniques du ministère de l'Intérieur, police, offices publics d'HLM et distribution des eaux.</p>"+
-"<p>Le nom <strong>Interco</strong> rapproche les termes Intérieur et collectivités locales. La fédération entend construire une représentation commune sans effacer les spécificités professionnelles. Son premier secrétariat général est assuré par Tonia Scavennec en 1974-1975. René Bellanger lui succède de 1975 à 1977.</p>"+
-"<p>Selon l'historien Romain Vila, cette fédération procède d'un regroupement de sept entités ayant chacune son histoire. Elle constitue un exemple de la façon dont la CFDT élabore une identité collective dans la diversité. Cette observation relève de l'analyse historique et ne prouve pas à elle seule que la laïcité ait été l'objectif fondateur du congrès de Saint-Malo.</p>",
-"https://arbre-bleu-editions.com/histoire-de-la-federation-interco-cfdt.html"
+"1974 : Interco, sept héritages professionnels",
+"<p>La transformation de la CFTC ne clôt pas l’histoire de la CFDT. Du <strong>22 au 24 mai 1974</strong>, à Saint-Malo, un congrès constitutif réunit dans la Fédération Interco sept organisations : les communaux, les personnels des préfectures et départements, les services techniques du ministère de l’Intérieur, le syndicat de la préfecture de Paris, la police nationale, les personnels des offices publics d’HLM et ceux de la distribution des eaux.</p>"+
+"<p>Ce rassemblement fédère des traditions professionnelles différentes. Les services publics d’État et territoriaux y côtoient des activités régies par le droit privé. Tonia Scavennec devient la première secrétaire générale. René Bellanger lui succède en 1975.</p>"+
+"<div class=\"note\">La naissance d’Interco ne correspond pas à une nouvelle déconfessionnalisation. Elle poursuit la construction d’une organisation collective pluraliste. Les résolutions de 1974 restent à étudier pour savoir comment la laïcité y était abordée.</div>",
+"https://arbre-bleu-editions.com/assets/005_histoire-de-la-federation-interco-cfdt_introduction.pdf"
 ]);
 p.push([
-"1977–1984 · Services publics",
-"De la fédéralisation au statut territorial",
-"<p>Le congrès d'Autrans des 19 au 23 avril 1977 donne à Interco un nouvel élan organisationnel. Jacques Nodin devient secrétaire général. La fédération renforce ses syndicats départementaux et construit des orientations communes à des agents de métiers différents.</p>"+
-"<p>Au cours des années 1980, elle intervient dans les débats sur la décentralisation, la défense des personnels des collectivités et le statut de la fonction publique territoriale, notamment dans la période qui conduit à la loi du 26 janvier 1984.</p>"+
-"<p>Cette spécificité nous intéresse directement : aujourd'hui Interco représente à la fois des agents des collectivités territoriales et de plusieurs ministères ainsi que des salariés de droit privé, dans l'habitat, l'eau ou les services funéraires. La liberté de conscience concerne tous les militants. L'obligation de neutralité religieuse s'impose aux agents publics dans l'exercice de leurs fonctions selon l'article L.121-2 du Code général de la fonction publique.</p>"+
-"<div class=\"note\">La place précise de la laïcité dans les statuts fédéraux de 1974 et les résolutions de 1977 reste à établir à partir des archives originales.</div>",
-"https://interco.cfdt.fr/federation-interco-cfdt-qui-sommes-nous-qui-aidons-nous/"
+"XII · Services publics",
+"1977–2000 : élargir la fédération",
+"<p>Après des débuts organisationnels difficiles, le congrès d’Autrans d’avril 1977 donne un nouvel élan à Interco. Jacques Nodin devient secrétaire général. Sous sa direction, la fédération intervient dans les négociations de la décentralisation et de la fonction publique territoriale, notamment autour de la loi du 26 janvier 1984.</p>"+
+"<p>La fédération élargit ensuite son périmètre. En <strong>novembre 2000</strong>, la Fédération Justice, constituée en 1982, fusionne avec Interco. Les archives précisent que cette possibilité avait déjà été envisagée en 1974.</p>"+
+"<p>Aujourd’hui, Interco représente des agents de l’État et des collectivités ainsi que des salariés de droit privé. La liberté de conscience appartient à tous. L’obligation de neutralité dans l’exercice des fonctions concerne spécifiquement les agents publics, conformément à l’article L.121-2 du Code général de la fonction publique.</p>",
+"https://archives.memoires.cfdt.fr/pages/dl?f=customer_3%2Fblog%2Fcfdt_justice_inventaire_archives_1982_2000.pdf"
+]);
+p.push([
+"1965 · Les communaux",
+"Une décision votée dans la fédération",
+"<p>Les <strong>30 et 31 janvier 1965</strong>, le XVe congrès de la Fédération des syndicats de personnels communaux revient sur la transformation de la CFTC. Lucien Estavil défend une résolution favorable à l’évolution. La résolution « Glotin » maintient la référence à la morale sociale chrétienne.</p>"+
+"<div class=\"ballot-card\"><div><strong>125</strong><span>Évolution CFDT</span></div><div><strong>66</strong><span>Maintien CFTC</span></div><div><strong>2</strong><span>Votes nuls</span></div></div>"+
+"<p>La première résolution l’emporte. Estavil prend la direction de la fédération communale CFDT. Ce vote confirme qu’en 1965 les organisations professionnelles discutent elles-mêmes de leur référence confessionnelle. Il ne doit pas être confondu avec un vote relatif aux règles de neutralité des agents territoriaux.</p>"+
+"<div class=\"note\">À approfondir : les textes complets des résolutions Estavil et Glotin, puis le compte rendu des débats fédéraux.</div>",
+"https://interco.cfdt.fr/biographie-de-lucien-estavil-militant-dinterco-cfdt/"
 ]);
 })();
