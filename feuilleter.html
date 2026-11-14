@@ -103,6 +103,63 @@ footer{border-top:1px solid #d4d9db;padding:20px;text-align:center;font-size:13p
   .mobile-leaf .last-word{font:italic 22px/1.5 Georgia,serif;padding:12px;background:#f2efe9}
 }
 
+
+/* Sur iPhone, pages HTML lisibles avec animation 3D de feuille tournée. */
+@media(max-width:700px){
+  #mobile-reader .reading-intro h2{font-size:clamp(1.45rem,6.1vw,1.85rem)}
+  #mobile-reader .leaf-stage{
+    position:relative; perspective:1400px; -webkit-perspective:1400px;
+    isolation:isolate; border-radius:9px; background:#ede8df;
+    box-shadow:0 15px 35px rgba(30,35,32,.15);
+    overflow:hidden; margin:5px 1px 0;
+  }
+  #mobile-reader .leaf-stage>.mobile-leaf{
+    margin:0; border-radius:8px; box-shadow:none;
+    height:clamp(440px,69svh,700px); min-height:0;
+    padding:24px 22px 25px; overflow-y:auto; overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch; scrollbar-width:thin;
+    background:linear-gradient(90deg,rgba(108,89,66,.065),transparent 4%,transparent 97%,rgba(108,89,66,.035)),#fffefa;
+  }
+  #mobile-reader .mobile-leaf h2{font-size:clamp(1.35rem,5.4vw,1.65rem);margin:0 0 20px}
+  #mobile-reader .mobile-leaf p{font-size:clamp(17px,4.4vw,19px);line-height:1.73}
+  #mobile-reader .mobile-leaf .leaf-kicker{font:800 11px/1.4 Arial,sans-serif;margin-bottom:13px}
+  #mobile-reader .leaf-stage>.mobile-leaf.leaf-turn-sheet{
+    position:absolute; inset:0; z-index:5; width:100%;
+    pointer-events:none; overflow:hidden;
+    transform-style:preserve-3d; -webkit-transform-style:preserve-3d;
+    backface-visibility:hidden; -webkit-backface-visibility:hidden;
+    will-change:transform,filter,opacity;
+    border-radius:8px;
+    box-shadow:5px 3px 16px rgba(20,25,28,.2);
+  }
+  #mobile-reader .leaf-turn-sheet.turn-forward{
+    transform-origin:left center; -webkit-transform-origin:left center;
+    animation:leaf-turn-forward 650ms cubic-bezier(.3,.07,.17,1) forwards;
+  }
+  #mobile-reader .leaf-turn-sheet.turn-back{
+    transform-origin:right center; -webkit-transform-origin:right center;
+    animation:leaf-turn-back 650ms cubic-bezier(.3,.07,.17,1) forwards;
+  }
+  #mobile-reader .page-turn-caption{
+    font:12px/1.6 Arial,sans-serif;color:#667177;text-align:center;
+    margin:8px 0 14px;
+  }
+}
+@keyframes leaf-turn-forward{
+  0%{transform:rotateY(0deg);filter:brightness(1);opacity:1}
+  47%{filter:brightness(.8);opacity:1}
+  100%{transform:rotateY(-178deg);filter:brightness(.93);opacity:0}
+}
+@keyframes leaf-turn-back{
+  0%{transform:rotateY(0deg);filter:brightness(1);opacity:1}
+  47%{filter:brightness(.82);opacity:1}
+  100%{transform:rotateY(178deg);filter:brightness(.93);opacity:0}
+}
+@media(prefers-reduced-motion:reduce){
+  #mobile-reader .leaf-turn-sheet.turn-forward,
+  #mobile-reader .leaf-turn-sheet.turn-back{animation:none!important}
+}
+
 </style>
 </head>
 <body>
@@ -122,7 +179,7 @@ footer{border-top:1px solid #d4d9db;padding:20px;text-align:center;font-size:13p
  <div class="reading-intro">
   <div class="overline">Les Cahiers N° 01 · Édition mobile</div>
   <h2 id="mobile-reader-title">Une enquête à lire, pas à déchiffrer.</h2>
-  <p>Le texte original est recomposé en pages lisibles, avec une navigation tactile. Sur ordinateur, le cahier conserve son feuilletage animé.</p>
+  <p>Le texte original se lit en grands caractères sur de vraies pages animées. Faites glisser le doigt ou utilisez les flèches pour les tourner. Sur ordinateur, le cahier conserve son feuilletage illustré.</p>
  </div>
  <div class="reading-controls" aria-label="Navigation de lecture">
   <label for="mobile-jump" style="font:700 12px Arial,sans-serif;color:#4d626b">Accès direct au chapitre</label>
@@ -133,16 +190,18 @@ footer{border-top:1px solid #d4d9db;padding:20px;text-align:center;font-size:13p
    <button id="mobile-next" class="primary" type="button" aria-label="Page suivante">Suivante →</button>
   </div>
  </div>
- <article id="mobile-leaf" class="mobile-leaf" tabindex="-1" aria-label="Page courante du cahier">
-  <p>Chargement du texte de l’enquête…</p>
- </article>
+ <div class="leaf-stage" id="leaf-stage" aria-label="Pages à feuilleter">
+  <article id="mobile-leaf" class="mobile-leaf" tabindex="-1" aria-label="Page courante du cahier">
+   <p>Chargement du texte de l’enquête…</p>
+  </article>
+ </div>
  <nav class="reading-controls reading-bottom" aria-label="Passage à la page suivante">
   <div class="btn-group">
    <button id="mobile-prev-bottom" type="button">← Page précédente</button>
    <button id="mobile-next-bottom" class="primary" type="button">Page suivante →</button>
   </div>
  </nav>
- <p class="reading-help">Balayez horizontalement pour changer de page ou utilisez les boutons. Le texte reste sélectionnable et les références sont accessibles.</p>
+ <p class="reading-help">Balayez horizontalement ou touchez « Suivante » pour tourner la feuille. Faites défiler verticalement le texte à l’intérieur de chaque page.</p>
  <p class="reading-help"><a href="./">Consulter l’édition web continue</a> · <a target="_blank" rel="noopener" href="https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/les-cahiers-01-naza-edition-consolidee-13-11-2026.pdf">PDF intégral</a></p>
 </section>
 <nav class="toolbar" aria-label="Navigation dans le cahier">
@@ -194,7 +253,7 @@ if(document.fullscreenElement){document.exitFullscreen&&document.exitFullscreen(
 else if(stage.requestFullscreen){stage.requestFullscreen().catch(function(){});}
 else {window.open("https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/les-cahiers-01-naza-edition-consolidee-13-11-2026.pdf","_blank");}
 });
-document.addEventListener("keydown",function(e){if(e.target&&e.target.matches("input,textarea,select"))return;if(e.key==="ArrowRight")next.click();if(e.key==="ArrowLeft")prev.click();});
+document.addEventListener("keydown",function(e){if(window.matchMedia("(max-width:700px)").matches)return;if(e.target&&e.target.matches("input,textarea,select"))return;if(e.key==="ArrowRight")next.click();if(e.key==="ArrowLeft")prev.click();});
 sync();
 mobileToggle.addEventListener("click",function(){
  var opened=!document.body.classList.contains("mobile-preview-open");
@@ -221,7 +280,8 @@ window.addEventListener("load",function(){
  const prev=[document.getElementById("mobile-prev"),document.getElementById("mobile-prev-bottom")];
  const next=[document.getElementById("mobile-next"),document.getElementById("mobile-next-bottom")];
  const pages=[],anchors=[];
- let at=0,ready=false;
+ const leafStage=document.getElementById("leaf-stage");
+ let at=0,ready=false,turning=false;
  const safeHtml=(node)=>{
   const n=node.cloneNode(true);
   n.querySelectorAll("a[href^='#']").forEach(a=>a.href="./"+a.getAttribute("href"));
@@ -303,12 +363,41 @@ window.addEventListener("load",function(){
   try{history.replaceState(null,"","#lecture-"+(at+1));}catch(e){}
   if(scroll)document.getElementById("mobile-reader").scrollIntoView({behavior:"instant",block:"start"});
  }
- function move(n){if(!ready)return;at=Math.max(0,Math.min(pages.length-1,at+n));render(true);}
+ function move(n){
+  if(!ready||turning)return;
+  const nextAt=Math.max(0,Math.min(pages.length-1,at+n));
+  if(nextAt===at)return;
+  const noMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(noMotion){at=nextAt;render(true);leaf.scrollTop=0;return;}
+  turning=true;
+  // The old page turns away; the newly rendered, readable page is underneath.
+  const sheet=leaf.cloneNode(true);
+  sheet.removeAttribute("id");
+  sheet.removeAttribute("tabindex");
+  sheet.setAttribute("aria-hidden","true");
+  sheet.classList.add("leaf-turn-sheet",n>0?"turn-forward":"turn-back");
+  sheet.scrollTop=leaf.scrollTop;
+  at=nextAt;
+  render(false);
+  leaf.scrollTop=0;
+  leafStage.appendChild(sheet);
+  document.getElementById("mobile-reader").scrollIntoView({behavior:"instant",block:"start"});
+  let done=false;
+  const finish=()=>{
+   if(done)return;
+   done=true;
+   sheet.remove();
+   turning=false;
+  };
+  sheet.addEventListener("animationend",finish,{once:true});
+  setTimeout(finish,950);
+ }
  prev.forEach(b=>b.addEventListener("click",()=>move(-1)));
  next.forEach(b=>b.addEventListener("click",()=>move(1)));
  jump.addEventListener("change",()=>{
+  if(turning)return;
   const i=pages.findIndex(p=>p.anchor===jump.value);
-  if(i>=0){at=i;render(true);}
+  if(i>=0){at=i;render(true);leaf.scrollTop=0;}
  });
  let startX=0,startY=0;
  leaf.addEventListener("touchstart",e=>{
