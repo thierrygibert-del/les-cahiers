@@ -47,3 +47,23 @@ Les **32 sections historiques** sont conservées dans leurs données d'origine. 
 ## Retour arrière
 
 Si les tests après fusion échouent, rétablir les versions antérieures de `apercu-cfdt/index.html` à partir de l'historique de GitHub. Les deux nouveaux fichiers externes deviennent alors inactifs, car l'ancien HTML ne les charge pas.
+
+## Équilibrage des feuillets : correction de novembre 2026
+
+La version publique antérieure mesurait systématiquement la quantité de texte avec une surface de **430 × 608 px**. StPageFlip affiche pourtant un feuillet plus grand sur de nombreux écrans de bureau. Cette divergence entraîne une pagination trop anticipée et des espaces blancs disproportionnés.
+
+La branche de refonte corrige cette divergence à deux niveaux :
+- `measureSize()` estime désormais la surface à partir des dimensions effectives de `#shell`, du format des pages et du nombre de feuillets visibles ;
+- `reconcileFlipDimensions()` relit `StPageFlip.getBoundsRect()` et relance le découpage avec la hauteur et la largeur réelles grâce à `updateFromHtml()`. Le recalcul est également déclenché au changement de mode et lors d'un redimensionnement.
+
+Le système continue à répartir les paragraphes entre pages et à conserver un filet de sécurité contre les coupes en bas de page. Les pages volontairement graphiques (couverture ou vote) peuvent rester aérées.
+
+**Essai comparatif de mise en page dans Chromium** sur deux sections initiales et leurs encadrés : à 430 × 608, leur contenu ne tient pas ensemble ; à 530 × 750, elles entrent ensemble avec environ 32 px de marge restante avant le folio. Il s'agit d'un essai représentatif, pas encore d'une recette complète des 32 sections dans Safari.
+
+### Aperçu non définitif
+
+Pour ne pas modifier la version partagée avec les lecteurs, la refonte est également copiée dans un répertoire de prévisualisation indépendant sur `main` :
+
+https://thierrygibert-del.github.io/les-cahiers/apercu-cfdt-refonte/?v=12
+
+Ce dossier reprend `index.html`, `editorial.css` et `reader.js`. Les modifications de la branche de travail doivent être répercutées dans cette copie tant que la PR n'est pas fusionnée. **Le chemin public habituel `/apercu-cfdt/` demeure inchangé.**
