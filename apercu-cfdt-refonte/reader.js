@@ -204,6 +204,19 @@ function assemble(){
  renderLinear();
  printbook.innerHTML="";
 }
+function fitStageToBook(){
+ // Ne jamais laisser l'ancien #shell à 76vh couper une page StPageFlip :
+ // la hauteur de la scène suit la hauteur réellement calculée du feuillet.
+ const shell=document.getElementById("shell");
+ if(!shell||!flip)return;
+ const b=flip.getBoundsRect?.();
+ const rect=book.getBoundingClientRect();
+ const pageHeight=(Number.isFinite(b?.height)&&b.height>0)?b.height:rect.height;
+ if(!Number.isFinite(pageHeight)||pageHeight<200)return;
+ const required=Math.ceil(pageHeight)+48;
+ const current=Number.parseFloat(shell.style.getPropertyValue("--cahier-stage-height"))||0;
+ if(Math.abs(required-current)>3)shell.style.setProperty("--cahier-stage-height",required+"px");
+}
 function reconcileFlipDimensions(){
  if(!flip||!flip.getBoundsRect||!flip.updateFromHtml)return;
  const bounds=flip.getBoundsRect();
@@ -280,7 +293,7 @@ function setMode(on,focus){
   // Après lecture linéaire ou changement d'orientation, relire la vraie
   // surface d'affichage du feuillet et recomposer en cas de différence.
   measuredPageSize=null;
-  requestAnimationFrame(()=>{reconcileFlipDimensions();fitPages()});
+  requestAnimationFrame(()=>{fitStageToBook();reconcileFlipDimensions();fitPages()});
  }
  pageNavigation.hidden=readingMode;progressRoot.hidden=readingMode; fontControls.hidden=!readingMode;
  modeButton.setAttribute("aria-pressed",String(readingMode));
@@ -365,11 +378,12 @@ function init(){
    showCover:true,usePortrait:true,mobileScrollSupport:false,drawShadow:true,maxShadowOpacity:.22,
    flippingTime:window.matchMedia("(prefers-reduced-motion:reduce)").matches?70:590
   });
-  flip.on("flip",e=>{index=e.data;sync();updateHash();requestAnimationFrame(fitPages)});
+  flip.on("flip",e=>{index=e.data;sync();updateHash();requestAnimationFrame(()=>{fitStageToBook();fitPages()})});
   flip.loadFromHTML(book.querySelectorAll(".page"));
   requestAnimationFrame(()=>{
+   fitStageToBook();
    reconcileFlipDimensions();
-   requestAnimationFrame(fitPages);
+   requestAnimationFrame(()=>{fitStageToBook();fitPages()});
   });
   if(index>0)flip.turnToPage(index);
  }catch(e){fallback();linear=true}
@@ -412,6 +426,7 @@ window.addEventListener("resize",()=>{
   // Ne recomposer que si l'écart dépasse 8 pixels.
   requestAnimationFrame(()=>{
    reconcileFlipDimensions();
+   fitStageToBook();
    if(!measuredPageSize)measuredPageSize=before;
    fitPages();
   });
