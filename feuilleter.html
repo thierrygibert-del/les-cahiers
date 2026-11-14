@@ -1,562 +1,117 @@
 <!doctype html>
-<html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#14222e">
-<meta name="description" content="Les Cahiers de Thierry Gibert : feuilletez gratuitement NAZA, une enquête documentaire en 12 pages.">
-<title>Les Cahiers · NAZA — Thierry Gibert</title>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#1e2f35"><meta name="description" content="Les Cahiers n° 01 — NAZA. Cahier documentaire illustré : une lecture visuelle de notre contre-enquête."><title>Les Cahiers N° 01 — NAZA · Édition illustrée</title>
 <style>
-:root{--ink:#182d38;--paper:#f7f4eb;--gold:#ac8747}*{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
-a{color:inherit}header{background:#14222e;color:#fff;padding:15px clamp(16px,4vw,60px);display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
-.brand{font-size:12px;font-weight:800;letter-spacing:.16em;color:#e9d3ab}header a{font-size:13px;text-decoration:none}
-main{max-width:1280px;margin:auto;padding:clamp(17px,3vw,40px)}.eyebrow{color:#84662c;font-weight:750;text-transform:uppercase;font-size:12px;letter-spacing:.14em}
-h1{font:600 clamp(28px,4vw,46px)/1.1 Georgia,serif;margin:6px 0 10px}
-.subtitle{margin:0;font-size:16px;color:#516773;max-width:800px}.meta{font-size:13px;color:#697b84}
-.toolbar{display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap;margin:18px 0 12px}
-button,.button{border:1px solid #b5c1c9;background:#fff;color:#162b37;padding:11px 13px;min-height:43px;font:650 14px Arial,sans-serif;border-radius:8px;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center}
-.primary{background:#193542;color:white;border-color:#193542}button:disabled{opacity:.42;cursor:not-allowed}
-button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
-#counter{font-weight:750;font-variant-numeric:tabular-nums;min-width:116px;text-align:center;font-size:14px}
-#stage{background:radial-gradient(ellipse at top,#506673,#1d3440 60%,#12222d);min-height:610px;padding:20px 8px;border-radius:12px;box-shadow:0 17px 35px #10253038}
-#shell{height:min(74vh,810px);min-height:470px;display:flex;align-items:center;justify-content:center;max-width:1100px;margin:auto}
-#book{margin:auto}
-#fallback{display:none;text-align:center;margin:auto;width:min(450px,90%)}#fallback img{max-width:100%;max-height:min(67vh,740px);box-shadow:0 7px 25px #0008}
-#fallback p,#hint{color:#e6ecf0;font-size:13px;text-align:center}
-#hint{margin:12px auto 0;max-width:760px}.info{max-width:850px;margin:30px auto 44px;color:#435863;font-size:15px;line-height:1.7}
-h2{font:600 25px Georgia,serif;color:#18303e}
-footer{border-top:1px solid #d4d9db;padding:20px;text-align:center;font-size:13px;color:#60747b}
-#stage:fullscreen{border-radius:0;min-height:100vh;display:flex;flex-direction:column;justify-content:center}#stage:fullscreen #shell{flex:1}
-@media(max-width:700px){main{padding:18px 8px}.intro{padding:0 8px}.toolbar{gap:6px}button,.button{font-size:13px;padding:10px}#counter{min-width:80px;font-size:13px}#stage{min-height:500px;padding:14px 5px}#shell{height:min(69vh,690px);min-height:400px}}
+:root{--ink:#202e32;--paper:#efece5;--white:#fffdf8;--gold:#a8834a;--oxide:#944d3e;--hair:#d7d0c4;--pw:360px;--ph:455px;--serif:Georgia,"Iowan Old Style",Cambria,"Times New Roman",serif;--sans:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:var(--sans);background:#eeeae2}button,select{font:inherit}a{color:inherit}a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #b98b50;outline-offset:3px}
+.sitebar{background:#1f3239;color:#fdf9ee;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px clamp(14px,4vw,40px)}.brand{font-size:11px;font-weight:850;letter-spacing:.15em;text-decoration:none}.sitebar nav{display:flex;gap:16px}.sitebar nav a{color:#e5ded2;font-size:12px;text-decoration:none}.sitebar nav a:hover{text-decoration:underline}
+main{max-width:1150px;margin:auto;padding:18px 12px 24px}.lede{text-align:center;margin:2px auto 17px;max-width:850px}.lede .sup{font-weight:750;font-size:10px;letter-spacing:.19em;color:#886947}.lede h1{font:400 clamp(21px,3vw,30px)/1.2 var(--serif);letter-spacing:-.025em;margin:5px 0 3px}.lede p{font-size:12px;color:#655f56;margin:0}
+.controls{display:flex;gap:9px;align-items:center;justify-content:center;margin:9px auto 13px;flex-wrap:wrap}.controls button,.controls select{background:#fffdf8;border:1px solid #c9c4b9;color:#29383f;border-radius:4px;padding:10px 13px;min-height:41px;font-weight:750;font-size:13px}.controls button.primary{background:#243d46;border-color:#243d46;color:white}.controls button:disabled{opacity:.35;cursor:default}.controls select{max-width:min(245px,64vw);width:160px;font-weight:550}.controls .count{font-size:13px;color:#615c52;font-variant-numeric:tabular-nums;min-width:48px;text-align:center;font-weight:750}
+.book-stage{position:relative;perspective:1600px;-webkit-perspective:1600px;min-height:var(--ph);display:flex;justify-content:center;align-items:center;margin:auto;isolation:isolate}.spread{display:flex;align-items:stretch;justify-content:center;gap:0;position:relative;transform-style:preserve-3d}.slot{height:var(--ph);width:var(--pw);flex:0 0 var(--pw)}.slot.empty{display:none}.book-stage:not(.is-single) .slot.empty{display:block;background:#eee9df;border-right:1px solid #d4c9b4}.book-stage.is-single .slot.left{display:none}
+.page{width:100%;height:100%;background:var(--white);box-shadow:0 10px 28px rgba(33,37,31,.17);position:relative;overflow:hidden;border:1px solid #ddd5c8;outline:1px solid #f9f7f1;font-size:var(--font-scale,1em)}.page-inner{height:100%;width:100%;padding:clamp(16px,4.6%,27px);display:flex;flex-direction:column;min-height:0;position:relative;overflow:hidden}.page-kicker{font-size:clamp(9px,2.5vw,11px);font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:#90724d;border-bottom:1px solid var(--hair);padding-bottom:8px;margin-bottom:14px;flex-shrink:0}.page h2{font:600 clamp(23px,6.4vw,34px)/1.14 var(--serif);letter-spacing:-.035em;margin:0 0 12px;flex-shrink:0}.page-body{font:400 clamp(14px,3.35vw,17px)/1.48 var(--serif);color:#37423f;flex-shrink:0}.page-body p{margin:0 0 7px}.page-body strong{font-weight:700}.page-small{font:400 clamp(10px,2.55vw,12px)/1.37 var(--sans);color:#777066;border-top:1px solid #e4ded5;margin:auto 0 9px;padding-top:9px;flex-shrink:0}.page-footer{border-top:1px solid var(--hair);display:flex;align-items:center;justify-content:space-between;padding-top:8px;font-size:9px;font-weight:800;letter-spacing:.09em;color:#8b7a62;margin-top:auto;flex-shrink:0}
+.page--cover{background:#1e3034;color:#fff;border-color:#213139}.page--cover:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,33,33,.36),rgba(15,25,26,.05) 35%,rgba(7,19,21,.92) 95%),url("https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/les-cahiers-naza-couverture-editoriale.jpg") center center/cover no-repeat}.page--cover .page-inner{padding:25px 23px}.cover-mast{display:flex;justify-content:space-between;gap:6px;font-size:11px;font-weight:850;letter-spacing:.14em;border-bottom:1px solid #fffb;padding-bottom:10px}.cover-mast span{font-size:8px;letter-spacing:.08em;color:#e3d6c0}.page--cover h2{font-size:clamp(65px,19vw,103px);font-weight:400;line-height:.88;letter-spacing:-.07em;margin-top:auto;margin-bottom:13px;color:#fff}.page--cover .page-body{color:#f6f0e8}.page--cover .cover-sub{font-size:clamp(17px,4.4vw,24px);line-height:1.22;font-weight:400;margin:0 0 17px}.page--cover .page-small{border-color:#e5ded066;color:#e8dac6}.page--cover .page-footer{border-color:#e5ded088;color:#f7ece0}
+.page--opening{background:#f7f1e8}.page--opening h2{margin-top:8px}.page--opening .page-body{margin-top:auto;margin-bottom:20px}.line-art{display:flex;align-items:center;justify-content:center;height:80px;margin:8px 0}.line-dot{width:27px;height:27px;border-radius:50%;border:2px solid #a8814b;background:#e1d1b6}.line-dot:last-child{background:#293d3d}.line-track{height:2px;width:38px;background:#c7b28f}
+.contents-list{list-style:none;margin:3px 0 0;padding:0}.contents-list li{display:grid;grid-template-columns:32px 1fr;gap:0 6px;border-bottom:1px solid #e2d9cc;padding:9px 0}.contents-list li>span{grid-row:span 2;font:600 22px/1 var(--serif);color:#b1854d}.contents-list b{font-size:13px;line-height:1.16}.contents-list small{font-size:10px;color:#726f68}.scale-list{margin:2px 0;display:flex;flex-direction:column}.scale-list>div{display:flex;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid #e7dfd4}.scale-list span{display:flex;flex-direction:column;min-width:0}.scale-list strong{font-size:12.5px;line-height:1.2}.scale-list small{font-size:10px;color:#6d675f;line-height:1.25}.dot{width:12px;height:12px;border-radius:50%;display:block;flex:0 0 12px}.d1{background:#34594b}.d2{background:#77917a}.d3{background:#b69d5a}.d4{background:#bc804b}.d5{background:#a85e55}
+.systems{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:6px 0 13px}.system{background:#e9e9e1;border:1px solid #d6d0c3;padding:12px 9px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:94px}.system.c{grid-column:span 2;min-height:78px;background:#2b4041;color:white}.system-symbol{font:38px/1 var(--serif);color:#97714a}.system.c .system-symbol{color:#d1bb8d;font-size:28px}.system strong{font-size:11px;letter-spacing:.04em;margin-top:5px}.system small{font-size:10px;line-height:1.32;margin-top:3px}.steps{display:flex;align-items:stretch;gap:3px;margin:24px 0 22px}.steps>div{flex:1;min-width:0;background:#e9e5dc;border-top:3px solid #a78150;padding:9px 4px 12px;text-align:center;display:flex;flex-direction:column;min-height:128px}.steps b{color:#9b7a56;font-size:26px;font-family:var(--serif);font-weight:400}.steps span{font-size:11px;font-weight:800}.steps small{font-size:10px;margin-top:5px;line-height:1.23}.steps>i{align-self:center;font:20px var(--serif);color:#a18053}
+.quadrant{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}.quadrant>div{min-height:105px;background:#eeeae0;border:1px solid #e1d8cd;padding:11px 8px;display:flex;flex-direction:column}.quadrant span{font-size:9px;font-weight:800;color:#90744e;letter-spacing:.05em}.quadrant b{font:400 27px/1.1 var(--serif);margin:9px 0 4px}.quadrant small{font-size:11px;line-height:1.2}
+.page--number{background:#232e33;color:white}.page--number .page-kicker{color:#d8b885;border-color:#5a6360}.page--number h2{font-size:0;line-height:0}.number-graphic{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;text-align:center}.number-graphic .big{font:400 clamp(132px,36vw,205px)/.78 var(--serif);letter-spacing:-.09em;color:#e3bb80}.number-graphic .units{color:#f4eee3;font-size:17px;margin:17px 0}.page--number .page-body{color:#f1ede7}.page--number .page-small{color:#d1c4b4;border-color:#546168}.page--number .page-footer{color:#d5c2a5;border-color:#546168}
+.duel{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:9px 0 0}.duel>div{background:#e8e8e0;border:1px solid #d1c7b6;padding:12px 10px;min-height:140px;text-align:center}.duel>div+div{background:#efe3da}.duel-label{font-size:9px;font-weight:800;color:#756344;line-height:1.3;min-height:26px;display:block}.duel strong{font:500 57px/1.1 var(--serif);color:#1e3539}.duel small{font-size:11px;line-height:1.3;display:block}.unequal{text-align:center;font:500 34px var(--serif);color:#955d44;margin:0}
+.case-layout{margin:8px 0}.case-no{font-size:11px;letter-spacing:.15em;font-weight:800;color:#a17d54}.case-stat{background:#20383e;color:white;padding:20px 17px;margin:8px 0 12px}.case-stat b{font:500 clamp(58px,16vw,82px)/.9 var(--serif);display:block;color:#e3c39a}.case-stat span{font-size:13px;display:block;margin-top:8px}.case-rule{display:flex;gap:12px;align-items:center}.case-rule i{width:5px;align-self:stretch;min-height:45px;background:#b28a59;flex:0 0 5px}.case-rule span{font-size:12px;line-height:1.4}
+.convoy{background:#e6e8e4;padding:16px 12px;margin:16px 0}.convoy>div:first-child{display:flex;align-items:center;gap:10px;justify-content:center}.convoy>div:first-child span{font-size:13px;font-weight:800}.convoy>div:first-child i{width:23px;height:16px;border:2px solid #365359;border-radius:4px;position:relative}.convoy>div:first-child i:after{content:"";position:absolute;bottom:-6px;left:2px;width:5px;height:5px;background:#365359;border-radius:50%;box-shadow:12px 0 #365359}.break{border-top:1px dashed #b28b72;display:flex;gap:12px;align-items:center;margin-top:20px;padding-top:11px}.break b{font:65px/1 var(--serif);color:#a14f42}.break span{font-size:13px;font-weight:700}
+.white-flag{height:160px;margin:12px auto;background:linear-gradient(155deg,#e7e8e1,#f2eee6);position:relative;overflow:hidden;display:flex;justify-content:flex-end;align-items:center;padding:24px}.white-flag .pole{position:absolute;height:130px;width:4px;background:#485d60;left:45px;bottom:0}.white-flag .flag{position:absolute;width:95px;height:61px;border:1px solid #d6d1c7;background:#fff;left:49px;top:25px;clip-path:polygon(0 0,100% 8%,90% 90%,0 100%)}.white-flag strong{font:600 94px/.9 var(--serif);color:#324548;display:block}.white-flag small{font-size:13px;display:block}
+.sources-art{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:12px 0}.source-cluster{display:grid;grid-template-columns:repeat(8,minmax(0,18px));justify-content:center;gap:6px;padding:10px;background:#e8e7df;grid-column:span 2}.source-cluster i{width:18px;height:18px;background:#a8a7a0;border-radius:50%;opacity:.8}.source-cluster i:nth-child(3n){background:#4e6764}.source-text{background:#f0e6d7;padding:12px;text-align:center}.source-text strong{font:500 52px/1 var(--serif);display:block}.source-text span{font-size:11px;line-height:1.25}.source-divide{display:none}
+.network{margin:10px 0;background:#f0ece3;text-align:center;padding:16px 13px}.network-main{background:#24383b;color:#fff;padding:13px;font-size:12px;font-weight:800}.network-arrows{display:flex;justify-content:space-around;color:#9a7951;font-size:24px}.network-arrows i:after{content:"↙"}.network-arrows i+i:after{content:"↘"}.network-pair{display:flex;gap:9px}.network-pair span{background:#d9d6c9;border:1px solid #bcb6a8;padding:11px 8px;flex:1;font-size:13px;font-weight:700}.network-independent{margin:11px auto 0;padding:10px;background:#e5eadf;border-left:4px solid #627e69;font-size:12px;font-weight:800}.network-independent b{color:#2f6c45}
+.translation{display:grid;gap:9px;margin:10px 0}.translation>div{background:#ece5da;border-left:3px solid #a7835b;display:grid;grid-template-columns:29px 1fr;align-items:center;gap:4px 8px;padding:12px}.translation b{grid-row:span 3;font:400 25px var(--serif);color:#99734f}.translation span{font-size:12px;line-height:1.26}.translation i{font-size:18px;line-height:1;color:#985b43}.translation em{font-size:13px;line-height:1.22;color:#944d3e;font-weight:700}
+.law-card{display:grid;gap:10px;margin:12px 0}.law-card div{display:grid;grid-template-columns:40px 1fr;grid-template-rows:auto auto;align-items:center;border:1px solid #d5cdc0;background:#efeae1;padding:8px 12px}.law-card div span{grid-row:span 2;font:31px/1 var(--serif);color:#9b794f}.law-card b{font-size:13px}.law-card small{font-size:11px;line-height:1.3;margin-top:2px}
+.ladder{display:grid;gap:8px;margin:11px 0}.ladder div{background:#e5e8e4;border-left:4px solid #5f7a75;padding:10px 12px;display:flex;gap:13px;align-items:center;min-height:43px}.ladder div:nth-child(2){margin-left:10px}.ladder div:nth-child(3){margin-left:20px}.ladder div:nth-child(4){margin-left:30px;background:#eee1d6;border-left-color:#9d6548}.ladder i{font:20px var(--serif);color:#957247}.ladder span{font-size:12px;font-weight:750;line-height:1.2}
+.page--addendum{background:#f5ece4}.status-paper{padding:17px;border:1px solid #d6bfae;background:#fcf8f1;margin:14px 0}.status-paper>span{font-size:10px;letter-spacing:.13em;color:#9d5e4b;font-weight:850}.status-paper>strong{display:block;font:500 37px/1.4 var(--serif);color:#a14c3e}.status-paper div{font-size:12px;padding:6px 0;border-top:1px solid #e5d8cc}.status-paper i{display:inline-block;width:7px;height:7px;margin-right:10px;border:1px solid #a14c3e;transform:rotate(45deg)}
+.verdict{display:grid;gap:12px;margin:12px 0}.verdict div{padding:14px 13px;border-left:4px solid #5c8573;background:#e8eee6}.verdict div+div{background:#f3e8de;border-left-color:#a3644d}.verdict b{font-size:14px;display:block;margin-bottom:7px}.verdict span{font-size:12px;line-height:1.4;display:block}
+.page--quote{background:#243b42;color:white}.page--quote .page-kicker{color:#d8b884;border-color:#56666a}.page--quote h2{font:italic 400 clamp(30px,7vw,44px)/1.2 var(--serif);color:#faf3e7;margin-top:auto;margin-bottom:15px}.page--quote .page-body{font-size:16px;color:#e2e5df;margin-bottom:20px}.page--quote .page-small{color:#d5d1c6;border-color:#6a7777}.page--quote .page-footer{color:#d5c4a6;border-color:#6a7777}.quote-mark{position:absolute;font:240px/1 var(--serif);color:#ffffff10;left:25px;top:80px;pointer-events:none}
+.end-links{display:grid;gap:10px;margin:18px 0}.end-links a{display:block;background:#243b42;color:#fff;padding:15px 12px;text-decoration:none;font-size:13px;font-weight:800}.end-links a:nth-child(2){background:#e4d6c0;color:#273638}.end-links a:nth-child(3){background:#e9e7e0;color:#273638;border:1px solid #ccc2b1}
+@media(min-width:940px){.page{border-right-color:#b6b0a5}.book-stage:not(.is-single) .slot:first-child .page{box-shadow:-12px 11px 28px #28342c19}.book-stage:not(.is-single) .slot:last-child .page{box-shadow:12px 11px 28px #28342c19}.page h2{font-size:32px}.page-body{font-size:17px}}
+.turning{position:absolute;z-index:20;transform-style:preserve-3d;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 5px 34px #101f2260;pointer-events:none;will-change:transform,opacity,filter}.turning.fwd{transform-origin:left center;animation:flip-forward 620ms cubic-bezier(.22,.07,.15,1) forwards}.turning.back{transform-origin:right center;animation:flip-back 620ms cubic-bezier(.22,.07,.15,1) forwards}@keyframes flip-forward{0%{transform:rotateY(0);opacity:1}45%{filter:brightness(.68)}100%{transform:rotateY(-174deg);opacity:0}}@keyframes flip-back{0%{transform:rotateY(0);opacity:1}45%{filter:brightness(.72)}100%{transform:rotateY(174deg);opacity:0}}
+.reader-note{text-align:center;font-size:11px;color:#6f675d;max-width:570px;margin:12px auto 0;line-height:1.45}.below{display:flex;justify-content:center;gap:12px;margin:13px auto;flex-wrap:wrap}.below a{font-size:12px;text-decoration:none;border-bottom:1px solid #ab987d;padding:7px 3px}.end-footer{margin:20px auto 0;max-width:1100px;padding:15px 9px;border-top:1px solid #d0c8bb;font-size:11px;color:#6e685f;text-align:center}
+@media(max-width:600px){.sitebar{padding:9px 12px}.sitebar nav a{font-size:11px}.lede{margin:0 auto 8px}.lede h1{font-size:22px}.lede .sup{font-size:9px}.lede p{font-size:11px}.controls{gap:6px;margin:5px auto 9px}.controls button,.controls select{min-height:40px;padding:9px 9px;font-size:12px}.controls select{width:118px}.page-inner{padding:15px}.page h2{font-size:clamp(23px,6.2vw,29px)}.page-small{font-size:10px}.page--cover h2{font-size:clamp(63px,19vw,90px)}.page--cover .page-body{font-size:20px}}
 
-/* Lecture mobile : le texte HTML est prioritaire sur la miniature des pages A4. */
-.mobile-choice{display:none}
-.page-enlarge{font-size:13px;color:#e9e9e9;text-align:center;margin:10px 0 0}
-.page-enlarge a{color:#fff;text-underline-offset:3px}
-@media(max-width:700px){
- .mobile-choice{display:block;background:#fffefa;border:1px solid #d9d3c8;border-top:4px solid var(--gold);padding:23px 18px;margin:22px 0 18px;border-radius:9px;box-shadow:0 4px 16px #172b3510}
- .mobile-choice h2{font:600 1.65rem/1.18 Georgia,serif;margin:0 0 10px}
- .mobile-choice p{font-size:15px;line-height:1.65;color:#465960;margin:0 0 15px}
- .mobile-choice .choice-primary{display:block;text-decoration:none;text-align:center;background:#193542;color:#fff;padding:14px 12px;font-weight:750;border-radius:7px;margin:0 0 10px;font-size:16px}
- .mobile-choice button{display:block;width:100%;text-align:center;justify-content:center;background:transparent;border-color:#a6b5bf;font-weight:700;min-height:45px}
- .mobile-choice .fineprint{font-size:13px;color:#69777d;margin:13px 0 0}
- .toolbar,#stage{display:none}
- body.mobile-preview-open .toolbar{display:flex}
- body.mobile-preview-open #stage{display:block}
- #stage{scroll-margin-top:12px}
- #shell{height:min(67vh,640px);min-height:365px}
- .page-enlarge{padding:0 8px}
+@media(max-width:370px){
+.page-inner{padding:11px 12px}
+.page-kicker{font-size:8px;letter-spacing:.09em;margin-bottom:7px;padding-bottom:5px}
+.page h2{font-size:21px;margin-bottom:7px;line-height:1.14}
+.page-body{font-size:13px;line-height:1.34}
+.page-small{font-size:9px;line-height:1.21;padding-top:5px;margin-bottom:4px}
+.page-footer{font-size:7.5px;padding-top:5px}
+.contents-list li{padding:6px 0}.contents-list li>span{font-size:19px}.contents-list b{font-size:12px}.contents-list small{font-size:9px}
+.systems{gap:5px;margin:4px 0}.system{min-height:60px;padding:5px}.system.c{min-height:48px}.system-symbol{font-size:24px}.system.c .system-symbol{font-size:20px}.system small{font-size:9px}.system strong{font-size:10px}
+.steps{margin:10px 0;gap:2px}.steps>div{min-height:86px;padding:6px 3px}.steps b{font-size:20px}.steps span{font-size:10px}.steps small{font-size:9px}.steps>i{font-size:15px}
+.quadrant{gap:5px;margin:5px 0}.quadrant>div{min-height:73px;padding:6px}.quadrant b{font-size:21px;margin:4px 0}.quadrant small{font-size:9px}.quadrant span{font-size:8px}
+.case-layout{margin:5px 0}.case-stat{padding:12px 10px;margin:5px 0}.case-stat b{font-size:57px}.case-stat span{font-size:11px}.case-rule span{font-size:10px}
+.convoy{padding:9px;margin:7px 0}.convoy>div:first-child{gap:5px}.convoy>div:first-child span{font-size:11px}.break{margin-top:10px;padding-top:6px}.break b{font-size:49px}.break span{font-size:11px}
+.sources-art{gap:6px;margin:5px 0}.source-cluster{grid-template-columns:repeat(8,12px);gap:3px;padding:5px}.source-cluster i{width:12px;height:12px}.source-text{padding:6px}.source-text strong{font-size:37px}.source-text span{font-size:9px}
+.network{margin:5px 0;padding:9px}.network-main{padding:7px;font-size:11px}.network-arrows{font-size:17px}.network-pair span{padding:7px;font-size:11px}.network-independent{margin-top:5px;padding:6px;font-size:10px}
+.translation{gap:5px;margin:5px 0}.translation>div{padding:7px}.translation span{font-size:11px}.translation em{font-size:11px}
+.law-card{gap:5px;margin:7px 0}.law-card div{padding:6px;grid-template-columns:28px 1fr}.law-card div span{font-size:22px}.law-card b{font-size:12px}.law-card small{font-size:10px}
+.ladder{gap:5px;margin:6px 0}.ladder div{padding:6px;min-height:32px}.ladder span{font-size:11px}
+.status-paper{margin:7px 0;padding:9px}.status-paper>strong{font-size:31px}.status-paper div{padding:3px;font-size:10px}
+.verdict{gap:6px;margin:6px 0}.verdict div{padding:10px}.verdict b{font-size:12px}.verdict span{font-size:10px}
+.end-links{gap:6px;margin:7px 0}.end-links a{padding:10px;font-size:11px}
+.page--cover .page-inner{padding:13px}.page--cover h2{font-size:63px}.page--cover .cover-sub{font-size:17px}
 }
-
-/* Feuilletage adapté : le téléphone affiche du vrai texte, non des A4 miniaturisés. */
-#mobile-reader{display:none}
-@media(max-width:700px){
-  .mobile-choice, .toolbar, #stage, body.mobile-preview-open .toolbar, body.mobile-preview-open #stage{display:none!important}
-  #mobile-reader{display:block;margin:18px auto 30px;max-width:720px}
-  .reading-intro{background:#f1ede4;border:1px solid #d9d0c3;padding:20px 18px;border-radius:10px;margin:12px 3px 16px}
-  .reading-intro .overline{font-size:11px;letter-spacing:.15em;font-weight:800;color:#80602e;text-transform:uppercase}
-  .reading-intro h2{font:500 27px/1.2 Georgia,serif;margin:9px 0 10px}
-  .reading-intro p{font:15px/1.65 Arial,sans-serif;margin:0;color:#50616a}
-  .reading-controls{display:flex;align-items:center;gap:8px;justify-content:space-between;flex-wrap:wrap;padding:9px 2px}
-  .reading-controls .btn-group{display:flex;gap:7px;align-items:center;width:100%}
-  .reading-controls button{flex:1;justify-content:center;padding:12px 10px;font-size:14px;border-radius:7px}
-  .reading-controls button.primary{background:#193542;color:#fff}
-  .reading-controls button:disabled{opacity:.4}
-  .reading-controls .leaf-count{font-size:13px;font-weight:700;color:#53616b}
-  #mobile-jump{width:100%;min-height:46px;border:1px solid #bbb7b0;border-radius:7px;background:#fff;font:14px Arial,sans-serif;padding:10px;color:#1b303a}
-  .mobile-leaf{padding:24px 20px;background:#fffefa;border:1px solid #e0d9cc;border-radius:10px;box-shadow:0 6px 25px #172b3510;min-height:55vh;overflow-wrap:anywhere}
-  .mobile-leaf .leaf-kicker{font:800 11px Arial,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#93724d;margin:0 0 13px}
-  .mobile-leaf h2{font:500 26px/1.22 Georgia,serif;color:#182f3d;margin:0 0 25px;letter-spacing:-.025em}
-  .mobile-leaf h3{font:600 22px/1.3 Georgia,serif;margin:26px 0 15px}
-  .mobile-leaf p, .mobile-leaf .prose{font:18px/1.78 Georgia,"Times New Roman",serif;color:#263239;letter-spacing:0;margin:0 0 1.25em}
-  .mobile-leaf a{color:#6f4531;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
-  .mobile-leaf sup{font:700 11px Arial,sans-serif}
-  .mobile-leaf ol,.mobile-leaf ul{padding-left:22px;font:16px/1.65 Arial,sans-serif}
-  .mobile-leaf li{margin:9px 0}
-  .mobile-leaf li p{font-size:17px;line-height:1.65}
-  .mobile-leaf .method-box{border-left:4px solid #9b795b;background:#eee9df;padding:15px;margin:10px -4px}
-  .mobile-leaf .method-header p{font:14px/1.6 Arial,sans-serif}
-  .mobile-leaf .method-box .mini-label{font:800 11px Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase}
-  .mobile-leaf .evidence-levels{list-style:none;padding-left:0}
-  .mobile-leaf .evidence-levels li{display:flex;gap:12px;border-top:1px solid #d4c7b6;padding-top:8px;font:14px/1.5 Arial,sans-serif}
-  .mobile-leaf .evidence-number{font-weight:750;color:#6e5135}
-  .mobile-leaf .evidence-levels li div{display:flex;flex-direction:column}
-  .mobile-leaf .evidence-levels span{font-size:13px}
-  .mobile-leaf blockquote{font:italic 24px/1.4 Georgia,serif;border-left:3px solid #a17b58;padding:15px 15px;margin:22px 0;background:#f4efe6}
-  .mobile-leaf blockquote p{font:inherit;margin:0}
-  .mobile-leaf .contrast-panel{padding:14px;border:1px solid #d4cdc3;margin:15px 0}
-  .mobile-leaf .contrast-grid{display:block}
-  .mobile-leaf .contrast-grid>div{border:0!important;padding:8px 0!important}
-  .mobile-leaf .contrast-number{font-size:28px}
-  .mobile-leaf .contrast-panel p{font-size:15px}
-  .mobile-leaf .note-back{font:12px Arial,sans-serif}
-  .mobile-leaf .checkcard{padding:16px;border:1px solid #ded9d0;background:#f6f4ee;margin:0 0 14px}
-  .mobile-leaf .checkcard h3{font:600 18px/1.35 Arial,sans-serif;margin:0 0 12px}
-  .mobile-leaf .checkcard p{font:15px/1.55 Arial,sans-serif;margin:0 0 9px}
-  .mobile-leaf .checkcard strong{color:#6c4935}
-  .mobile-leaf .ref-domain{font:12px Arial,sans-serif;display:block;color:#686d6f}
-  .reading-bottom{padding:14px 2px 25px}
-  .reading-help{font:13px/1.6 Arial,sans-serif;color:#5a6a71;margin:9px 4px 0;text-align:center}
-  #reader-error{background:#fff2e6;color:#6b3427;padding:16px;font-size:15px;border-radius:7px}
-  .mobile-leaf .chapter-back,.mobile-leaf .section-rule,.mobile-leaf .section-top{display:none}
-  .mobile-leaf .last-word{font:italic 22px/1.5 Georgia,serif;padding:12px;background:#f2efe9}
-}
-
-
-/* Sur iPhone, pages HTML lisibles avec animation 3D de feuille tournée. */
-@media(max-width:700px){
-  #mobile-reader .reading-intro h2{font-size:clamp(1.45rem,6.1vw,1.85rem)}
-  #mobile-reader .leaf-stage{
-    position:relative; perspective:1400px; -webkit-perspective:1400px;
-    isolation:isolate; border-radius:9px; background:#ede8df;
-    box-shadow:0 15px 35px rgba(30,35,32,.15);
-    overflow:hidden; margin:5px 1px 0;
-  }
-  #mobile-reader .leaf-stage>.mobile-leaf{
-    margin:0; border-radius:8px; box-shadow:none;
-    height:clamp(440px,69svh,700px); min-height:0;
-    padding:24px 22px 25px; overflow-y:auto; overscroll-behavior:contain;
-    -webkit-overflow-scrolling:touch; scrollbar-width:thin;
-    background:linear-gradient(90deg,rgba(108,89,66,.065),transparent 4%,transparent 97%,rgba(108,89,66,.035)),#fffefa;
-  }
-  #mobile-reader .mobile-leaf h2{font-size:clamp(1.35rem,5.4vw,1.65rem);margin:0 0 20px}
-  #mobile-reader .mobile-leaf p{font-size:clamp(17px,4.4vw,19px);line-height:1.73}
-  #mobile-reader .mobile-leaf .leaf-kicker{font:800 11px/1.4 Arial,sans-serif;margin-bottom:13px}
-  #mobile-reader .leaf-stage>.mobile-leaf.leaf-turn-sheet{
-    position:absolute; inset:0; z-index:5; width:100%;
-    pointer-events:none; overflow:hidden;
-    transform-style:preserve-3d; -webkit-transform-style:preserve-3d;
-    backface-visibility:hidden; -webkit-backface-visibility:hidden;
-    will-change:transform,filter,opacity;
-    border-radius:8px;
-    box-shadow:5px 3px 16px rgba(20,25,28,.2);
-  }
-  #mobile-reader .leaf-turn-sheet.turn-forward{
-    transform-origin:left center; -webkit-transform-origin:left center;
-    animation:leaf-turn-forward 650ms cubic-bezier(.3,.07,.17,1) forwards;
-  }
-  #mobile-reader .leaf-turn-sheet.turn-back{
-    transform-origin:right center; -webkit-transform-origin:right center;
-    animation:leaf-turn-back 650ms cubic-bezier(.3,.07,.17,1) forwards;
-  }
-  #mobile-reader .page-turn-caption{
-    font:12px/1.6 Arial,sans-serif;color:#667177;text-align:center;
-    margin:8px 0 14px;
-  }
-}
-@keyframes leaf-turn-forward{
-  0%{transform:rotateY(0deg);filter:brightness(1);opacity:1}
-  47%{filter:brightness(.8);opacity:1}
-  100%{transform:rotateY(-178deg);filter:brightness(.93);opacity:0}
-}
-@keyframes leaf-turn-back{
-  0%{transform:rotateY(0deg);filter:brightness(1);opacity:1}
-  47%{filter:brightness(.82);opacity:1}
-  100%{transform:rotateY(178deg);filter:brightness(.93);opacity:0}
-}
-@media(prefers-reduced-motion:reduce){
-  #mobile-reader .leaf-turn-sheet.turn-forward,
-  #mobile-reader .leaf-turn-sheet.turn-back{animation:none!important}
-}
-
-
-/* Pagination réelle par hauteur d'écran : aucune feuille ne requiert un scroll intérieur. */
-@media(max-width:700px){
-  #mobile-reader .leaf-stage>.mobile-leaf{
-    height:clamp(310px,calc(100svh - 265px),610px);
-    max-height:none; min-height:0; overflow:hidden;
-    padding:19px 20px 20px;
-    touch-action:pan-y;
-  }
-  #mobile-reader .mobile-leaf h2{font-size:clamp(1.23rem,5.2vw,1.55rem);line-height:1.2;margin:0 0 13px}
-  #mobile-reader .mobile-leaf .leaf-kicker{font-size:10px;margin-bottom:10px}
-  #mobile-reader .mobile-leaf p{font-size:clamp(16.5px,4.5vw,18.5px);line-height:1.64;margin-bottom:.9em}
-  #mobile-reader .mobile-leaf p.leaf-kicker{font:800 10px/1.4 Arial,sans-serif}
-  #mobile-reader .reading-intro{padding:14px 16px;margin:8px 3px 10px}
-  #mobile-reader .reading-intro h2{font-size:clamp(1.34rem,5.7vw,1.7rem)}
-  #mobile-reader .reading-intro p{font-size:14px;line-height:1.45}
-  #mobile-reader .reading-controls{padding:5px 2px;gap:6px}
-  #mobile-reader .reading-controls button{min-height:41px;padding:9px 8px}
-  #mobile-reader #mobile-jump{min-height:42px}
-  #mobile-reader .mobile-leaf .leaf-kicker{font:800 10px/1.4 Arial,sans-serif}
-  #mobile-reader .leaf-stage>.mobile-leaf.measure-leaf{position:absolute;inset:0;visibility:hidden;pointer-events:none;z-index:-1;width:100%;overflow:hidden}
-  #mobile-reader .leaf-stage>.mobile-leaf.leaf-turn-sheet{overflow:hidden}
-}
-
-</style>
-</head>
-<body>
-<header><div class="brand">THIERRY GIBERT · LES CAHIERS</div><a href="https://thierrygibert15.wordpress.com/publications/les-cahiers/">← Retour au site WordPress</a></header>
-<main>
-<section class="intro"><p class="eyebrow">Collection documentaire · Cahier n° 01</p><h1>NAZA : vérifier avant de conclure</h1><p class="subtitle">Ce que le documentaire démontre, ce qu’il suggère et ce qu’il ne prouve pas.</p><p class="meta">Édition consolidée du 13 novembre 2026 · 12 pages · Enquête et compléments contradictoires</p></section>
-
-<section class="mobile-choice" aria-labelledby="mobile-reading-title">
- <h2 id="mobile-reading-title">Lire le cahier sur téléphone</h2>
- <p>Le cahier papier est au format A4 : ses pages deviennent trop petites pour être lues confortablement sur un iPhone. La version éditoriale reprend <strong>le texte intégral</strong> avec une taille de caractères adaptée.</p>
- <a class="choice-primary" href="./">Lire confortablement l’enquête →</a>
- <button type="button" id="mobile-preview-toggle" aria-controls="stage" aria-expanded="false">Voir quand même les pages à tourner</button>
- <p class="fineprint">Le feuilletage est conservé comme aperçu visuel. Vous pourrez agrandir chaque page séparément.</p>
-</section>
-
-<section id="mobile-reader" aria-labelledby="mobile-reader-title">
- <div class="reading-intro">
-  <div class="overline">Les Cahiers N° 01 · Édition mobile</div>
-  <h2 id="mobile-reader-title">Une enquête à lire, pas à déchiffrer.</h2>
-  <p>Le texte original se lit en grands caractères sur de vraies pages animées. Faites glisser le doigt ou utilisez les flèches pour les tourner. Sur ordinateur, le cahier conserve son feuilletage illustré.</p>
- </div>
- <div class="reading-controls" aria-label="Navigation de lecture">
-  <label for="mobile-jump" style="font:700 12px Arial,sans-serif;color:#4d626b">Accès direct au chapitre</label>
-  <select id="mobile-jump" aria-label="Choisir un chapitre"><option>Chargement du sommaire…</option></select>
-  <div class="btn-group">
-   <button id="mobile-prev" type="button" aria-label="Page précédente">← Précédente</button>
-   <span class="leaf-count" id="mobile-count" aria-live="polite">–/–</span>
-   <button id="mobile-next" class="primary" type="button" aria-label="Page suivante">Suivante →</button>
-  </div>
- </div>
- <div class="leaf-stage" id="leaf-stage" aria-label="Pages à feuilleter">
-  <article id="mobile-leaf" class="mobile-leaf" tabindex="-1" aria-label="Page courante du cahier">
-   <p>Chargement du texte de l’enquête…</p>
-  </article>
- </div>
- <nav class="reading-controls reading-bottom" aria-label="Passage à la page suivante">
-  <div class="btn-group">
-   <button id="mobile-prev-bottom" type="button">← Page précédente</button>
-   <button id="mobile-next-bottom" class="primary" type="button">Page suivante →</button>
-  </div>
- </nav>
- <p class="reading-help">Chaque feuille tient entièrement sur l’écran. Balayez horizontalement ou utilisez les flèches pour la tourner ; le texte n’est plus coupé.</p>
- <p class="reading-help"><a href="./">Consulter l’édition web continue</a> · <a target="_blank" rel="noopener" href="https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/les-cahiers-01-naza-edition-consolidee-13-11-2026.pdf">PDF intégral</a></p>
-</section>
-<nav class="toolbar" aria-label="Navigation dans le cahier">
-<button id="prev" type="button" aria-label="Page précédente">← Précédente</button><span id="counter" aria-live="polite">Couverture</span><button class="primary" id="next" type="button" aria-label="Page suivante">Suivante →</button>
-<button id="fullscreen" type="button">⛶ Plein écran</button>
-<a class="button" href="https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/les-cahiers-01-naza-edition-consolidee-13-11-2026.pdf" target="_blank" rel="noopener">↓ PDF intégral</a>
-</nav>
-<section id="stage" aria-label="Feuilletage interactif de NAZA">
-<div id="shell"><div id="book" aria-label="Livre NAZA"></div>
-<div id="fallback"><img id="fallback-image" src="https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/naza-cahier-01-page-01.jpg" alt="Couverture de NAZA"><p id="fallback-message">Chargement du lecteur…</p></div></div>
-<p id="hint">Tournez les pages avec les flèches ou un geste tactile. Les pages A4 sont volontairement conservées à leur format d’origine.</p>
-<p class="page-enlarge"><a id="page-enlarge" target="_blank" rel="noopener" href="https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/naza-cahier-01-page-01.jpg">Agrandir cette page ↗</a></p>
-</section>
-<section class="info"><h2>Lire les faits, confronter les sources</h2><p>Ce cahier distingue les informations établies, les éléments corroborés et les affirmations qui demeurent contestées. Il conserve le texte de référence du 4 octobre 2026 et présente séparément les compléments du 13 novembre.</p><p><a href="https://thierrygibert15.wordpress.com/2026/10/04/naza-verifier-avant-de-conclure/">Lire l’article et ses mises à jour</a> · <a href="https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/les-cahiers-01-naza-edition-consolidee-13-11-2026.pdf">Télécharger les 12 pages en PDF</a></p></section>
-</main>
-<footer>Les Cahiers · Thierry Gibert · Lecteur libre : <a href="https://github.com/Nodlik/StPageFlip">StPageFlip (MIT)</a></footer>
-<noscript><p>JavaScript est nécessaire pour tourner les pages. <a href="https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/les-cahiers-01-naza-edition-consolidee-13-11-2026.pdf">Lire le PDF.</a></p></noscript>
-<script defer src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
-<script defer>
-(function(){
-"use strict";
-var base="https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/naza-cahier-01-page-";
-var urls=Array.from({length:12},function(_,i){return base+String(i+1).padStart(2,"0")+".jpg";});
-var count=document.getElementById("counter"),prev=document.getElementById("prev"),next=document.getElementById("next");
-var stage=document.getElementById("stage"),fallback=document.getElementById("fallback");
-var fbImg=document.getElementById("fallback-image"),fbMsg=document.getElementById("fallback-message");
-var page=0,flip=null,started=false;
-var enlarge=document.getElementById("page-enlarge"),mobileToggle=document.getElementById("mobile-preview-toggle");
-function sync(){count.textContent=page===0?"Couverture · 1/12":"Page "+(page+1)+" / 12";prev.disabled=page===0;next.disabled=page===11;if(!flip)fbImg.src=urls[page];enlarge.href=urls[page];enlarge.setAttribute("aria-label","Agrandir la page "+(page+1)+" du cahier");}
-function fallbackMode(){flip=null;fallback.style.display="block";fbMsg.textContent="Lecture simplifiée : utilisez les flèches pour parcourir les pages.";sync();}
-function init(){
-if(started)return;started=true;
-if(!window.St||!window.St.PageFlip){fallbackMode();return;}
-try{
-flip=new window.St.PageFlip(document.getElementById("book"),{
-width:430,height:608,size:"stretch",minWidth:210,maxWidth:530,minHeight:297,maxHeight:750,
-showCover:true,usePortrait:true,mobileScrollSupport:false,drawShadow:true,maxShadowOpacity:0.35,
-flippingTime:window.matchMedia("(prefers-reduced-motion: reduce)").matches?100:750
-});
-flip.on("flip",function(e){page=e.data;sync();});
-flip.on("init",function(e){page=e.data.page;sync();});
-flip.loadFromImages(urls);sync();
-}catch(e){fallbackMode();}
-}
-prev.addEventListener("click",function(){if(flip){flip.flipPrev("bottom");}else{page=Math.max(0,page-1);}sync();});
-next.addEventListener("click",function(){if(flip){flip.flipNext("bottom");}else{page=Math.min(11,page+1);}sync();});
-document.getElementById("fullscreen").addEventListener("click",function(){
-if(document.fullscreenElement){document.exitFullscreen&&document.exitFullscreen();}
-else if(stage.requestFullscreen){stage.requestFullscreen().catch(function(){});}
-else {window.open("https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/les-cahiers-01-naza-edition-consolidee-13-11-2026.pdf","_blank");}
-});
-document.addEventListener("keydown",function(e){if(window.matchMedia("(max-width:700px)").matches)return;if(e.target&&e.target.matches("input,textarea,select"))return;if(e.key==="ArrowRight")next.click();if(e.key==="ArrowLeft")prev.click();});
-sync();
-mobileToggle.addEventListener("click",function(){
- var opened=!document.body.classList.contains("mobile-preview-open");
- document.body.classList.toggle("mobile-preview-open",opened);
- mobileToggle.setAttribute("aria-expanded",String(opened));
- mobileToggle.textContent=opened?"Masquer le feuilletage":"Voir quand même les pages à tourner";
- if(opened){
-  if(document.readyState==="complete")init();
-  stage.scrollIntoView({behavior:"smooth",block:"start"});
- }
-});
-window.addEventListener("load",function(){
- if(!window.matchMedia("(max-width:700px)").matches||document.body.classList.contains("mobile-preview-open"))init();
-},{once:true});
-})();
-</script>
-
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.turning.fwd,.turning.back{animation:none}}
+</style></head>
+<body><header class="sitebar"><a class="brand" href="https://thierrygibert15.wordpress.com/publications/les-cahiers/">THIERRY GIBERT <span aria-hidden="true">/</span> LES CAHIERS</a><nav><a href="./">Étude intégrale</a><a href="https://thierrygibert15.wordpress.com/publications/les-cahiers/">WordPress</a></nav></header>
+<main><section class="lede"><div class="sup">Édition illustrée · Contre-enquête documentaire</div><h1>Les Cahiers N° 01 — NAZA</h1><p>Une enquête à découvrir feuille après feuille. Dossier complet accessible séparément.</p></section>
+<section id="lecteur" aria-label="Cahier illustré à feuilleter"><nav class="controls" aria-label="Commandes du feuilletage"><button type="button" id="prev" aria-label="Revenir aux pages précédentes">← Précédente</button><span class="count" id="count" aria-live="polite">01 / 21</span><button class="primary" id="next" type="button" aria-label="Tourner la page suivante">Suivante →</button><select aria-label="Accéder à un dossier" id="chapters"><option>Sommaire</option></select></nav><div class="book-stage is-single" id="stage"><div class="spread" id="spread"><div class="slot left empty"></div><div class="slot right"></div></div></div><p class="reader-note">Balayez horizontalement ou utilisez les flèches pour tourner les pages. Illustrations et schémas éditoriaux : ils ne constituent pas des preuves documentaires.</p></section>
+<div class="below"><a href="./">Lire la contre-enquête intégrale ↗</a><a href="https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/les-cahiers-01-naza-edition-consolidee-13-11-2026.pdf">Télécharger le PDF ↗</a><a href="https://thierrygibert15.wordpress.com/publications/les-cahiers/">Retour à la bibliothèque ↗</a></div></main>
+<footer class="end-footer">LES CAHIERS · Thierry Gibert · Édition illustrée du 14 novembre 2026 · Synthèse fondée sur le rapport consolidé du 13 novembre 2026</footer>
+<div id="source" hidden><article class="page page--cover" data-section="Couverture" data-short="NAZA" data-index="0"><div class="page-inner"><div class="cover-mast">LES CAHIERS <span>THIERRY GIBERT</span></div><h2>NAZA</h2><div class="page-body"><p class="cover-sub">Ce que le documentaire démontre, ce qu’il suggère et ce qu’il ne prouve pas.</p></div><p class="page-small">Contre-enquête · Édition consolidée du 13 novembre 2026</p><footer class="page-footer"><span>ÉDITION DOCUMENTAIRE</span><span>NOV. 2026</span></footer></div></article>
+<article class="page page--opening" data-section="Ouverture" data-short="Vérifier. Puis conclure." data-index="1"><div class="page-inner"><div class="page-kicker">Éditorial</div><h2>Vérifier. Puis conclure.</h2><div class="line-art"><span class="line-dot"></span><span class="line-track"></span><span class="line-dot"></span><span class="line-track"></span><span class="line-dot"></span></div><div class="page-body"><p>Une enquête sur des accusations graves mérite davantage qu’un réflexe partisan.</p><p>Chaque pièce doit garder son <strong>niveau de preuve</strong>. Une réponse officielle n’est pas une vérification indépendante. Un témoignage n’est pas un ordre opérationnel.</p></div><p class="page-small">Le rapport complet reste accessible depuis la dernière page.</p><footer class="page-footer"><span>NAZA · N° 01</span><span>02 / 21</span></footer></div></article>
+<article class="page page--contents" data-section="Sommaire" data-short="Une enquête en cinq dossiers" data-index="2"><div class="page-inner"><div class="page-kicker">Le parcours</div><h2>Une enquête en cinq dossiers</h2><ol class="contents-list">
+<li><span>01</span><b>La machine de ciblage</b><small>Outils et contrôle humain</small></li>
+<li><span>02</span><b>Les chiffres</b><small>Risque anticipé et bilans</small></li>
+<li><span>03</span><b>Les opérations</b><small>Études de cas</small></li>
+<li><span>04</span><b>La preuve</b><small>Témoignages, montage et sources</small></li>
+<li><span>05</span><b>Le droit</b><small>Proportionnalité et intention</small></li></ol><div class="page-body"></div><p class="page-small">Un aperçu illustré du dossier. Les développements complets et les références figurent dans l’édition intégrale.</p><footer class="page-footer"><span>NAZA · N° 01</span><span>03 / 21</span></footer></div></article>
+<article class="page page--method" data-section="Méthode" data-short="Cinq degrés de preuve" data-index="3"><div class="page-inner"><div class="page-kicker">Notre méthode</div><h2>Cinq degrés de preuve</h2><div class="scale-list">
+<div><i class="dot d1"></i><span><strong>Établi</strong><small>Preuve directe ou recoupements indépendants.</small></span></div>
+<div><i class="dot d2"></i><span><strong>Fortement corroboré</strong><small>Plusieurs éléments concordants.</small></span></div>
+<div><i class="dot d3"></i><span><strong>Plausible mais incomplet</strong><small>Des pièces essentielles manquent.</small></span></div>
+<div><i class="dot d4"></i><span><strong>Non vérifiable ou contesté</strong><small>Versions impossibles à départager.</small></span></div>
+<div><i class="dot d5"></i><span><strong>Contredit ou trompeur</strong><small>Incompatible avec les données disponibles.</small></span></div>
+</div><div class="page-body"></div><p class="page-small">Une grille appliquée à chaque affirmation plutôt qu’un verdict global.</p><footer class="page-footer"><span>NAZA · N° 01</span><span>04 / 21</span></footer></div></article>
+<article class="page page--diagram" data-section="Ciblage" data-short="Trois noms. Trois fonctions." data-index="4"><div class="page-inner"><div class="page-kicker">01 · La machine de ciblage</div><h2>Trois noms. Trois fonctions.</h2><div class="systems"><div class="system a"><span class="system-symbol">◉</span><strong>HABSORA</strong><small>Cibles potentielles</small></div><div class="system b"><span class="system-symbol">◎</span><strong>LAVENDER</strong><small>Personnes présumées liées à des groupes armés</small></div><div class="system c"><span class="system-symbol">⌖</span><strong>WHERE’S DADDY?</strong><small>Signalement d’une présence au domicile selon les témoignages</small></div></div><div class="page-body"><p>Ces outils interviennent à différents moments d’une chaîne de renseignement. <strong>Une cible proposée n’est pas une cible frappée.</strong></p></div><p class="page-small">Schéma de fonctions alléguées ou reconnues, non représentation d’une interface militaire réelle.</p><footer class="page-footer"><span>NAZA · N° 01</span><span>05 / 21</span></footer></div></article>
+<article class="page page--flow" data-section="Ciblage" data-short="Le contrôle humain est décisif" data-index="5"><div class="page-inner"><div class="page-kicker">01 · La machine de ciblage</div><h2>Le contrôle humain est décisif</h2><div class="steps"><div><b>01</b><span>Proposition</span><small>Données et classement</small></div><i>→</i><div><b>02</b><span>Vérification</span><small>Statut, contexte, civils</small></div><i>→</i><div><b>03</b><span>Décision</span><small>Autoriser, différer, annuler</small></div></div><div class="page-body"><p>L’automatisation accroît le débit de propositions. Sa valeur dépend du temps et des informations disponibles pour les examiner.</p></div><p class="page-small">La présence d’un opérateur ne garantit pas à elle seule la qualité du contrôle.</p><footer class="page-footer"><span>NAZA · N° 01</span><span>06 / 21</span></footer></div></article>
+<article class="page page--quadrant" data-section="Chiffres" data-short="Quatre nombres à ne pas confondre" data-index="6"><div class="page-inner"><div class="page-kicker">02 · Les chiffres</div><h2>Quatre nombres à ne pas confondre</h2><div class="quadrant"><div><span>EX ANTE</span><b>Risque</b><small>Pertes anticipées</small></div><div><span>COMMANDEMENT</span><b>Seuil</b><small>Niveau d’autorisation</small></div><div><span>EX POST</span><b>Bilan</b><small>Morts effectivement constatées</small></div><div><span>PLUSIEURS FRAPPES</span><b>Cumul</b><small>Limite sur une période</small></div></div><div class="page-body"><p>Un chiffre peut décrire un seuil, une autorisation, un bilan après frappe ou un plafond cumulé.</p></div><p class="page-small">Confondre ces catégories peut dénaturer une procédure opérationnelle.</p><footer class="page-footer"><span>NAZA · N° 01</span><span>07 / 21</span></footer></div></article>
+<article class="page page--number" data-section="Chiffres" data-short="20" data-index="7"><div class="page-inner"><div class="page-kicker">02 · Les chiffres</div><h2>20</h2><div class="number-graphic"><span class="big">20</span><span class="units">risque civil anticipé<br>dans certaines conditions</span></div><div class="page-body"><p>Pour certaines catégories de cibles, un ordre du 7 octobre 2023 a permis de mettre en danger jusqu’à <strong>20 civils par frappe</strong>, selon l’enquête du <em>New York Times</em>.</p></div><p class="page-small">New York Times, 26 décembre 2024. Ce n’est pas un barème universel.</p><footer class="page-footer"><span>NAZA · N° 01</span><span>08 / 21</span></footer></div></article>
+<article class="page page--duel" data-section="Chiffres" data-short="500 ≠ 500" data-index="8"><div class="page-inner"><div class="page-kicker">02 · Les chiffres</div><h2>500 ≠ 500</h2><div class="duel"><div><span class="duel-label">DOCUMENTÉ PAR LE NYT</span><strong>500</strong><small>Risque cumulé sur une journée</small></div><div><span class="duel-label">NON ÉTABLI PUBLIQUEMENT</span><strong>500</strong><small>Pour une frappe unique</small></div></div><div class="unequal">≠</div><div class="page-body"><p>Un plafond temporaire de <strong>500 civils mis en danger cumulativement par jour</strong> a été rapporté pour octobre 2023.</p></div><p class="page-small">L’existence de la directive cumulative ne prouve pas l’allégation sur une seule frappe.</p><footer class="page-footer"><span>NAZA · N° 01</span><span>09 / 21</span></footer></div></article>
+<article class="page page--case" data-section="Opérations" data-short="Jabaliya. 31 octobre 2023." data-index="9"><div class="page-inner"><div class="page-kicker">03 · Étude de cas</div><h2>Jabaliya. 31 octobre 2023.</h2><div class="case-layout"><span class="case-no">DOSSIER / 01</span><div class="case-stat"><b>126–143</b><span>civils tués, selon une estimation d’Airwars</span></div><div class="case-rule"><i></i><span>Un bilan après l’attaque ne renseigne pas mécaniquement sur le risque anticipé avant celle-ci.</span></div></div><div class="page-body"><p>La frappe vise notamment Ibrahim Biari et un réseau souterrain. Les destructions civiles sont considérables.</p></div><p class="page-small">Airwars, dossier ISPT0783, actualisation août 2026. Fourchette attribuée à cette source.</p><footer class="page-footer"><span>NAZA · N° 01</span><span>10 / 21</span></footer></div></article>
+<article class="page page--wck" data-section="Opérations" data-short="Sept humanitaires tués" data-index="10"><div class="page-inner"><div class="page-kicker">03 · Étude de cas</div><h2>Sept humanitaires tués</h2><div class="convoy"><div><span>Convoi<br>humanitaire</span><i></i><i></i><i></i></div><div class="break"><b>×</b><span>Identification et déconfliction défaillantes</span></div></div><div class="page-body"><p>En avril 2024, une frappe israélienne tue sept membres de <em>World Central Kitchen</em>. L’enquête de Tsahal reconnaît des erreurs graves et des violations de procédure.</p></div><p class="page-small">La faute peut être établie sans prouver une intention de viser des humanitaires en tant que tels.</p><footer class="page-footer"><span>NAZA · N° 01</span><span>11 / 21</span></footer></div></article>
+<article class="page page--hostages" data-section="Opérations" data-short="Trois otages, un drapeau blanc" data-index="11"><div class="page-inner"><div class="page-kicker">03 · Étude de cas</div><h2>Trois otages, un drapeau blanc</h2><div class="white-flag"><span class="pole"></span><span class="flag"></span><div><strong>3</strong><small>otages tués</small></div></div><div class="page-body"><p>À Shejaiya, le 15 décembre 2023, trois otages israéliens non armés sont tués par des soldats israéliens.</p></div><p class="page-small">Tsahal a conclu que les tirs violaient les règles d’engagement. Le cas éclaire les risques de certaines pratiques locales.</p><footer class="page-footer"><span>NAZA · N° 01</span><span>12 / 21</span></footer></div></article>
+<article class="page page--sources" data-section="Preuves" data-short="Un témoin n’est pas tout le dossier" data-index="12"><div class="page-inner"><div class="page-kicker">04 · Les sources</div><h2>Un témoin n’est pas tout le dossier</h2><div class="sources-art"><div class="source-cluster"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="source-text"><strong>24</strong><span>Témoins filmés</span></div><div class="source-divide"></div><div class="source-text"><strong>100+</strong><span>Sources revendiquées par les producteurs</span></div></div><div class="page-body"><p>Le documentaire montre des témoins anonymisés. Les producteurs déclarent avoir interrogé <strong>plus de 100 sources</strong>.</p></div><p class="page-small">Le nombre de sources annoncées n’établit pas leur recoupement indépendant.</p><footer class="page-footer"><span>NAZA · N° 01</span><span>13 / 21</span></footer></div></article>
+<article class="page page--network" data-section="Preuves" data-short="La reprise n’est pas une preuve nouvelle" data-index="13"><div class="page-inner"><div class="page-kicker">04 · Les sources</div><h2>La reprise n’est pas une preuve nouvelle</h2><div class="network"><div class="network-main">Témoignages initiaux</div><div class="network-arrows"><i></i><i></i></div><div class="network-pair"><span>Enquête A</span><span>Reprise A</span></div><div class="network-independent">Enquête indépendante <b>✓</b></div></div><div class="page-body"><p>Plusieurs publications peuvent dépendre des mêmes témoins. Le nombre d’articles ne suffit pas à mesurer la force d’une affirmation.</p></div><p class="page-small">Un second circuit documentaire apporte une corroboration plus forte qu’une citation en cascade.</p><footer class="page-footer"><span>NAZA · N° 01</span><span>14 / 21</span></footer></div></article>
+<article class="page page--subtitles" data-section="Actualisation" data-short="Deux sous-titres à vérifier" data-index="14"><div class="page-inner"><div class="page-kicker">04 · Actualisation</div><h2>Deux sous-titres à vérifier</h2><div class="translation"><div><b>01</b><span>Présence d’Ahmad et de sa famille</span><i>→</i><em>Annonce de leur mort</em></div><div><b>02</b><span>« Environ 500 » évoqués</span><i>→</i><em>Autorisation explicite de tuer 500</em></div></div><div class="page-body"><p><em>The Times of Israel</em> a signalé deux divergences importantes entre l’hébreu et les sous-titres anglais de NAZA.</p></div><p class="page-small">Discordances rapportées par un média. Écoute et retraduction directes encore nécessaires.</p><footer class="page-footer"><span>NAZA · N° 01</span><span>15 / 21</span></footer></div></article>
+<article class="page page--law" data-section="Droit" data-short="Trois obligations essentielles" data-index="15"><div class="page-inner"><div class="page-kicker">05 · Le droit</div><h2>Trois obligations essentielles</h2><div class="law-card"><div><span>◌</span><b>Distinction</b><small>Identifier l’objectif militaire</small></div><div><span>⚖</span><b>Proportionnalité</b><small>Peser risque et avantage concret attendu</small></div><div><span>◇</span><b>Précautions</b><small>Réduire les dommages réalisables</small></div></div><div class="page-body"><p>La proportionnalité s’apprécie <strong>avant</strong> l’attaque, avec les informations alors disponibles.</p></div><p class="page-small">DIH coutumier, notamment règle 14 du CICR. Aucun quota universel ne remplace l’examen concret.</p><footer class="page-footer"><span>NAZA · N° 01</span><span>16 / 21</span></footer></div></article>
+<article class="page page--ladder" data-section="Droit" data-short="Le risque n’est pas l’intention" data-index="16"><div class="page-inner"><div class="page-kicker">05 · Le droit</div><h2>Le risque n’est pas l’intention</h2><div class="ladder"><div><i>01</i><span>Intensification du ciblage</span></div><div><i>02</i><span>Risque civil accepté</span></div><div><i>03</i><span>Pratiques systémiques possibles</span></div><div class="last"><i>04</i><span>Intention spécifique de destruction</span></div></div><div class="page-body"><p>Ce sont des questions distinctes. L’une ne se déduit pas automatiquement de l’autre.</p></div><p class="page-small">Chaque niveau exige des preuves distinctes ; les qualifications juridiques ont leurs propres éléments constitutifs.</p><footer class="page-footer"><span>NAZA · N° 01</span><span>17 / 21</span></footer></div></article>
+<article class="page page--addendum" data-section="Actualisation" data-short="Un point reste contesté" data-index="17"><div class="page-inner"><div class="page-kicker">13 novembre 2026</div><h2>Un point reste contesté</h2><div class="status-paper"><span>ÉTAT DE LA PREUVE</span><strong>NON ÉTABLI</strong><div><i></i>Date de frappe non fournie</div><div><i></i>Fiche de ciblage non publique</div><div><i></i>Démenti explicite de Tsahal</div></div><div class="page-body"><p>L’allégation de <strong>500 morts civils anticipés pour une frappe unique</strong> ne dispose pas de pièces publiques suffisantes.</p></div><p class="page-small">Un démenti officiel n’est pas à lui seul une preuve indépendante d’inexistence.</p><footer class="page-footer"><span>NAZA · N° 01</span><span>18 / 21</span></footer></div></article>
+<article class="page page--verdict" data-section="Synthèse" data-short="Ce que le dossier permet de dire" data-index="18"><div class="page-inner"><div class="page-kicker">État des vérifications</div><h2>Ce que le dossier permet de dire</h2><div class="verdict"><div><b>Solidement documenté</b><span>Outils de ciblage et accélération ; allègements de certaines procédures ; pertes civiles très élevées dans plusieurs cas.</span></div><div><b>Reste à établir</b><span>500 civils pour une frappe unique ; exactitude de deux sous-titres ; certaines attributions d’images.</span></div></div><div class="page-body"></div><p class="page-small">Distinguer les degrés de preuve n’atténue pas la gravité des faits établis.</p><footer class="page-footer"><span>NAZA · N° 01</span><span>19 / 21</span></footer></div></article>
+<article class="page page--quote" data-section="Conclusion" data-short="Savoir, accepter et vouloir ne sont pas synonymes." data-index="19"><div class="page-inner"><div class="page-kicker">La conclusion</div><h2>Savoir, accepter et vouloir ne sont pas synonymes.</h2><div class="quote-mark">“</div><div class="page-body"><p>La rigueur consiste à établir, preuve après preuve, où l’on passe de l’un à l’autre.</p></div><p class="page-small">Extrait de la conclusion de la contre-enquête.</p><footer class="page-footer"><span>NAZA · N° 01</span><span>20 / 21</span></footer></div></article>
+<article class="page page--end" data-section="Sources" data-short="Retour aux pièces" data-index="20"><div class="page-inner"><div class="page-kicker">Pour approfondir</div><h2>Retour aux pièces</h2><div class="end-links"><a href="./">↗ Lire l’enquête intégrale</a><a href="https://thierrygibert15.wordpress.com/wp-content/uploads/2026/11/les-cahiers-01-naza-edition-consolidee-13-11-2026.pdf" target="_blank" rel="noopener">↓ Télécharger le cahier PDF</a><a href="https://thierrygibert15.wordpress.com/publications/les-cahiers/">↗ Bibliothèque des publications</a></div><div class="page-body"><p>Cette édition illustrée est une <strong>lecture de découverte</strong>. Le rapport intégral garde tous ses développements et ses références.</p></div><p class="page-small">Sources principales : IDF, New York Times, Reuters, Airwars, Times of Israel, The Guardian, CICR. Liens détaillés dans l’édition intégrale.</p><footer class="page-footer"><span>NAZA · N° 01</span><span>21 / 21</span></footer></div></article></div>
 <script>
-(function(){
- "use strict";
- if(!window.matchMedia("(max-width:700px)").matches)return;
- const leaf=document.getElementById("mobile-leaf"),jump=document.getElementById("mobile-jump");
- const pageCount=document.getElementById("mobile-count");
- const prev=[document.getElementById("mobile-prev"),document.getElementById("mobile-prev-bottom")];
- const next=[document.getElementById("mobile-next"),document.getElementById("mobile-next-bottom")];
- const pages=[],anchors=[];
- let sourcePages=[];
- const leafStage=document.getElementById("leaf-stage");
- let at=0,ready=false,turning=false;
- const safeHtml=(node)=>{
-  const n=node.cloneNode(true);
-  n.querySelectorAll("a[href^='#']").forEach(a=>a.href="./"+a.getAttribute("href"));
-  n.querySelectorAll(".chapter-back,.note-back,.section-rule").forEach(e=>e.remove());
-  n.querySelectorAll("[style]").forEach(e=>e.removeAttribute("style"));
-  return n.outerHTML;
- };
- function append(title,kicker,blocks,anchor){
-  if(!blocks.length)return;
-  let chunk=[],length=0,part=0;
-  const flush=()=>{
-   if(!chunk.length)return;
-   pages.push({title,section:kicker,part:++part,html:chunk.join("\n"),anchor});
-   chunk=[];length=0;
-  };
-  blocks.forEach(node=>{
-   const html=safeHtml(node),sz=(node.textContent||"").length;
-   if(chunk.length && (length+sz>1250||chunk.length>=3))flush();
-   chunk.push(html);length+=sz;
-   if(sz>1700)flush();
-  });
-  flush();
- }
- function sectionData(src){
-  src.querySelectorAll("section.opening,section.chapter,section.supp-entry,section.verification").forEach(section=>{
-    const kind=section.classList.contains("supp-entry")?"Actualisation · 13 novembre 2026":
-    section.classList.contains("verification")?"Synthèse":
-    section.classList.contains("opening")?"Avant-propos":
-    section.id==="notes"?"Documentation":section.id==="bibliographie"?"Bibliographie":
-    "Contre-enquête";
-    const titleEl=section.querySelector(":scope > h2,:scope > h3")||
-      section.querySelector(":scope > .reading-column > h2");
-    const title=titleEl?.textContent?.trim()||"NAZA : l’enquête";
-    const id=section.id||"enquete";
-    const p=section.querySelector(":scope > .prose");
-    let parts=[];
-    if(p) parts=Array.from(p.children);
-    else if(section.classList.contains("supp-entry"))parts=Array.from(section.children).filter(e=>e.matches("p,blockquote,ul,ol"));
-    else if(section.classList.contains("opening")){
-      const prose=section.querySelector(".prose");
-      if(prose)parts.push(...prose.children);
-      const note=section.querySelector(".note-reader");
-      if(note)parts.push(note);
-    }else if(section.id==="notes"){
-      const list=section.querySelector(".notes-list");
-      if(list)parts=Array.from(list.children).map((li,i)=>{
-        const wrap=src.createElement("ol");wrap.setAttribute("start",String(i+1));wrap.appendChild(li.cloneNode(true));return wrap;
-      });
-    }else if(section.id==="bibliographie"){
-      const intro=section.querySelector(":scope > p.prose");
-      if(intro)parts.push(intro);
-      const list=section.querySelector(".reference-list");
-      if(list)parts.push(...Array.from(list.children).map((li,i)=>{
-       const wrap=src.createElement("ol");wrap.setAttribute("start",String(i+1));wrap.appendChild(li.cloneNode(true));return wrap;
-      }));
-    }else if(section.id==="verifications"){
-      const intro=section.querySelector(".reading-column p.prose");
-      if(intro)parts.push(intro);
-      section.querySelectorAll("table tbody tr").forEach(row=>{
-       const el=src.createElement("div");el.className="checkcard";
-       const cells=row.querySelectorAll("th,td");
-       el.innerHTML="<h3>"+(cells[0]?.innerHTML||"")+"</h3><p><strong>Statut : </strong>"+(cells[1]?.innerHTML||"")+"</p><p>"+(cells[2]?.innerHTML||"")+"</p>";
-       parts.push(el);
-      });
-      const final=section.querySelector(".last-word");
-      if(final)parts.push(final);
-    }
-    append(title,kind,parts,id);
-  });
- }
-
- // Ajuste chaque feuille à la largeur ET à la hauteur réelle du téléphone.
- // Une phrase peut se poursuivre sur la feuille suivante ; les liens et notes sont conservés.
- function pageHeader(data){
-  return '<p class="leaf-kicker">'+data.section+' · Page '+data.part+'</p>'+
-    (data.part===1?'<h2>'+data.title+'</h2>':'');
- }
- function sliceNode(original,start,end){
-  const textNodes=[],walk=document.createTreeWalker(original,NodeFilter.SHOW_TEXT);
-  let item;while((item=walk.nextNode()))textNodes.push(item);
-  let full=0;const entries=textNodes.map(n=>{const x={node:n,from:full,to:full+n.length};full+=n.length;return x;});
-  function point(offset){
-   if(offset<=0)return {node:original,offset:0};
-   if(offset>=full)return {node:original,offset:original.childNodes.length};
-   for(const e of entries)if(offset<=e.to)return {node:e.node,offset:offset-e.from};
-   return {node:original,offset:original.childNodes.length};
-  }
-  const r=document.createRange(),a=point(start),b=point(end);
-  r.setStart(a.node,a.offset);r.setEnd(b.node,b.offset);
-  const out=original.cloneNode(false);
-  out.appendChild(r.cloneContents());
-  return out;
- }
- function splitAtFit(node,htmlPrefix,fits){
-  const plain=node.textContent||"",total=plain.length;
-  if(total<2)return null;
-  const cuts=[];
-  for(const match of plain.matchAll(/\s+/g)){
-   const cut=match.index+match[0].length;
-   if(cut>0&&cut<total)cuts.push(cut);
-  }
-  if(!cuts.length)for(let x=1;x<total;x+=Math.max(1,Math.floor(total/80)))cuts.push(x);
-  let lo=0,hi=cuts.length-1,best=-1;
-  while(lo<=hi){
-   const mid=(lo+hi)>>1,part=sliceNode(node,0,cuts[mid]);
-   if(fits(htmlPrefix+part.outerHTML)){best=mid;lo=mid+1;}
-   else hi=mid-1;
-  }
-  if(best<0)return null;
-  const cut=cuts[best];
-  const first=sliceNode(node,0,cut);
-  const rest=sliceNode(node,cut,total);
-  return [first,rest];
- }
- function fitPages(){
-  const drafts=sourcePages,groups=[];
-  for(const data of drafts){
-   let group=groups[groups.length-1];
-   if(!group||group.anchor!==data.anchor){
-    group={anchor:data.anchor,title:data.title,section:data.section,blocks:[]};
-    groups.push(group);
-   }
-   const bucket=document.createElement("div");
-   bucket.innerHTML=data.html;
-   group.blocks.push(...Array.from(bucket.children));
-  }
-  pages.length=0;
-  const meter=leaf.cloneNode(false);
-  meter.removeAttribute("id");
-  meter.removeAttribute("tabindex");
-  meter.classList.add("measure-leaf");
-  meter.setAttribute("aria-hidden","true");
-  leafStage.appendChild(meter);
-  try{
-   for(const group of groups){
-    let content="",part=1;
-    const make=()=>({title:group.title,section:group.section,anchor:group.anchor,part,html:content});
-    const header=()=>pageHeader({title:group.title,section:group.section,part});
-    const fits=html=>{
-     meter.innerHTML=header()+html;
-     return meter.scrollHeight<=meter.clientHeight-3;
-    };
-    const flush=()=>{if(content){pages.push(make());content="";part++;}};
-    for(const original of group.blocks){
-     let item=original,guard=0;
-     while(item&&guard++<100){
-      if(fits(content+item.outerHTML)){content+=item.outerHTML;item=null;break;}
-      if(content){flush();continue;}
-      const split=splitAtFit(item,"",fits);
-      if(split){
-       content=split[0].outerHTML;flush();
-       item=split[1];
-       if(!(item.textContent||"").trim())item=null;
-      }else{
-       // Single unsplittable item: keep it intact and reserve a whole leaf.
-       content=item.outerHTML;flush();item=null;
-      }
-     }
-   }
-   flush();
-  }
-  }finally{meter.remove();}
-  if(!pages.length)throw new Error("Pagination vide");
- }
-
- function render(scroll){
-  if(!pages.length)return;
-  const data=pages[at];
-  leaf.innerHTML=pageHeader(data)+data.html;
-  pageCount.textContent=(at+1)+" / "+pages.length;
-  prev.forEach(b=>b.disabled=at===0);
-  next.forEach(b=>b.disabled=at===pages.length-1);
-  jump.value=data.anchor;
-  try{history.replaceState(null,"","#lecture-"+(at+1));}catch(e){}
-  if(scroll)document.getElementById("mobile-jump").scrollIntoView({behavior:"instant",block:"start"});
- }
- function move(n){
-  if(!ready||turning)return;
-  const nextAt=Math.max(0,Math.min(pages.length-1,at+n));
-  if(nextAt===at)return;
-  const noMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if(noMotion){at=nextAt;render(true);leaf.scrollTop=0;return;}
-  turning=true;
-  // The old page turns away; the newly rendered, readable page is underneath.
-  const sheet=leaf.cloneNode(true);
-  sheet.removeAttribute("id");
-  sheet.removeAttribute("tabindex");
-  sheet.setAttribute("aria-hidden","true");
-  sheet.classList.add("leaf-turn-sheet",n>0?"turn-forward":"turn-back");
-  sheet.scrollTop=leaf.scrollTop;
-  at=nextAt;
-  render(false);
-  leaf.scrollTop=0;
-  leafStage.appendChild(sheet);
-  document.getElementById("mobile-jump").scrollIntoView({behavior:"instant",block:"start"});
-  let done=false;
-  const finish=()=>{
-   if(done)return;
-   done=true;
-   sheet.remove();
-   turning=false;
-  };
-  sheet.addEventListener("animationend",finish,{once:true});
-  setTimeout(finish,950);
- }
- prev.forEach(b=>b.addEventListener("click",()=>move(-1)));
- next.forEach(b=>b.addEventListener("click",()=>move(1)));
- jump.addEventListener("change",()=>{
-  if(turning)return;
-  const i=pages.findIndex(p=>p.anchor===jump.value);
-  if(i>=0){at=i;render(true);leaf.scrollTop=0;}
- });
- let startX=0,startY=0;
- leaf.addEventListener("touchstart",e=>{
-  if(e.touches.length!==1)return;
-  startX=e.touches[0].clientX;startY=e.touches[0].clientY;
- },{passive:true});
- leaf.addEventListener("touchend",e=>{
-  if(e.changedTouches.length!==1)return;
-  const dx=e.changedTouches[0].clientX-startX,dy=e.changedTouches[0].clientY-startY;
-  if(Math.abs(dx)>85&&Math.abs(dx)>Math.abs(dy)*1.4)move(dx<0?1:-1);
- },{passive:true});
- fetch("./index.html",{cache:"no-store"}).then(response=>{
-  if(!response.ok)throw new Error("HTTP "+response.status);
-  return response.text();
- }).then(html=>{
-  const doc=new DOMParser().parseFromString(html,"text/html");
-  sectionData(doc);
-  if(!pages.length)throw new Error("Texte non trouvé");
-  sourcePages=pages.slice();
-  fitPages();
-  const options=new Map();
-  pages.forEach((p,i)=>{if(!options.has(p.anchor))options.set(p.anchor,p.title)});
-  jump.innerHTML="";
-  for(const [id,title] of options){const o=document.createElement("option");o.value=id;o.textContent=title;jump.appendChild(o);}
-  const initial=location.hash.match(/^#lecture-(\d+)$/);
-  if(initial)at=Math.min(pages.length-1,Math.max(0,Number(initial[1])-1));
-  ready=true;render(false);
-  let lastWidth=window.innerWidth;
-  window.addEventListener("resize",()=>{
-   if(Math.abs(window.innerWidth-lastWidth)<20)return;
-   lastWidth=window.innerWidth;
-   const keep=pages[at]?.anchor,part=pages[at]?.part;
-   if(!turning){fitPages();const found=pages.findIndex(p=>p.anchor===keep&&p.part===part);
-     at=Math.max(0,found>=0?found:pages.findIndex(p=>p.anchor===keep));render(false);}
-  },{passive:true});
- }).catch(()=>{
-  leaf.innerHTML='<div id="reader-error"><strong>Le texte ne s’est pas chargé.</strong><p>Vous pouvez lire directement notre <a href="./">édition web intégrale, adaptée au téléphone</a>.</p></div>';
-  pageCount.textContent="Lecture alternative";
- });
+(()=>{ 'use strict';
+const source=[...document.querySelectorAll('#source>.page')];const stage=document.getElementById('stage'),spread=document.getElementById('spread');const prev=document.getElementById('prev'),next=document.getElementById('next'),count=document.getElementById('count'),chapters=document.getElementById('chapters');
+let current=0, busy=false,mobile=true;
+function size(){mobile=window.innerWidth<940;const vh=window.visualViewport?.height||window.innerHeight;const avail=mobile?Math.min(window.innerWidth-24,(vh-172)*.775,425):Math.min((window.innerWidth-80)/2,(vh-165)*.775,460);const w=Math.max(238,Math.floor(avail));document.documentElement.style.setProperty('--pw',w+'px');document.documentElement.style.setProperty('--ph',Math.floor(w*1.49)+'px');if(!mobile&&current>0)current=1+2*Math.floor((current-1)/2);}
+function node(i){if(i<0||i>=source.length)return null;return source[i].cloneNode(true)}
+function render(){const indices=mobile?[current]:current===0?[0]:[current,current+1];spread.replaceChildren();stage.classList.toggle('is-single',mobile||current===0);if(!mobile&&current>0){for(const i of indices){let slot=document.createElement('div');slot.className='slot';if(i<source.length)slot.appendChild(node(i));else slot.classList.add('empty');spread.appendChild(slot)}}else{let slot=document.createElement('div');slot.className='slot right';slot.appendChild(node(current));spread.appendChild(slot)}
+count.textContent=mobile?String(current+1).padStart(2,'0')+' / '+String(source.length).padStart(2,'0'):current===0?'COUVERTURE':String(current+1).padStart(2,'0')+'–'+String(Math.min(current+2,source.length)).padStart(2,'0')+' / '+String(source.length).padStart(2,'0');prev.disabled=current===0;next.disabled=current+(mobile?1:current===0?1:2)>=source.length;chapters.value=source[current]?.dataset.section||'';}
+function moved(n){if(busy)return;const target=mobile?current+n:current===0?(n>0?1:0):n>0?current+2:current===1?0:current-2;if(target<0||target>=source.length||target===current)return;const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;const outgoing=(mobile?spread.querySelector('.slot'):n>0?spread.lastElementChild:spread.firstElementChild)?.querySelector('.page');let clone;
+if(outgoing&&!reduce){const box=outgoing.getBoundingClientRect(),parent=stage.getBoundingClientRect();clone=outgoing.cloneNode(true);clone.classList.add('turning',n>0?'fwd':'back');Object.assign(clone.style,{left:(box.left-parent.left)+'px',top:(box.top-parent.top)+'px',width:box.width+'px',height:box.height+'px'});stage.appendChild(clone);busy=true;}
+current=target;render();if(clone){const done=()=>{clone.remove();busy=false};clone.addEventListener('animationend',done,{once:true});setTimeout(done,900)}
+if(mobile)document.getElementById('lecteur').scrollIntoView({behavior:'instant',block:'start'});}
+prev.addEventListener('click',()=>moved(-1));next.addEventListener('click',()=>moved(1));
+const sectionLabels=[];source.forEach((pg,i)=>{if(!sectionLabels.some(([name])=>name===pg.dataset.section))sectionLabels.push([pg.dataset.section,i])});
+for(const [title,idx] of sectionLabels){const o=document.createElement('option');o.value=title;o.textContent=title;chapters.appendChild(o)}
+chapters.addEventListener('change',()=>{let idx=sectionLabels.find(([t])=>t===chapters.value)?.[1]??0;current=mobile?idx:idx===0?0:1+2*Math.floor((idx-1)/2);render();if(mobile)document.getElementById('lecteur').scrollIntoView({behavior:'instant',block:'start'})});
+let x0=0,y0=0;stage.addEventListener('touchstart',e=>{if(e.touches.length===1){x0=e.touches[0].clientX;y0=e.touches[0].clientY}},{passive:true});stage.addEventListener('touchend',e=>{if(e.changedTouches.length!==1)return;const dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;if(Math.abs(dx)>55&&Math.abs(dx)>Math.abs(dy)*1.3)moved(dx<0?1:-1)},{passive:true});
+document.addEventListener('keydown',e=>{if(e.target?.matches('input,textarea,select'))return;if(e.key==='ArrowRight')moved(1);else if(e.key==='ArrowLeft')moved(-1)});
+let oldWidth=window.innerWidth;window.addEventListener('resize',()=>{if(Math.abs(window.innerWidth-oldWidth)>12){oldWidth=window.innerWidth;size();render()}},{passive:true});size();render();
 })();
-</script>
-</body></html>
+</script></body></html>
