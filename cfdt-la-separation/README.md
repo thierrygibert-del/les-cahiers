@@ -29,7 +29,9 @@ La photographie de Paul Vignaux (1975) est de **François Vignaux**, publiée su
 
 `pages-1.js` et `pages-2.js` — contenu de l'édition.
 
-`reader.js` — sommaire, feuilletage, mode continu, progression et PDF imprimable.
+`reader.js` — recomposition éditoriale des 28 sections en 16 pages, sommaire, feuilletage, mode continu, progression et PDF imprimable.
+
+`composition.css` — pagination densifiée et mise en forme des doubles sections sans espaces perdus.
 
 ## Publication
 
@@ -37,4 +39,4 @@ La photographie de Paul Vignaux (1975) est de **François Vignaux**, publiée su
 
 À contrôler avant publication : transcriptions exactes des textes de 1919, 1947, 1957 et 1964 ; réaction des autorités ecclésiastiques ; vérification de tous les liens ; droits sur toute image supplémentaire ; contrôle des débordements sur petit écran ; test du feuilletage et de l'impression ; relecture de la ponctuation (pas de virgule devant « mais »).
 
-Version actuelle : 28 pages, construite pour la relecture et la vérification.
+Version actuelle : 16 pages, construite pour la relecture et la vérification.
