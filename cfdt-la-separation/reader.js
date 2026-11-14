@@ -2,7 +2,7 @@
 (function(){
 "use strict";
 const original=window.CAHIER_PAGES || [];
-const groups=[[0],[1,2],[3],[4,5],[6,7],[8,9],[10,11],[12,13],[14,15],[16,17],[18,19],[30,20],[28,29],[21,22],[23,24],[25],[26],[27]];
+const groups=[[0],[1,2],[3],[4,5],[6,7],[8,9],[10,11],[12,13],[14,15],[16,17],[18,19],[30,20],[28,29],[31,21],[22,23],[24,25],[26],[27]];
 const pages=groups.map(indices=>indices.map(i=>original[i]));
 const book=document.getElementById("book"),readall=document.getElementById("readall"),printbook=document.getElementById("printbook");
 const prev=document.getElementById("prev"),next=document.getElementById("next"),count=document.getElementById("count");
@@ -35,7 +35,7 @@ function render(items,i){
  return '<section class="'+classes.join(' ')+'" data-density="'+(i===0?"hard":"soft")+'"><div class="paper">'+main+'</div>'+
  '<div class="folio"><span>LES CAHIERS · CFDT : LA SÉPARATION</span><span>'+String(i+1).padStart(2,"0")+' / '+pages.length+'</span></div></section>';
 }
-if(original.length!==31){
+if(original.length!==32){
  document.getElementById("status").textContent="Le contenu du cahier est incomplet. Veuillez actualiser la page.";return
 }
 const markup=pages.map(render);
@@ -76,8 +76,8 @@ const titles=[
  "1940–1946 · Résistance et Reconstruction","1947–1957 · Des statuts à la liberté de conscience",
  "1960–1963 · Eugène Descamps","Les arguments des deux courants",
  "Novembre 1964 · Congrès et vote","1964 · Nouveaux statuts et continuités",
- "1965–1971 · Vote des communaux et suites de la scission","1974–2000 · La fédération Interco","2014–2026 · Laïcité et statuts",
- "1905 et l’Église : questions historiques","Conclusion","Sources primaires","Études et bibliographie"
+ "1965–1971 · Vote des communaux et suites de la scission","1974–2000 · La fédération Interco","1997–2014 · Libertés et statuts",
+ "2017–2026 · Laïcité fédérale et loi de 1905","L’Église et conclusion","Sources primaires","Études et bibliographie"
 ];
 titles.forEach((title,i)=>{
  const button=document.createElement("button");button.type="button";button.dataset.page=String(i);
