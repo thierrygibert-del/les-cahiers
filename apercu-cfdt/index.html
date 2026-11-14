@@ -378,6 +378,34 @@ body.reading #stage{display:none}body.reading #readall{display:block}body.readin
 #book .page.overflow-safe .paper::-webkit-scrollbar{width:5px}
 #book .page.overflow-safe .paper::-webkit-scrollbar-thumb{background:#bba98c;border-radius:5px}
 
+
+
+/* Édition V10 — Feuillets peu denses : calibrage typographique contextuel.
+   La taille agrandie ne s'applique qu'au feuillet interactif, pas à l'impression.
+   Le script rétablit la taille normale dès qu'un folio risque d'être recouvert. */
+#book .page.reader-spacious:not(.composed-page) p{
+ font-size:15.6px;line-height:1.65;margin-bottom:14px
+}
+#book .page.reader-spacious:not(.composed-page) h2{
+ font-size:31px;margin-bottom:16px;line-height:1.12
+}
+#book .page.reader-spacious:not(.composed-page) .note{
+ font-size:12.5px;line-height:1.44;padding:11px 12px
+}
+#book .page.reader-spacious.reader-large:not(.composed-page) p{
+ font-size:16.8px;line-height:1.68;margin-bottom:16px
+}
+#book .page.reader-spacious.reader-large:not(.composed-page) h2{
+ font-size:33px
+}
+@media(max-width:720px){
+ #book .page.reader-spacious:not(.composed-page) p{font-size:14.7px;line-height:1.54}
+ #book .page.reader-spacious.reader-large:not(.composed-page) p{font-size:15.8px;line-height:1.55}
+ #book .page.reader-spacious:not(.composed-page) h2{font-size:27px}
+ #book .page.reader-spacious.reader-large:not(.composed-page) h2{font-size:28px}
+ #book .page.reader-spacious:not(.composed-page) .note{font-size:11.5px}
+}
+
 </style>
 </head>
 <body>
@@ -558,6 +586,15 @@ function render(items,i,baseOverride){
  if(special[base])classes.push(special[base]);
  if(items.length>1)classes.push("composed-page");
  if(base===3||base===5||base===6||base===7||base===9||base===11)classes.push("history-page");
+ // Une page autonome n'a pas besoin d'avoir la typographie d'une page dense.
+ // Le calibrage est annulé automatiquement si la fonte Safari diffère.
+ if(baseOverride===undefined && items.length===1 && !special[base]){
+  const words=items[0][2].replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
+  if(words<=145){
+   classes.push("reader-spacious");
+   if(words<=73)classes.push("reader-large");
+  }
+ }
  const main=items.map((p,j)=>section(p,j,base)).join('');
  return '<section class="'+classes.join(' ')+'" data-density="'+(i===0?"hard":"soft")+'"><div class="paper">'+main+'</div>'+
  '<div class="folio"><span>LES CAHIERS · CFDT : LA SÉPARATION</span><span>'+String(i+1).padStart(2,"0")+' / '+pages.length+'</span></div></section>';
@@ -734,10 +771,12 @@ function fitPages(){
  for(const p of book.querySelectorAll(".page")){
   const paper=p.querySelector(".paper"),folio=p.querySelector(".folio");
   if(!paper||!folio||!paper.clientHeight||!p.getClientRects().length)continue;
-  // Ne jamais masquer une dernière ligne derrière la pagination.
-  const end=paper.lastElementChild?.getBoundingClientRect().bottom||0;
-  const top=folio.getBoundingClientRect().top;
-  if(paper.scrollHeight>paper.clientHeight+1||end>top-7){
+  // Typographie respirante, sauf si elle mord sur la zone du folio.
+  const tooFull=()=>paper.scrollHeight>paper.clientHeight+1||
+    (paper.lastElementChild?.getBoundingClientRect().bottom||0)>folio.getBoundingClientRect().top-12;
+  if(p.classList.contains("reader-large")&&tooFull())p.classList.remove("reader-large");
+  if(p.classList.contains("reader-spacious")&&tooFull())p.classList.remove("reader-spacious");
+  if(tooFull()){
    p.classList.add("tight");
    if(paper.scrollHeight>paper.clientHeight+1||
       (paper.lastElementChild?.getBoundingClientRect().bottom||0)>folio.getBoundingClientRect().top-7){
