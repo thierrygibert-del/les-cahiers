@@ -34,6 +34,15 @@ function render(items,i,baseOverride){
  if(special[base])classes.push(special[base]);
  if(items.length>1)classes.push("composed-page");
  if(base===3||base===5||base===6||base===7||base===9||base===11)classes.push("history-page");
+ // Une page autonome n'a pas besoin d'avoir la typographie d'une page dense.
+ // Le calibrage est annulé automatiquement si la fonte Safari diffère.
+ if(baseOverride===undefined && items.length===1 && !special[base]){
+  const words=items[0][2].replace(/<[^>]*>/g," ").trim().split(/\s+/).length;
+  if(words<=145){
+   classes.push("reader-spacious");
+   if(words<=73)classes.push("reader-large");
+  }
+ }
  const main=items.map((p,j)=>section(p,j,base)).join('');
  return '<section class="'+classes.join(' ')+'" data-density="'+(i===0?"hard":"soft")+'"><div class="paper">'+main+'</div>'+
  '<div class="folio"><span>LES CAHIERS · CFDT : LA SÉPARATION</span><span>'+String(i+1).padStart(2,"0")+' / '+pages.length+'</span></div></section>';
@@ -210,10 +219,12 @@ function fitPages(){
  for(const p of book.querySelectorAll(".page")){
   const paper=p.querySelector(".paper"),folio=p.querySelector(".folio");
   if(!paper||!folio||!paper.clientHeight||!p.getClientRects().length)continue;
-  // Ne jamais masquer une dernière ligne derrière la pagination.
-  const end=paper.lastElementChild?.getBoundingClientRect().bottom||0;
-  const top=folio.getBoundingClientRect().top;
-  if(paper.scrollHeight>paper.clientHeight+1||end>top-7){
+  // Typographie respirante, sauf si elle mord sur la zone du folio.
+  const tooFull=()=>paper.scrollHeight>paper.clientHeight+1||
+    (paper.lastElementChild?.getBoundingClientRect().bottom||0)>folio.getBoundingClientRect().top-12;
+  if(p.classList.contains("reader-large")&&tooFull())p.classList.remove("reader-large");
+  if(p.classList.contains("reader-spacious")&&tooFull())p.classList.remove("reader-spacious");
+  if(tooFull()){
    p.classList.add("tight");
    if(paper.scrollHeight>paper.clientHeight+1||
       (paper.lastElementChild?.getBoundingClientRect().bottom||0)>folio.getBoundingClientRect().top-7){
