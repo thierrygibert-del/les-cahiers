@@ -359,6 +359,25 @@ body.reading #stage{display:none}body.reading #readall{display:block}body.readin
 }
 @media print{#printbook .ballot-card strong{font-size:28px}}
 
+
+/* v8 — filets de sécurité de l'édition feuilletable.
+   Les pages sont d'abord composées et réparties par le script selon leur hauteur.
+   En cas de police agrandie ou de taille de fenêtre atypique, aucun contenu n'est coupé :
+   le feuillet concerné peut défiler avant son folio fixe. */
+#book .page.overflow-safe .paper{
+ height:calc(100% - 42px);
+ max-height:calc(100% - 42px);
+ padding-bottom:10px!important;
+ overflow-y:auto;
+ overflow-x:hidden;
+ overscroll-behavior:contain;
+ scrollbar-width:thin;
+ scrollbar-color:#9c8b74 transparent;
+}
+#book .page.overflow-safe .folio{z-index:5}
+#book .page.overflow-safe .paper::-webkit-scrollbar{width:5px}
+#book .page.overflow-safe .paper::-webkit-scrollbar-thumb{background:#bba98c;border-radius:5px}
+
 </style>
 </head>
 <body>
@@ -508,7 +527,9 @@ p.push([
 "use strict";
 const original=window.CAHIER_PAGES || [];
 const groups=[[0],[1,2],[3],[4,5],[6,7],[8,9],[10,11],[12,13],[14,15],[16,17],[18,19],[30,20],[28,29],[31,21],[22,23],[24,25],[26],[27]];
-const pages=groups.map(indices=>indices.map(i=>original[i]));
+let pages=groups.map(indices=>indices.map(i=>original[i]));
+let pageBases=groups.map((_,i)=>i);
+let pageSpecs=[];
 const book=document.getElementById("book"),readall=document.getElementById("readall"),printbook=document.getElementById("printbook");
 const prev=document.getElementById("prev"),next=document.getElementById("next"),count=document.getElementById("count");
 const progress=document.getElementById("progress-bar"),progressRoot=document.querySelector(".reading-progress");
@@ -526,28 +547,125 @@ function section(p,partIndex,groupIndex){
  const title=groupIndex===0?'<h2>CFDT :<br><em>la séparation</em></h2>':first?'<h2>'+p[1]+'</h2>':'<h3>'+p[1]+'</h3>';
  const source=p[3]?'<a target="_blank" rel="noopener noreferrer" href="'+p[3]+'">'+safe(new URL(p[3]).hostname)+' ↗</a>':"";
  let body=p[2];
- if(groupIndex===4 && partIndex===1)body=portrait()+body;
- if(groupIndex===13 && partIndex===1)body='<div class="closing">'+body+'</div>';
+ if(groupIndex===4 && p[4]?.origIndex===7 && !p[4]?.continued)body=portrait()+body;
+ if(groupIndex===13 && p[4]?.origIndex===21)body='<div class="closing">'+body+'</div>';
  return '<div class="'+sectionClass+'"><div class="section">'+safe(p[0])+'</div>'+title+body+'</div>'+
  (source?'<div class="module-source">'+source+'</div>':"");
 }
-function render(items,i){
+function render(items,i,baseOverride){
+ const base=baseOverride??pageBases[i];
  let classes=["page"];
- if(special[i])classes.push(special[i]);
+ if(special[base])classes.push(special[base]);
  if(items.length>1)classes.push("composed-page");
- if(i===3||i===5||i===6||i===7||i===9||i===11)classes.push("history-page");
- const main=items.map((p,j)=>section(p,j,i)).join('');
+ if(base===3||base===5||base===6||base===7||base===9||base===11)classes.push("history-page");
+ const main=items.map((p,j)=>section(p,j,base)).join('');
  return '<section class="'+classes.join(' ')+'" data-density="'+(i===0?"hard":"soft")+'"><div class="paper">'+main+'</div>'+
  '<div class="folio"><span>LES CAHIERS · CFDT : LA SÉPARATION</span><span>'+String(i+1).padStart(2,"0")+' / '+pages.length+'</span></div></section>';
 }
 if(original.length!==32){
  document.getElementById("status").textContent="Le contenu du cahier est incomplet. Veuillez actualiser la page.";return
 }
-const markup=pages.map(render);
-book.innerHTML=markup.join('');
-readall.innerHTML=markup.join('');
-printbook.innerHTML=markup.join('');
-progressRoot.setAttribute("aria-valuemax",String(pages.length));
+/*
+ * Composer les pages d'après leur hauteur réelle AVANT d'initialiser PageFlip.
+ * Une section trop haute passe à la page suivante. Une longue section est
+ * répartie entre plusieurs feuillets, sans supprimer ni réduire son texte.
+ */
+function displayParts(parts){
+ return parts.map(part=>{
+  const p=original[part.idx].slice();
+  p[2]=part.html;
+  if(part.continued)p[1]=p[1]+" — suite";
+  p[4]={origIndex:part.idx,continued:part.continued};
+  return p;
+ });
+}
+function measureSize(){
+ const stage=document.getElementById("stage");
+ const available=stage?.clientWidth||window.innerWidth;
+ // Mesurer au plus à la largeur du feuillet A5 ; sur mobile, anticiper
+ // les retours à la ligne du mode portrait et les folios.
+ const width=Math.max(215,Math.min(430,Math.floor(
+   window.innerWidth<=720?available-45:
+   window.innerWidth<=1000?Math.min(available-45,355):430
+ )));
+ return {width,height:Math.round(width*608/430)};
+}
+function fits(parts,base,dim){
+ if(!parts.length)return true;
+ const probe=document.createElement("div");
+ probe.innerHTML=render(displayParts(parts),0,base);
+ const page=probe.firstElementChild;
+ page.style.cssText="position:absolute;left:-10000px;top:0;visibility:hidden;width:"+dim.width+"px;height:"+dim.height+"px;pointer-events:none";
+ document.body.appendChild(page);
+ const paper=page.querySelector(".paper"),folio=page.querySelector(".folio");
+ const last=paper.lastElementChild;
+ const end=last?.getBoundingClientRect().bottom??paper.getBoundingClientRect().top;
+ const folioTop=folio.getBoundingClientRect().top;
+ const good=paper.scrollHeight<=paper.clientHeight+1 && end<=folioTop-9;
+ page.remove();
+ return good;
+}
+function blocks(html){
+ const t=document.createElement("template");t.innerHTML=html;
+ const units=[];
+ for(const el of t.content.children){
+  // Les listes sont fractionnées par élément, sans casser leurs liens.
+  if(el.matches("ul,ol") && el.children.length>1){
+   for(const li of el.children){
+    const copy=el.cloneNode(false);copy.appendChild(li.cloneNode(true));
+    units.push(copy.outerHTML);
+   }
+  }else if(el.classList.contains("timeline")&&el.children.length>1){
+   for(const entry of el.children){
+    const copy=el.cloneNode(false);copy.appendChild(entry.cloneNode(true));
+    units.push(copy.outerHTML);
+   }
+  }else{units.push(el.outerHTML)}
+ }
+ return units.length?units:[html];
+}
+function paginate(){
+ const dim=measureSize(),result=[];
+ for(let base=0;base<groups.length;base++){
+  let current=[];
+  for(const idx of groups[base]){
+   const full={idx,html:original[idx][2],continued:false};
+   if(base===0 || fits([...current,full],base,dim)){
+    current.push(full);continue;
+   }
+   if(current.length){result.push({base,parts:current});current=[]}
+   if(fits([full],base,dim)){current.push(full);continue}
+   const units=blocks(full.html);
+   let piece="",continued=false;
+   for(const unit of units){
+    if(fits([{idx,html:piece+unit,continued}],base,dim)){
+     piece+=unit;continue;
+    }
+    if(piece){
+     result.push({base,parts:[{idx,html:piece,continued}]});
+     piece="";continued=true;
+    }
+    // Éventuel bloc atomique trop grand : l'accès au texte sera
+    // garanti par le défilement de secours, jamais par une coupe.
+    if(fits([{idx,html:unit,continued}],base,dim))piece=unit;
+    else result.push({base,parts:[{idx,html:unit,continued,oversize:true}]});
+   }
+   if(piece)current=[{idx,html:piece,continued}];
+  }
+  if(current.length)result.push({base,parts:current});
+ }
+ return result;
+}
+function assemble(){
+ pageSpecs=paginate();
+ pages=pageSpecs.map(x=>displayParts(x.parts));
+ pageBases=pageSpecs.map(x=>x.base);
+ const markup=pages.map((p,i)=>render(p,i));
+ book.innerHTML=markup.join("");
+ readall.innerHTML=markup.join("");
+ printbook.innerHTML=markup.join("");
+ progressRoot.setAttribute("aria-valuemax",String(pages.length));
+}
 function sync(){
  count.textContent=String(index+1).padStart(2,"0")+" / "+String(pages.length).padStart(2,"0");
  prev.disabled=index===0;next.disabled=index===pages.length-1;
@@ -584,26 +702,40 @@ const titles=[
  "1965–1971 · Vote des communaux et suites de la scission","1974–2000 · La fédération Interco","1997–2014 · Libertés et statuts",
  "2017–2026 · Laïcité fédérale et loi de 1905","L’Église et conclusion","Sources primaires","Études et bibliographie"
 ];
-titles.forEach((title,i)=>{
+function buildToc(){
+ tocList.innerHTML="";
+ pageBases.forEach((base,i)=>{
+ const title=titles[base]+(i>0&&pageBases[i-1]===base?" — suite":"");
  const button=document.createElement("button");button.type="button";button.dataset.page=String(i);
  button.innerHTML="<strong>"+String(i+1).padStart(2,"0")+"</strong><span>"+safe(title)+"</span>";
  button.addEventListener("click",()=>{toggleToc(false);turnTo(i);if(!document.body.classList.contains("reading"))document.getElementById("stage").scrollIntoView({behavior:"smooth",block:"start"})});
  tocList.appendChild(button);
-});
+ });
+}
 tocToggle.addEventListener("click",()=>toggleToc(toc.hidden));
 tocClose.addEventListener("click",()=>toggleToc(false));
 function fitPages(){
  for(const p of book.querySelectorAll(".page")){
-  if(p.classList.contains("cover"))continue;
-  const inner=p.querySelector(".paper");
-  if(!inner)continue;
-  // Progressive typographic fitting if a combined chapter exceeds the printed page.
-  const overflows=()=>inner.scrollHeight>inner.clientHeight+4;
-  if(overflows())p.classList.add("tight");
-  if(overflows())p.classList.add("very-tight");
+  const paper=p.querySelector(".paper"),folio=p.querySelector(".folio");
+  if(!paper||!folio)continue;
+  // Ne jamais masquer une dernière ligne derrière la pagination.
+  const end=paper.lastElementChild?.getBoundingClientRect().bottom||0;
+  const top=folio.getBoundingClientRect().top;
+  if(paper.scrollHeight>paper.clientHeight+1||end>top-7){
+   p.classList.add("tight");
+   if(paper.scrollHeight>paper.clientHeight+1||
+      (paper.lastElementChild?.getBoundingClientRect().bottom||0)>folio.getBoundingClientRect().top-7){
+    p.classList.add("very-tight");
+   }
+   if(paper.scrollHeight>paper.clientHeight+1||
+      (paper.lastElementChild?.getBoundingClientRect().bottom||0)>folio.getBoundingClientRect().top-7){
+    p.classList.add("overflow-safe");
+   }
+  }
  }
 }
 function init(){
+ assemble();buildToc();
  const match=/^#page-(\d+)$/.exec(location.hash);
  if(match)index=Math.max(0,Math.min(Number(match[1])-1,pages.length-1));
  if(!window.St||!window.St.PageFlip){fallback();return}
@@ -637,7 +769,7 @@ document.addEventListener("keydown",e=>{
  if(e.key==="ArrowRight")next.click();else if(e.key==="ArrowLeft")prev.click();
 });
 window.addEventListener("hashchange",()=>{const m=/^#page-(\d+)$/.exec(location.hash);if(m)turnTo(Number(m[1])-1)});
-window.addEventListener("load",init,{once:true});sync();
+window.addEventListener("load",init,{once:true});
 })();
 </script>
 </body>
