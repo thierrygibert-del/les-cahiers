@@ -16,6 +16,7 @@ Ce dépôt est la **source canonique des éditions HTML** du cahier NAZA. Les fi
 | Document maître de l'audit | [Google Docs – Audit et conclusions](https://docs.google.com/document/d/10s0nH2nXqqeR7Am3kfM7ia8gz_zi5EcCEqlGoEz9Tqw/edit) | Addendum du 13/11/2026 |
 | Tableau de suivi, corpus et contrôle des sources | [Google Sheets – Palestine–Israël](https://docs.google.com/spreadsheets/d/1p0vygHu5dPSw0zrW4XBIjqzkufBqsclay186BGX9W8I/edit) | Suivi continu |
 | Dossier documentaire et production | [Google Drive – NAZA](https://drive.google.com/drive/folders/1gHYVYlrmwzdjgZFhVPSFQyS6qJqd-le0) | Corpus conservé |
+| Registre canonique intersupports | [Google Docs – Production et versions](https://docs.google.com/document/d/1B0TwRc3xTRmP7HDWzWpFm0qoh5Dx7dARnLt0e9PczyE/edit) | Harmonisé le 14/11/2026 |
 
 ## Arborescence et responsabilités
 
@@ -24,6 +25,7 @@ Ce dépôt est la **source canonique des éditions HTML** du cahier NAZA. Les fi
 - `avant-premiere.html` : **redirection** vers `feuilleter.html` pour ne pas rompre les liens déjà diffusés.
 - `archives/` : anciennes maquettes et lecteurs, conservés pour la traçabilité ; ne pas réutiliser comme édition publique.
 - Le PDF consolidé sur WordPress correspond au texte documentaire arrêté au **13 novembre**, et non aux dix cartes graphiques du 14 novembre.
+- La copie HTML Drive de l'étude intégrale du 13 novembre est **identique octet pour octet** au fichier GitHub `index.html` (contrôle des contenus réalisé le 14 novembre) : [copie de production](https://drive.google.com/file/d/16ZmSuktXcBYQ1Q_zkbwKcqdmd3Sd8lYu/view). L'édition illustrée actuelle `feuilleter.html` n'a pas de copie HTML brute certifiée dans Drive ; ne pas utiliser l'ancienne maquette intitulée ARCHIVE.
 - Le PDF du **4 octobre** reste accessible dans l'article initial comme document historique.
 
 ## Règles de mise à jour
