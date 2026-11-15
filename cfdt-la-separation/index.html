@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#182e36">
+<meta name="robots" content="noindex,nofollow">
+<meta name="author" content="Thierry Gibert">
+<meta name="description" content="CFDT : la séparation, un cahier historique à feuilleter sur la déconfessionnalisation de la CFTC, le congrès de 1964 et la liberté de conscience.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CFDT : la séparation — Les Cahiers">
+<meta property="og:description" content="1919–1964. L'histoire d'une séparation qui fut aussi une naissance.">
+<title>CFDT : la séparation · Les Cahiers de Thierry Gibert</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="editorial.css">
+<link rel="stylesheet" href="composition.css">
+</head>
+<body>
+<a class="skip" href="#lecture">Aller directement au lecteur</a>
+<header class="mast">
+  <a class="mast-brand" href="https://thierrygibert15.wordpress.com/" aria-label="Accueil du site Thierry Gibert">
+    <span class="brand-monogram" aria-hidden="true">TG</span>
+    <span><strong>LES CAHIERS</strong><small>THIERRY GIBERT · ÉTUDES DOCUMENTAIRES</small></span>
+  </a>
+  <div class="mast-meta"><span class="series">HORS-SÉRIE HISTOIRE</span><span class="mast-divider"></span><span>ÉDITION DE TRAVAIL · 2026</span></div>
+</header>
+<main id="lecture">
+  <div class="editorial-intro">
+    <div class="intro-kicker"><span class="ornament">◆</span> SYNDICALISME · HISTOIRE · LAÏCITÉ <span class="intro-line"></span> 1919 — 2026</div>
+    <h1>CFDT <span class="title-divider">:</span> <em>la séparation</em></h1>
+    <p class="intro-deck">Quand une confédération née du christianisme social choisit l’indépendance de sa doctrine et la liberté de conscience de ses militants.</p>
+    <div class="intro-byline"><span>UNE ÉTUDE DE THIERRY GIBERT</span><span class="tiny-diamond">◇</span><span>18 PAGES À PARCOURIR</span><span class="tiny-diamond">◇</span><span>ARCHIVES &amp; DÉBATS</span></div>
+  </div>
+
+  <section class="reading-shell" aria-label="Lecture du cahier">
+    <div class="read-controls">
+      <div class="control-side">
+        <button type="button" id="toc-toggle" class="control-index" aria-controls="toc-panel" aria-expanded="false"><span aria-hidden="true">☷</span> Sommaire</button>
+        <span class="control-hint">TOURNEZ LES PAGES DE L’HISTOIRE</span>
+      </div>
+      <nav class="toolbar" aria-label="Contrôles du cahier">
+        <button type="button" id="prev" aria-label="Page précédente"><span aria-hidden="true">←</span> <span class="nav-label">Précédente</span></button>
+        <span id="count" aria-live="polite">01 / 18</span>
+        <button type="button" id="next" class="primary" aria-label="Page suivante"><span class="nav-label">Suivante</span> <span aria-hidden="true">→</span></button>
+      </nav>
+      <div class="control-side right-controls">
+        <button type="button" id="continuous" aria-pressed="false">Lecture continue</button>
+        <button type="button" id="print" title="Imprimer ou enregistrer en PDF">PDF ↓</button>
+      </div>
+    </div>
+    <div class="reading-progress" role="progressbar" aria-label="Progression de lecture" aria-valuemin="1" aria-valuemax="18" aria-valuenow="1"><span id="progress-bar"></span></div>
+    <div id="toc-panel" class="toc-panel" hidden>
+      <div class="toc-header"><h2>Parcourir le cahier</h2><button type="button" id="toc-close" aria-label="Fermer le sommaire">✕</button></div>
+      <div class="toc-grid" id="toc-list"></div>
+    </div>
+    <section id="stage" aria-label="Cahier à feuilleter">
+      <div class="stage-stamp left" aria-hidden="true">LES CAHIERS · CFDT</div>
+      <div id="shell"><div id="book" aria-label="Pages du cahier historique"></div></div>
+      <div class="stage-footer"><span>1919 <span class="decor-line">────</span> 1964</span><p>Balayez une page, cliquez dans son coin ou utilisez les flèches.</p><span>HISTOIRE &amp; CONSCIENCE</span></div>
+    </section>
+    <div id="readall" aria-label="Lecture continue du cahier"></div>
+    <div class="below-actions">
+      <button id="first" type="button">↶ Revenir à la couverture</button>
+      <button id="sources" type="button">Voir les sources ↗</button>
+      <span>Navigation au clavier : ← et →</span>
+    </div>
+  </section>
+  <section class="editor-note" id="status">
+    <span class="note-symbol" aria-hidden="true">✦</span>
+    <div><strong>Une édition historique en cours de vérification</strong><p>Ce cahier est une version de travail. Les documents originaux, les arguments contradictoires et les points encore ouverts sont distingués. Ce n'est ni un document officiel de la CFDT ni une prise de position de la CFTC.</p></div>
+  </section>
+</main>
+<div id="printbook" aria-hidden="true"></div>
+<footer class="site-footer"><span>© Thierry Gibert · Les Cahiers</span><span>Sources citées en fin de volume · <a href="https://github.com/Nodlik/StPageFlip" target="_blank" rel="noopener">StPageFlip / licence MIT</a></span></footer>
+<noscript><p>JavaScript est nécessaire pour feuilleter le cahier. Retrouvez les <a href="https://www.cfdt.fr/histoire-de-la-cfdt">repères historiques de la CFDT</a>.</p></noscript>
+<script defer src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+<script defer src="pages-1.js"></script>
+<script defer src="pages-2.js"></script>
+<script defer src="interco.js"></script>
+<script defer src="reader.js"></script>
+</body>
+</html>
